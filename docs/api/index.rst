@@ -9,6 +9,7 @@ Welcome to the Mellea API documentation. This documentation covers the standard 
 
    quickref
    session_api
+   requirements_api
    stdlib
    backends
    helpers

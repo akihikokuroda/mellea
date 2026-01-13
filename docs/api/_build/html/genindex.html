@@ -87,6 +87,35 @@
 <li class="toctree-l2"><a class="reference internal" href="session_api.html#see-also">See Also</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="requirements_api.html">Requirements API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="requirements_api.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="requirements_api.html#creating-requirements">Creating Requirements</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="requirements_api.html#simple-string-requirements">Simple String Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="requirements_api.html#requirement-class">Requirement Class</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="requirements_api.html#mellea.stdlib.requirement.Requirement"><code class="docutils literal notranslate"><span class="pre">mellea.stdlib.requirement.Requirement</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="requirements_api.html#validationresult-class">ValidationResult Class</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="requirements_api.html#mellea.stdlib.requirement.ValidationResult"><code class="docutils literal notranslate"><span class="pre">mellea.stdlib.requirement.ValidationResult</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="requirements_api.html#helper-functions">Helper Functions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="requirements_api.html#req">req</a></li>
+<li class="toctree-l3"><a class="reference internal" href="requirements_api.html#check">check</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="requirements_api.html#requirement-libraries">Requirement Libraries</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="requirements_api.html#markdown-requirements">Markdown Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="requirements_api.html#python-requirements">Python Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="requirements_api.html#tools-requirements">Tools Requirements</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="requirements_api.html#best-practices">Best Practices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="requirements_api.html#see-also">See Also</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="stdlib.html">Standard Library (stdlib)</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="stdlib.html#core-modules">Core Modules</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="stdlib.html#module-mellea.stdlib.chat">Chat</a><ul>
@@ -365,6 +394,8 @@
 <h2 id="_">_</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="requirements_api.html#mellea.stdlib.requirement.ValidationResult.__bool__">__bool__() (mellea.stdlib.requirement.ValidationResult method)</a>
+</li>
       <li><a href="stdlib.html#mellea.stdlib.session.MelleaSession.__copy__">__copy__() (mellea.stdlib.session.MelleaSession method)</a>
 </li>
       <li><a href="stdlib.html#mellea.stdlib.session.MelleaSession.__enter__">__enter__() (mellea.stdlib.session.MelleaSession method)</a>
@@ -399,6 +430,10 @@
         <li><a href="stdlib.html#mellea.stdlib.chat.ToolMessage.__init__">(mellea.stdlib.chat.ToolMessage method)</a>
 </li>
         <li><a href="stdlib.html#mellea.stdlib.reqlib.python.PythonExecutionReq.__init__">(mellea.stdlib.reqlib.python.PythonExecutionReq method)</a>
+</li>
+        <li><a href="requirements_api.html#mellea.stdlib.requirement.Requirement.__init__">(mellea.stdlib.requirement.Requirement method)</a>
+</li>
+        <li><a href="requirements_api.html#mellea.stdlib.requirement.ValidationResult.__init__">(mellea.stdlib.requirement.ValidationResult method)</a>
 </li>
         <li><a href="stdlib.html#mellea.stdlib.sampling.base.BaseSamplingStrategy.__init__">(mellea.stdlib.sampling.base.BaseSamplingStrategy method)</a>
 </li>
@@ -481,6 +516,8 @@
         <li><a href="stdlib.html#mellea.stdlib.session.MelleaSession.aquery">(mellea.stdlib.session.MelleaSession method)</a>
 </li>
       </ul></li>
+      <li><a href="requirements_api.html#mellea.stdlib.requirement.ValidationResult.as_bool">as_bool() (mellea.stdlib.requirement.ValidationResult method)</a>
+</li>
       <li><a href="stdlib.html#mellea.stdlib.chat.as_chat_history">as_chat_history() (in module mellea.stdlib.chat)</a>
 </li>
       <li><a href="stdlib.html#mellea.stdlib.functional.atransform">atransform() (in module mellea.stdlib.functional)</a>
@@ -553,9 +590,11 @@
 </li>
       <li><a href="backends.html#mellea.backends.adapters.adapter.GraniteCommonAdapter.config">config (mellea.backends.adapters.adapter.GraniteCommonAdapter attribute)</a>
 </li>
+      <li><a href="stdlib.html#mellea.stdlib.test_based_eval.Message.content">content (mellea.stdlib.test_based_eval.Message attribute)</a>
+</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="stdlib.html#mellea.stdlib.test_based_eval.Message.content">content (mellea.stdlib.test_based_eval.Message attribute)</a>
+      <li><a href="requirements_api.html#mellea.stdlib.requirement.ValidationResult.context">context (mellea.stdlib.requirement.ValidationResult attribute)</a>
 </li>
       <li><a href="backends.html#mellea.backends.types.ModelOption.CONTEXT_WINDOW">CONTEXT_WINDOW (mellea.backends.types.ModelOption attribute)</a>
 </li>
@@ -947,6 +986,10 @@
         <li><a href="stdlib.html#module-mellea.stdlib.reqlib.tools">module</a>
 </li>
       </ul></li>
+      <li><a href="requirements_api.html#mellea.stdlib.requirement.Requirement">mellea.stdlib.requirement.Requirement (built-in class)</a>
+</li>
+      <li><a href="requirements_api.html#mellea.stdlib.requirement.ValidationResult">mellea.stdlib.requirement.ValidationResult (built-in class)</a>
+</li>
       <li>
     mellea.stdlib.sampling.base
 
@@ -968,6 +1011,8 @@
         <li><a href="stdlib.html#module-mellea.stdlib.sampling.budget_forcing">module</a>
 </li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li>
     mellea.stdlib.sampling.types
 
@@ -975,8 +1020,6 @@
         <li><a href="stdlib.html#module-mellea.stdlib.sampling.types">module</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li>
     mellea.stdlib.session
 
@@ -1180,6 +1223,8 @@
 <h2 id="R">R</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="requirements_api.html#mellea.stdlib.requirement.ValidationResult.reason">reason (mellea.stdlib.requirement.ValidationResult attribute)</a>
+</li>
       <li><a href="helpers.html#mellea.helpers.fancy_logger.CustomFormatter.red">red (mellea.helpers.fancy_logger.CustomFormatter attribute)</a>
 </li>
       <li><a href="stdlib.html#mellea.stdlib.sampling.base.RejectionSamplingStrategy">RejectionSamplingStrategy (class in mellea.stdlib.sampling.base)</a>
@@ -1200,10 +1245,10 @@
       </ul></li>
       <li><a href="stdlib.html#mellea.stdlib.sampling.base.RepairTemplateStrategy">RepairTemplateStrategy (class in mellea.stdlib.sampling.base)</a>
 </li>
-      <li><a href="backends.html#mellea.backends.types.ModelOption.replace_keys">replace_keys() (mellea.backends.types.ModelOption static method)</a>
-</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="backends.html#mellea.backends.types.ModelOption.replace_keys">replace_keys() (mellea.backends.types.ModelOption static method)</a>
+</li>
       <li><a href="backends.html#mellea.backends.adapters.catalog.IntriniscsCatalogEntry.repo_id">repo_id (mellea.backends.adapters.catalog.IntriniscsCatalogEntry attribute)</a>
 </li>
       <li><a href="helpers.html#mellea.helpers.fancy_logger.CustomFormatter.reset">reset (mellea.helpers.fancy_logger.CustomFormatter attribute)</a>
@@ -1243,6 +1288,8 @@
       <li><a href="stdlib.html#mellea.stdlib.sampling.types.SamplingResult">SamplingResult (class in mellea.stdlib.sampling.types)</a>
 </li>
       <li><a href="stdlib.html#mellea.stdlib.sampling.types.SamplingStrategy">SamplingStrategy (class in mellea.stdlib.sampling.types)</a>
+</li>
+      <li><a href="requirements_api.html#mellea.stdlib.requirement.ValidationResult.score">score (mellea.stdlib.requirement.ValidationResult attribute)</a>
 </li>
       <li><a href="backends.html#mellea.backends.types.ModelOption.SEED">SEED (mellea.backends.types.ModelOption attribute)</a>
 </li>
@@ -1300,6 +1347,8 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="backends.html#mellea.backends.types.ModelOption.THINKING">THINKING (mellea.backends.types.ModelOption attribute)</a>
 </li>
+      <li><a href="requirements_api.html#mellea.stdlib.requirement.ValidationResult.thunk">thunk (mellea.stdlib.requirement.ValidationResult attribute)</a>
+</li>
       <li><a href="backends.html#mellea.backends.formatter.Formatter.to_chat_messages">to_chat_messages() (mellea.backends.formatter.Formatter method)</a>
 </li>
       <li><a href="stdlib.html#mellea.stdlib.reqlib.tools.tool_arg_validator">tool_arg_validator() (in module mellea.stdlib.reqlib.tools)</a>
@@ -1339,6 +1388,8 @@
       <li><a href="stdlib.html#mellea.stdlib.functional.validate">validate() (in module mellea.stdlib.functional)</a>
 
       <ul>
+        <li><a href="requirements_api.html#mellea.stdlib.requirement.Requirement.validate">(mellea.stdlib.requirement.Requirement method)</a>
+</li>
         <li><a href="stdlib.html#mellea.stdlib.session.MelleaSession.validate">(mellea.stdlib.session.MelleaSession method)</a>
 </li>
       </ul></li>
