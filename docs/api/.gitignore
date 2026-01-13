@@ -1,0 +1,10 @@
+# Sphinx build outputs
+_build/
+_autosummary/
+
+# Sphinx cache
+.doctrees/
+
+# Generated files
+*.pyc
+__pycache__/
