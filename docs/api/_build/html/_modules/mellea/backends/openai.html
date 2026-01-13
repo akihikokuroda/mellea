@@ -1,0 +1,1459 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>mellea.backends.openai &mdash; Mellea unknown documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../_static/documentation_options.js?v=3f1b9271"></script>
+      <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            Mellea
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../quickref.html">Quick Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../quickref.html#core-session-methods">Core Session Methods</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../quickref.html#creating-a-session">Creating a Session</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../quickref.html#key-methods">Key Methods</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../quickref.html#instruct">instruct</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../quickref.html#chat">chat</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../quickref.html#generate">generate</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../quickref.html#functional-api">Functional API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../quickref.html#instruct-functional">instruct (functional)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../quickref.html#sampling-strategies">Sampling Strategies</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../quickref.html#rejectionsamplingstrategy">RejectionSamplingStrategy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../quickref.html#bestofnsamplingstrategy">BestOfNSamplingStrategy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../quickref.html#majorityvotingsamplingstrategy">MajorityVotingSamplingStrategy</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../quickref.html#requirements">Requirements</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../quickref.html#creating-requirements">Creating Requirements</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../quickref.html#see-also">See Also</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../session_api.html">Session API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../session_api.html#creating-a-session">Creating a Session</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../session_api.html#melleasession-class">MelleaSession Class</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../session_api.html#mellea.stdlib.session.MelleaSession"><code class="docutils literal notranslate"><span class="pre">mellea.stdlib.session.MelleaSession</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../session_api.html#mellea.stdlib.session.MelleaSession.instruct"><code class="docutils literal notranslate"><span class="pre">mellea.stdlib.session.MelleaSession.instruct()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../session_api.html#mellea.stdlib.session.MelleaSession.chat"><code class="docutils literal notranslate"><span class="pre">mellea.stdlib.session.MelleaSession.chat()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../session_api.html#mellea.stdlib.session.MelleaSession.generate"><code class="docutils literal notranslate"><span class="pre">mellea.stdlib.session.MelleaSession.generate()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../session_api.html#mellea.stdlib.session.MelleaSession.ctx"><code class="docutils literal notranslate"><span class="pre">mellea.stdlib.session.MelleaSession.ctx</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../session_api.html#mellea.stdlib.session.MelleaSession.backend"><code class="docutils literal notranslate"><span class="pre">mellea.stdlib.session.MelleaSession.backend</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../session_api.html#mellea.stdlib.session.MelleaSession.model_options"><code class="docutils literal notranslate"><span class="pre">mellea.stdlib.session.MelleaSession.model_options</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../session_api.html#functional-api">Functional API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../session_api.html#see-also">See Also</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../stdlib.html">Standard Library (stdlib)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../stdlib.html#core-modules">Core Modules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../stdlib.html#module-mellea.stdlib.chat">Chat</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../stdlib.html#mellea.stdlib.chat.Message"><code class="docutils literal notranslate"><span class="pre">Message</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../stdlib.html#mellea.stdlib.chat.ToolMessage"><code class="docutils literal notranslate"><span class="pre">ToolMessage</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../stdlib.html#mellea.stdlib.chat.as_chat_history"><code class="docutils literal notranslate"><span class="pre">as_chat_history()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../stdlib.html#module-mellea.stdlib.functional">Functional</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../stdlib.html#mellea.stdlib.functional.act"><code class="docutils literal notranslate"><span class="pre">act()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../stdlib.html#mellea.stdlib.functional.instruct"><code class="docutils literal notranslate"><span class="pre">instruct()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../stdlib.html#mellea.stdlib.functional.chat"><code class="docutils literal notranslate"><span class="pre">chat()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../stdlib.html#mellea.stdlib.functional.validate"><code class="docutils literal notranslate"><span class="pre">validate()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../stdlib.html#mellea.stdlib.functional.query"><code class="docutils literal notranslate"><span class="pre">query()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../stdlib.html#mellea.stdlib.functional.transform"><code class="docutils literal notranslate"><span class="pre">transform()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../stdlib.html#mellea.stdlib.functional.aact"><code class="docutils literal notranslate"><span class="pre">aact()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../stdlib.html#mellea.stdlib.functional.ainstruct"><code class="docutils literal notranslate"><span class="pre">ainstruct()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../stdlib.html#mellea.stdlib.functional.achat"><code class="docutils literal notranslate"><span class="pre">achat()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../stdlib.html#mellea.stdlib.functional.avalidate"><code class="docutils literal notranslate"><span class="pre">avalidate()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../stdlib.html#mellea.stdlib.functional.aquery"><code class="docutils literal notranslate"><span class="pre">aquery()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../stdlib.html#mellea.stdlib.functional.atransform"><code class="docutils literal notranslate"><span class="pre">atransform()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../stdlib.html#module-mellea.stdlib.session">Session</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../stdlib.html#mellea.stdlib.session.get_session"><code class="docutils literal notranslate"><span class="pre">get_session()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../stdlib.html#mellea.stdlib.session.backend_name_to_class"><code class="docutils literal notranslate"><span class="pre">backend_name_to_class()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../stdlib.html#mellea.stdlib.session.start_session"><code class="docutils literal notranslate"><span class="pre">start_session()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../stdlib.html#mellea.stdlib.session.MelleaSession"><code class="docutils literal notranslate"><span class="pre">MelleaSession</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../stdlib.html#module-mellea.stdlib.test_based_eval">Test-Based Evaluation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../stdlib.html#mellea.stdlib.test_based_eval.Message"><code class="docutils literal notranslate"><span class="pre">Message</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../stdlib.html#mellea.stdlib.test_based_eval.Example"><code class="docutils literal notranslate"><span class="pre">Example</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../stdlib.html#mellea.stdlib.test_based_eval.TestData"><code class="docutils literal notranslate"><span class="pre">TestData</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../stdlib.html#mellea.stdlib.test_based_eval.TestBasedEval"><code class="docutils literal notranslate"><span class="pre">TestBasedEval</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../stdlib.html#sampling-strategies">Sampling Strategies</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../stdlib.html#module-mellea.stdlib.sampling.base">Base</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../stdlib.html#mellea.stdlib.sampling.base.BaseSamplingStrategy"><code class="docutils literal notranslate"><span class="pre">BaseSamplingStrategy</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../stdlib.html#mellea.stdlib.sampling.base.RejectionSamplingStrategy"><code class="docutils literal notranslate"><span class="pre">RejectionSamplingStrategy</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../stdlib.html#mellea.stdlib.sampling.base.RepairTemplateStrategy"><code class="docutils literal notranslate"><span class="pre">RepairTemplateStrategy</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../stdlib.html#mellea.stdlib.sampling.base.MultiTurnStrategy"><code class="docutils literal notranslate"><span class="pre">MultiTurnStrategy</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../stdlib.html#module-mellea.stdlib.sampling.best_of_n">Best of N</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../stdlib.html#mellea.stdlib.sampling.best_of_n.BestofNSamplingStrategy"><code class="docutils literal notranslate"><span class="pre">BestofNSamplingStrategy</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../stdlib.html#module-mellea.stdlib.sampling.budget_forcing">Budget Forcing</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../stdlib.html#mellea.stdlib.sampling.budget_forcing.BudgetForcingSamplingStrategy"><code class="docutils literal notranslate"><span class="pre">BudgetForcingSamplingStrategy</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../stdlib.html#majority-voting">Majority Voting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../stdlib.html#module-mellea.stdlib.sampling.types">Types</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../stdlib.html#mellea.stdlib.sampling.types.SamplingResult"><code class="docutils literal notranslate"><span class="pre">SamplingResult</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../stdlib.html#mellea.stdlib.sampling.types.SamplingStrategy"><code class="docutils literal notranslate"><span class="pre">SamplingStrategy</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../stdlib.html#rewards">Rewards</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../stdlib.html#prm-scorer">PRM Scorer</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../stdlib.html#document-processing">Document Processing</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../stdlib.html#rich-document">Rich Document</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../stdlib.html#requirement-libraries">Requirement Libraries</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../stdlib.html#markdown">Markdown</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../stdlib.html#module-mellea.stdlib.reqlib.python">Python</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../stdlib.html#mellea.stdlib.reqlib.python.PythonExecutionReq"><code class="docutils literal notranslate"><span class="pre">PythonExecutionReq</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../stdlib.html#module-mellea.stdlib.reqlib.tools">Tools</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../stdlib.html#mellea.stdlib.reqlib.tools.uses_tool"><code class="docutils literal notranslate"><span class="pre">uses_tool()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../stdlib.html#mellea.stdlib.reqlib.tools.tool_arg_validator"><code class="docutils literal notranslate"><span class="pre">tool_arg_validator()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../backends.html">Backends</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../backends.html#core-backend-modules">Core Backend Modules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../backends.html#module-mellea.backends.types">Types</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../backends.html#mellea.backends.types.ModelOption"><code class="docutils literal notranslate"><span class="pre">ModelOption</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../backends.html#module-mellea.backends.formatter">Formatter</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../backends.html#mellea.backends.formatter.Formatter"><code class="docutils literal notranslate"><span class="pre">Formatter</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../backends.html#mellea.backends.formatter.TemplateFormatter"><code class="docutils literal notranslate"><span class="pre">TemplateFormatter</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../backends.html#mellea.backends.formatter.FormatterBackend"><code class="docutils literal notranslate"><span class="pre">FormatterBackend</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../backends.html#module-mellea.backends.cache">Cache</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../backends.html#mellea.backends.cache.Cache"><code class="docutils literal notranslate"><span class="pre">Cache</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../backends.html#mellea.backends.cache.SimpleLRUCache"><code class="docutils literal notranslate"><span class="pre">SimpleLRUCache</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../backends.html#module-mellea.backends.tools">Tools</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../backends.html#mellea.backends.tools.add_tools_from_model_options"><code class="docutils literal notranslate"><span class="pre">add_tools_from_model_options()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../backends.html#mellea.backends.tools.add_tools_from_context_actions"><code class="docutils literal notranslate"><span class="pre">add_tools_from_context_actions()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../backends.html#mellea.backends.tools.convert_tools_to_json"><code class="docutils literal notranslate"><span class="pre">convert_tools_to_json()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../backends.html#mellea.backends.tools.json_extraction"><code class="docutils literal notranslate"><span class="pre">json_extraction()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../backends.html#mellea.backends.tools.find_func"><code class="docutils literal notranslate"><span class="pre">find_func()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../backends.html#mellea.backends.tools.parse_tools"><code class="docutils literal notranslate"><span class="pre">parse_tools()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../backends.html#backend-implementations">Backend Implementations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../backends.html#huggingface">HuggingFace</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../backends.html#module-mellea.backends.openai">OpenAI</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../backends.html#mellea.backends.openai.OpenAIBackend"><code class="docutils literal notranslate"><span class="pre">OpenAIBackend</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../backends.html#litellm">LiteLLM</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../backends.html#vllm">vLLM</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../backends.html#module-mellea.backends.ollama">Ollama</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../backends.html#mellea.backends.ollama.OllamaModelBackend"><code class="docutils literal notranslate"><span class="pre">OllamaModelBackend</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../backends.html#mellea.backends.ollama.chat_response_delta_merge"><code class="docutils literal notranslate"><span class="pre">chat_response_delta_merge()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../backends.html#module-mellea.backends.watsonx">WatsonX</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../backends.html#mellea.backends.watsonx.WatsonxAIBackend"><code class="docutils literal notranslate"><span class="pre">WatsonxAIBackend</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../backends.html#module-mellea.backends.dummy">Dummy</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../backends.html#mellea.backends.dummy.DummyBackend"><code class="docutils literal notranslate"><span class="pre">DummyBackend</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../backends.html#adapters">Adapters</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../backends.html#module-mellea.backends.adapters.adapter">Adapter</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../backends.html#mellea.backends.adapters.adapter.Adapter"><code class="docutils literal notranslate"><span class="pre">Adapter</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../backends.html#mellea.backends.adapters.adapter.OpenAIAdapter"><code class="docutils literal notranslate"><span class="pre">OpenAIAdapter</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../backends.html#mellea.backends.adapters.adapter.LocalHFAdapter"><code class="docutils literal notranslate"><span class="pre">LocalHFAdapter</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../backends.html#mellea.backends.adapters.adapter.GraniteCommonAdapter"><code class="docutils literal notranslate"><span class="pre">GraniteCommonAdapter</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../backends.html#mellea.backends.adapters.adapter.get_adapter_for_intrinsic"><code class="docutils literal notranslate"><span class="pre">get_adapter_for_intrinsic()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../backends.html#mellea.backends.adapters.adapter.AdapterMixin"><code class="docutils literal notranslate"><span class="pre">AdapterMixin</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../backends.html#module-mellea.backends.adapters.catalog">Catalog</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../backends.html#mellea.backends.adapters.catalog.AdapterType"><code class="docutils literal notranslate"><span class="pre">AdapterType</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../backends.html#mellea.backends.adapters.catalog.IntriniscsCatalogEntry"><code class="docutils literal notranslate"><span class="pre">IntriniscsCatalogEntry</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../backends.html#mellea.backends.adapters.catalog.known_intrinsic_names"><code class="docutils literal notranslate"><span class="pre">known_intrinsic_names()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../backends.html#mellea.backends.adapters.catalog.fetch_intrinsic_metadata"><code class="docutils literal notranslate"><span class="pre">fetch_intrinsic_metadata()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../backends.html#process-reward-models">Process Reward Models</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../backends.html#huggingface-prms">HuggingFace PRMs</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../helpers.html">Helpers</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../helpers.html#module-mellea.helpers.async_helpers">Async Helpers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../helpers.html#mellea.helpers.async_helpers.send_to_queue"><code class="docutils literal notranslate"><span class="pre">send_to_queue()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../helpers.html#mellea.helpers.async_helpers.wait_for_all_mots"><code class="docutils literal notranslate"><span class="pre">wait_for_all_mots()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../helpers.html#mellea.helpers.async_helpers.get_current_event_loop"><code class="docutils literal notranslate"><span class="pre">get_current_event_loop()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../helpers.html#mellea.helpers.async_helpers.ClientCache"><code class="docutils literal notranslate"><span class="pre">ClientCache</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../helpers.html#mellea.helpers.async_helpers.ClientCache.__init__"><code class="docutils literal notranslate"><span class="pre">ClientCache.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../helpers.html#mellea.helpers.async_helpers.ClientCache.current_size"><code class="docutils literal notranslate"><span class="pre">ClientCache.current_size()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../helpers.html#mellea.helpers.async_helpers.ClientCache.get"><code class="docutils literal notranslate"><span class="pre">ClientCache.get()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../helpers.html#mellea.helpers.async_helpers.ClientCache.put"><code class="docutils literal notranslate"><span class="pre">ClientCache.put()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../helpers.html#module-mellea.helpers.event_loop_helper">Event Loop Helper</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../helpers.html#module-mellea.helpers.fancy_logger">Fancy Logger</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../helpers.html#mellea.helpers.fancy_logger.RESTHandler"><code class="docutils literal notranslate"><span class="pre">RESTHandler</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../helpers.html#mellea.helpers.fancy_logger.RESTHandler.__init__"><code class="docutils literal notranslate"><span class="pre">RESTHandler.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../helpers.html#mellea.helpers.fancy_logger.RESTHandler.emit"><code class="docutils literal notranslate"><span class="pre">RESTHandler.emit()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../helpers.html#mellea.helpers.fancy_logger.JsonFormatter"><code class="docutils literal notranslate"><span class="pre">JsonFormatter</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../helpers.html#mellea.helpers.fancy_logger.JsonFormatter.format"><code class="docutils literal notranslate"><span class="pre">JsonFormatter.format()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../helpers.html#mellea.helpers.fancy_logger.CustomFormatter"><code class="docutils literal notranslate"><span class="pre">CustomFormatter</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../helpers.html#mellea.helpers.fancy_logger.CustomFormatter.cyan"><code class="docutils literal notranslate"><span class="pre">CustomFormatter.cyan</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../helpers.html#mellea.helpers.fancy_logger.CustomFormatter.grey"><code class="docutils literal notranslate"><span class="pre">CustomFormatter.grey</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../helpers.html#mellea.helpers.fancy_logger.CustomFormatter.yellow"><code class="docutils literal notranslate"><span class="pre">CustomFormatter.yellow</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../helpers.html#mellea.helpers.fancy_logger.CustomFormatter.red"><code class="docutils literal notranslate"><span class="pre">CustomFormatter.red</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../helpers.html#mellea.helpers.fancy_logger.CustomFormatter.bold_red"><code class="docutils literal notranslate"><span class="pre">CustomFormatter.bold_red</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../helpers.html#mellea.helpers.fancy_logger.CustomFormatter.reset"><code class="docutils literal notranslate"><span class="pre">CustomFormatter.reset</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../helpers.html#mellea.helpers.fancy_logger.CustomFormatter.FORMATS"><code class="docutils literal notranslate"><span class="pre">CustomFormatter.FORMATS</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../helpers.html#mellea.helpers.fancy_logger.CustomFormatter.format"><code class="docutils literal notranslate"><span class="pre">CustomFormatter.format()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../helpers.html#mellea.helpers.fancy_logger.FancyLogger"><code class="docutils literal notranslate"><span class="pre">FancyLogger</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../helpers.html#mellea.helpers.fancy_logger.FancyLogger.logger"><code class="docutils literal notranslate"><span class="pre">FancyLogger.logger</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../helpers.html#mellea.helpers.fancy_logger.FancyLogger.CRITICAL"><code class="docutils literal notranslate"><span class="pre">FancyLogger.CRITICAL</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../helpers.html#mellea.helpers.fancy_logger.FancyLogger.FATAL"><code class="docutils literal notranslate"><span class="pre">FancyLogger.FATAL</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../helpers.html#mellea.helpers.fancy_logger.FancyLogger.ERROR"><code class="docutils literal notranslate"><span class="pre">FancyLogger.ERROR</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../helpers.html#mellea.helpers.fancy_logger.FancyLogger.WARNING"><code class="docutils literal notranslate"><span class="pre">FancyLogger.WARNING</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../helpers.html#mellea.helpers.fancy_logger.FancyLogger.WARN"><code class="docutils literal notranslate"><span class="pre">FancyLogger.WARN</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../helpers.html#mellea.helpers.fancy_logger.FancyLogger.INFO"><code class="docutils literal notranslate"><span class="pre">FancyLogger.INFO</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../helpers.html#mellea.helpers.fancy_logger.FancyLogger.DEBUG"><code class="docutils literal notranslate"><span class="pre">FancyLogger.DEBUG</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../helpers.html#mellea.helpers.fancy_logger.FancyLogger.NOTSET"><code class="docutils literal notranslate"><span class="pre">FancyLogger.NOTSET</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../helpers.html#mellea.helpers.fancy_logger.FancyLogger.get_logger"><code class="docutils literal notranslate"><span class="pre">FancyLogger.get_logger()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../helpers.html#module-mellea.helpers.openai_compatible_helpers">OpenAI Compatible Helpers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../helpers.html#mellea.helpers.openai_compatible_helpers.extract_model_tool_requests"><code class="docutils literal notranslate"><span class="pre">extract_model_tool_requests()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../helpers.html#mellea.helpers.openai_compatible_helpers.chat_completion_delta_merge"><code class="docutils literal notranslate"><span class="pre">chat_completion_delta_merge()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Mellea</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">mellea.backends.openai</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for mellea.backends.openai</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;A generic OpenAI compatible backend that wraps around the openai python sdk.&quot;&quot;&quot;</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">abc</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">asyncio</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">datetime</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">functools</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">inspect</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">collections.abc</span><span class="w"> </span><span class="kn">import</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">Coroutine</span><span class="p">,</span> <span class="n">Sequence</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">copy</span><span class="w"> </span><span class="kn">import</span> <span class="n">deepcopy</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">enum</span><span class="w"> </span><span class="kn">import</span> <span class="n">Enum</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">TYPE_CHECKING</span><span class="p">,</span> <span class="n">Any</span><span class="p">,</span> <span class="n">overload</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">urllib.parse</span><span class="w"> </span><span class="kn">import</span> <span class="n">urlparse</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">granite_common</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">openai</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">openai.types.chat</span><span class="w"> </span><span class="kn">import</span> <span class="n">ChatCompletion</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">openai.types.chat.chat_completion_chunk</span><span class="w"> </span><span class="kn">import</span> <span class="n">ChatCompletionChunk</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">openai.types.completion</span><span class="w"> </span><span class="kn">import</span> <span class="n">Completion</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">mellea.backends.model_ids</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">model_ids</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">mellea.backends</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseModelSubclass</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">mellea.backends.adapters.adapter</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">AdapterMixin</span><span class="p">,</span>
+    <span class="n">AdapterType</span><span class="p">,</span>
+    <span class="n">GraniteCommonAdapter</span><span class="p">,</span>
+    <span class="n">OpenAIAdapter</span><span class="p">,</span>
+    <span class="n">get_adapter_for_intrinsic</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">mellea.backends.formatter</span><span class="w"> </span><span class="kn">import</span> <span class="n">Formatter</span><span class="p">,</span> <span class="n">FormatterBackend</span><span class="p">,</span> <span class="n">TemplateFormatter</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">mellea.backends.model_ids</span><span class="w"> </span><span class="kn">import</span> <span class="n">ModelIdentifier</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">mellea.backends.tools</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">add_tools_from_context_actions</span><span class="p">,</span>
+    <span class="n">add_tools_from_model_options</span><span class="p">,</span>
+    <span class="n">convert_tools_to_json</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">mellea.backends.types</span><span class="w"> </span><span class="kn">import</span> <span class="n">ModelOption</span><span class="p">,</span> <span class="n">_server_type</span><span class="p">,</span> <span class="n">_ServerType</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">mellea.helpers.async_helpers</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">ClientCache</span><span class="p">,</span>
+    <span class="n">get_current_event_loop</span><span class="p">,</span>
+    <span class="n">send_to_queue</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">mellea.helpers.fancy_logger</span><span class="w"> </span><span class="kn">import</span> <span class="n">FancyLogger</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">mellea.helpers.openai_compatible_helpers</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">chat_completion_delta_merge</span><span class="p">,</span>
+    <span class="n">extract_model_tool_requests</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">mellea.stdlib.base</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">C</span><span class="p">,</span>
+    <span class="n">CBlock</span><span class="p">,</span>
+    <span class="n">Component</span><span class="p">,</span>
+    <span class="n">Context</span><span class="p">,</span>
+    <span class="n">Document</span><span class="p">,</span>
+    <span class="n">GenerateLog</span><span class="p">,</span>
+    <span class="n">GenerateType</span><span class="p">,</span>
+    <span class="n">ModelOutputThunk</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">mellea.stdlib.chat</span><span class="w"> </span><span class="kn">import</span> <span class="n">Message</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">mellea.stdlib.intrinsics.intrinsic</span><span class="w"> </span><span class="kn">import</span> <span class="n">Intrinsic</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">mellea.stdlib.requirement</span><span class="w"> </span><span class="kn">import</span> <span class="n">ALoraRequirement</span><span class="p">,</span> <span class="n">LLMaJRequirement</span><span class="p">,</span> <span class="n">Requirement</span>
+
+<span class="k">if</span> <span class="n">TYPE_CHECKING</span><span class="p">:</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">transformers.tokenization_utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">PreTrainedTokenizer</span>
+
+<span class="n">openai_ollama_batching_error</span> <span class="o">=</span> <span class="s2">&quot;json: cannot unmarshal array into Go struct field CompletionRequest.prompt of type string&quot;</span>
+
+<span class="nb">format</span><span class="p">:</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1"># typing this variable in order to shadow the global format function and ensure mypy checks for errors</span>
+
+
+<div class="viewcode-block" id="OpenAIBackend">
+<a class="viewcode-back" href="../../../backends.html#mellea.backends.openai.OpenAIBackend">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">OpenAIBackend</span><span class="p">(</span><span class="n">FormatterBackend</span><span class="p">,</span> <span class="n">AdapterMixin</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;A generic OpenAI compatible backend.&quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="OpenAIBackend.__init__">
+<a class="viewcode-back" href="../../../backends.html#mellea.backends.openai.OpenAIBackend.__init__">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">model_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">ModelIdentifier</span> <span class="o">=</span> <span class="n">model_ids</span><span class="o">.</span><span class="n">OPENAI_GPT_5_1</span><span class="p">,</span>
+        <span class="n">formatter</span><span class="p">:</span> <span class="n">Formatter</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">base_url</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">model_options</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="o">*</span><span class="p">,</span>
+        <span class="n">default_to_constraint_checking_alora</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="n">api_key</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
+    <span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Initialize and OpenAI compatible backend. For any additional kwargs that you need to pass the the client, pass them as a part of **kwargs.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            model_id : A generic model identifier or OpenAI compatible string. Defaults to model_ids.IBM_GRANITE_3_3_8B.</span>
+<span class="sd">            formatter: A custom formatter based on backend.If None, defaults to TemplateFormatter</span>
+<span class="sd">            base_url : Base url for LLM API. Defaults to None.</span>
+<span class="sd">            model_options : Generation options to pass to the LLM. Defaults to None.</span>
+<span class="sd">            default_to_constraint_checking_alora: If set to False then aloras will be deactivated. This is primarily for performance benchmarking and debugging.</span>
+<span class="sd">            api_key : API key for generation. Defaults to None.</span>
+<span class="sd">            kwargs : additional kwargs to pass when creating the OpenAI client.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+            <span class="n">model_id</span><span class="o">=</span><span class="n">model_id</span><span class="p">,</span>
+            <span class="n">formatter</span><span class="o">=</span><span class="p">(</span>
+                <span class="n">formatter</span>
+                <span class="k">if</span> <span class="n">formatter</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+                <span class="k">else</span> <span class="n">TemplateFormatter</span><span class="p">(</span><span class="n">model_id</span><span class="o">=</span><span class="n">model_id</span><span class="p">)</span>
+            <span class="p">),</span>
+            <span class="n">model_options</span><span class="o">=</span><span class="n">model_options</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="c1"># A mapping of common options for this backend mapped to their Mellea ModelOptions equivalent.</span>
+        <span class="c1"># These are usually values that must be extracted before hand or that are common among backend providers.</span>
+        <span class="c1"># OpenAI has some deprecated parameters. Those map to the same mellea parameter, but</span>
+        <span class="c1"># users should only be specifying a single one in their request.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">to_mellea_model_opts_map_chats</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;system&quot;</span><span class="p">:</span> <span class="n">ModelOption</span><span class="o">.</span><span class="n">SYSTEM_PROMPT</span><span class="p">,</span>
+            <span class="s2">&quot;reasoning_effort&quot;</span><span class="p">:</span> <span class="n">ModelOption</span><span class="o">.</span><span class="n">THINKING</span><span class="p">,</span>
+            <span class="s2">&quot;seed&quot;</span><span class="p">:</span> <span class="n">ModelOption</span><span class="o">.</span><span class="n">SEED</span><span class="p">,</span>
+            <span class="s2">&quot;max_completion_tokens&quot;</span><span class="p">:</span> <span class="n">ModelOption</span><span class="o">.</span><span class="n">MAX_NEW_TOKENS</span><span class="p">,</span>
+            <span class="s2">&quot;max_tokens&quot;</span><span class="p">:</span> <span class="n">ModelOption</span><span class="o">.</span><span class="n">MAX_NEW_TOKENS</span><span class="p">,</span>
+            <span class="s2">&quot;tools&quot;</span><span class="p">:</span> <span class="n">ModelOption</span><span class="o">.</span><span class="n">TOOLS</span><span class="p">,</span>
+            <span class="s2">&quot;functions&quot;</span><span class="p">:</span> <span class="n">ModelOption</span><span class="o">.</span><span class="n">TOOLS</span><span class="p">,</span>
+            <span class="s2">&quot;stream&quot;</span><span class="p">:</span> <span class="n">ModelOption</span><span class="o">.</span><span class="n">STREAM</span><span class="p">,</span>
+        <span class="p">}</span>
+        <span class="c1"># A mapping of Mellea specific ModelOptions to the specific names for this backend.</span>
+        <span class="c1"># These options should almost always be a subset of those specified in the `to_mellea_model_opts_map`.</span>
+        <span class="c1"># Usually, values that are intentionally extracted while prepping for the backend generate call</span>
+        <span class="c1"># will be omitted here so that they will be removed when model_options are processed</span>
+        <span class="c1"># for the call to the model.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">from_mellea_model_opts_map_chats</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="n">ModelOption</span><span class="o">.</span><span class="n">SEED</span><span class="p">:</span> <span class="s2">&quot;seed&quot;</span><span class="p">,</span>
+            <span class="n">ModelOption</span><span class="o">.</span><span class="n">MAX_NEW_TOKENS</span><span class="p">:</span> <span class="s2">&quot;max_completion_tokens&quot;</span><span class="p">,</span>
+            <span class="n">ModelOption</span><span class="o">.</span><span class="n">STREAM</span><span class="p">:</span> <span class="s2">&quot;stream&quot;</span><span class="p">,</span>
+        <span class="p">}</span>
+
+        <span class="c1"># See notes above.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">to_mellea_model_opts_map_completions</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;seed&quot;</span><span class="p">:</span> <span class="n">ModelOption</span><span class="o">.</span><span class="n">SEED</span><span class="p">,</span>
+            <span class="s2">&quot;max_tokens&quot;</span><span class="p">:</span> <span class="n">ModelOption</span><span class="o">.</span><span class="n">MAX_NEW_TOKENS</span><span class="p">,</span>
+            <span class="s2">&quot;stream&quot;</span><span class="p">:</span> <span class="n">ModelOption</span><span class="o">.</span><span class="n">STREAM</span><span class="p">,</span>
+        <span class="p">}</span>
+        <span class="c1"># See notes above.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">from_mellea_model_opts_map_completions</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="n">ModelOption</span><span class="o">.</span><span class="n">SEED</span><span class="p">:</span> <span class="s2">&quot;seed&quot;</span><span class="p">,</span>
+            <span class="n">ModelOption</span><span class="o">.</span><span class="n">MAX_NEW_TOKENS</span><span class="p">:</span> <span class="s2">&quot;max_tokens&quot;</span><span class="p">,</span>
+            <span class="n">ModelOption</span><span class="o">.</span><span class="n">STREAM</span><span class="p">:</span> <span class="s2">&quot;stream&quot;</span><span class="p">,</span>
+        <span class="p">}</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">default_to_constraint_checking_alora</span> <span class="o">=</span> <span class="n">default_to_constraint_checking_alora</span>
+
+        <span class="k">match</span> <span class="n">model_id</span><span class="p">:</span>
+            <span class="k">case</span> <span class="nb">str</span><span class="p">():</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_model_id</span> <span class="o">=</span> <span class="n">model_id</span>
+            <span class="k">case</span> <span class="n">ModelIdentifier</span><span class="p">():</span>
+                <span class="k">assert</span> <span class="n">model_id</span><span class="o">.</span><span class="n">openai_name</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">,</span> <span class="p">(</span>
+                    <span class="s2">&quot;model_id is None. This can also happen if the ModelIdentifier has no `openai_name` name set.&quot;</span>
+                <span class="p">)</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_model_id</span> <span class="o">=</span> <span class="n">model_id</span><span class="o">.</span><span class="n">openai_name</span>
+
+        <span class="c1"># Use provided parameters or fall back to environment variables</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_api_key</span> <span class="o">=</span> <span class="n">api_key</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_base_url</span> <span class="o">=</span> <span class="n">base_url</span>
+
+        <span class="c1"># Validate that we have the required configuration</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_api_key</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;OPENAI_API_KEY&quot;</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="s2">&quot;OPENAI_API_KEY or api_key is required but not set. Please either:</span><span class="se">\n</span><span class="s2">&quot;</span>
+                <span class="s2">&quot;  1. Set the environment variable: export OPENAI_API_KEY=&#39;your-key-here&#39;</span><span class="se">\n</span><span class="s2">&quot;</span>
+                <span class="s2">&quot;  2. Pass it as a parameter: OpenAIBackend(api_key=&#39;your-key-here&#39;)&quot;</span>
+            <span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_base_url</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;OPENAI_BASE_URL&quot;</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">FancyLogger</span><span class="o">.</span><span class="n">get_logger</span><span class="p">()</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
+                <span class="s2">&quot;OPENAI_BASE_URL or base_url is not set.</span><span class="se">\n</span><span class="s2">&quot;</span>
+                <span class="s2">&quot;The openai SDK is going to assume that the base_url is `https://api.openai.com/v1`&quot;</span>
+            <span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_server_type</span><span class="p">:</span> <span class="n">_ServerType</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">_server_type</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_base_url</span><span class="p">)</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_base_url</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+            <span class="k">else</span> <span class="n">_ServerType</span><span class="o">.</span><span class="n">OPENAI</span>
+        <span class="p">)</span>  <span class="c1"># type: ignore</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_openai_client_kwargs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">filter_openai_client_kwargs</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_client</span> <span class="o">=</span> <span class="n">openai</span><span class="o">.</span><span class="n">OpenAI</span><span class="p">(</span>  <span class="c1"># type: ignore</span>
+            <span class="n">api_key</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_api_key</span><span class="p">,</span> <span class="n">base_url</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_base_url</span><span class="p">,</span> <span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">_openai_client_kwargs</span>
+        <span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_client_cache</span> <span class="o">=</span> <span class="n">ClientCache</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+
+        <span class="c1"># Call once to create an async_client and populate the cache.</span>
+        <span class="n">_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_async_client</span>
+
+        <span class="c1"># Adapters can be made know to the backend (added) and</span>
+        <span class="c1"># loaded / active.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_added_adapters</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">OpenAIAdapter</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_loaded_adapters</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">OpenAIAdapter</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span></div>
+
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_async_client</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">openai</span><span class="o">.</span><span class="n">AsyncOpenAI</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;OpenAI&#39;s client usually handles changing event loops but explicitly handle it here for edge cases.&quot;&quot;&quot;</span>
+        <span class="n">key</span> <span class="o">=</span> <span class="nb">id</span><span class="p">(</span><span class="n">get_current_event_loop</span><span class="p">())</span>
+
+        <span class="n">_async_client</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_client_cache</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">_async_client</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">_async_client</span> <span class="o">=</span> <span class="n">openai</span><span class="o">.</span><span class="n">AsyncOpenAI</span><span class="p">(</span>
+                <span class="n">api_key</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_api_key</span><span class="p">,</span>
+                <span class="n">base_url</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_base_url</span><span class="p">,</span>
+                <span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">_openai_client_kwargs</span><span class="p">,</span>
+            <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_client_cache</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">_async_client</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">_async_client</span>
+
+<div class="viewcode-block" id="OpenAIBackend.filter_openai_client_kwargs">
+<a class="viewcode-back" href="../../../backends.html#mellea.backends.openai.OpenAIBackend.filter_openai_client_kwargs">[docs]</a>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">filter_openai_client_kwargs</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Filter kwargs to only include valid OpenAI client parameters.&quot;&quot;&quot;</span>
+        <span class="n">openai_params</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">inspect</span><span class="o">.</span><span class="n">signature</span><span class="p">(</span><span class="n">openai</span><span class="o">.</span><span class="n">OpenAI</span><span class="o">.</span><span class="fm">__init__</span><span class="p">)</span><span class="o">.</span><span class="n">parameters</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>  <span class="c1"># type: ignore</span>
+        <span class="n">openai_params</span><span class="o">.</span><span class="n">discard</span><span class="p">(</span><span class="s2">&quot;self&quot;</span><span class="p">)</span>  <span class="c1"># Remove &#39;self&#39; parameter</span>
+        <span class="k">return</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="n">v</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">openai_params</span><span class="p">}</span></div>
+
+
+<div class="viewcode-block" id="OpenAIBackend.filter_chat_completions_kwargs">
+<a class="viewcode-back" href="../../../backends.html#mellea.backends.openai.OpenAIBackend.filter_chat_completions_kwargs">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">filter_chat_completions_kwargs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model_options</span><span class="p">:</span> <span class="nb">dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Filter kwargs to only include valid OpenAI chat.completions.create parameters.</span>
+
+<span class="sd">        https://platform.openai.com/docs/api-reference/chat/create</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="kn">from</span><span class="w"> </span><span class="nn">openai.resources.chat.completions</span><span class="w"> </span><span class="kn">import</span> <span class="n">Completions</span>
+
+        <span class="n">chat_params</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">inspect</span><span class="o">.</span><span class="n">signature</span><span class="p">(</span><span class="n">Completions</span><span class="o">.</span><span class="n">create</span><span class="p">)</span><span class="o">.</span><span class="n">parameters</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+        <span class="n">chat_params</span><span class="o">.</span><span class="n">discard</span><span class="p">(</span><span class="s2">&quot;self&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="n">v</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">model_options</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">chat_params</span><span class="p">}</span></div>
+
+
+<div class="viewcode-block" id="OpenAIBackend.filter_completions_kwargs">
+<a class="viewcode-back" href="../../../backends.html#mellea.backends.openai.OpenAIBackend.filter_completions_kwargs">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">filter_completions_kwargs</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model_options</span><span class="p">:</span> <span class="nb">dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Filter kwargs to only include valid OpenAI completions.create parameters.</span>
+
+<span class="sd">        https://platform.openai.com/docs/api-reference/completions</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="kn">from</span><span class="w"> </span><span class="nn">openai.resources.completions</span><span class="w"> </span><span class="kn">import</span> <span class="n">Completions</span>
+
+        <span class="n">completions_params</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span>
+            <span class="n">inspect</span><span class="o">.</span><span class="n">signature</span><span class="p">(</span><span class="n">Completions</span><span class="o">.</span><span class="n">create</span><span class="p">)</span><span class="o">.</span><span class="n">parameters</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+        <span class="p">)</span>
+        <span class="n">completions_params</span><span class="o">.</span><span class="n">discard</span><span class="p">(</span><span class="s2">&quot;self&quot;</span><span class="p">)</span>  <span class="c1"># Remove &#39;self&#39; parameter</span>
+        <span class="k">return</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="n">v</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">model_options</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">completions_params</span><span class="p">}</span></div>
+
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_simplify_and_merge</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">model_options</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span><span class="p">,</span> <span class="n">is_chat_context</span><span class="p">:</span> <span class="nb">bool</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Simplifies model_options to use the Mellea specific ModelOption.Option and merges the backend&#39;s model_options with those passed into this call.</span>
+
+<span class="sd">        Rules:</span>
+<span class="sd">        - Within a model_options dict, existing keys take precedence. This means remapping to mellea specific keys will maintain the value of the mellea specific key if one already exists.</span>
+<span class="sd">        - When merging, the keys/values from the dictionary passed into this function take precedence.</span>
+
+<span class="sd">        Because this function simplifies and then merges, non-Mellea keys from the passed in model_options will replace</span>
+<span class="sd">        Mellea specific keys from the backend&#39;s model_options.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            model_options: the model_options for this call</span>
+<span class="sd">            is_chat_context: set to True if using chat completion api</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            a new dict</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">remap_dict</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">to_mellea_model_opts_map_chats</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">is_chat_context</span><span class="p">:</span>
+            <span class="n">remap_dict</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">to_mellea_model_opts_map_completions</span>
+
+        <span class="n">backend_model_opts</span> <span class="o">=</span> <span class="n">ModelOption</span><span class="o">.</span><span class="n">replace_keys</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">model_options</span><span class="p">,</span> <span class="n">remap_dict</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">model_options</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">backend_model_opts</span>
+
+        <span class="n">generate_call_model_opts</span> <span class="o">=</span> <span class="n">ModelOption</span><span class="o">.</span><span class="n">replace_keys</span><span class="p">(</span><span class="n">model_options</span><span class="p">,</span> <span class="n">remap_dict</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">ModelOption</span><span class="o">.</span><span class="n">merge_model_options</span><span class="p">(</span>
+            <span class="n">backend_model_opts</span><span class="p">,</span> <span class="n">generate_call_model_opts</span>
+        <span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_make_backend_specific_and_remove</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">model_options</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">],</span> <span class="n">is_chat_context</span><span class="p">:</span> <span class="nb">bool</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Maps specified Mellea specific keys to their backend specific version and removes any remaining Mellea keys.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            model_options: the model_options for this call</span>
+<span class="sd">            is_chat_context: set to True if using chat completion api</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            a new dict</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">remap_dict</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">from_mellea_model_opts_map_chats</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">is_chat_context</span><span class="p">:</span>
+            <span class="n">remap_dict</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">from_mellea_model_opts_map_completions</span>
+
+        <span class="n">backend_specific</span> <span class="o">=</span> <span class="n">ModelOption</span><span class="o">.</span><span class="n">replace_keys</span><span class="p">(</span><span class="n">model_options</span><span class="p">,</span> <span class="n">remap_dict</span><span class="p">)</span>
+
+        <span class="c1"># OpenAI Backend has specific filtering functionality.</span>
+        <span class="k">if</span> <span class="n">is_chat_context</span><span class="p">:</span>
+            <span class="n">model_opts</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">filter_chat_completions_kwargs</span><span class="p">(</span><span class="n">backend_specific</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">model_opts</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">filter_completions_kwargs</span><span class="p">(</span><span class="n">backend_specific</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">model_opts</span>
+
+<div class="viewcode-block" id="OpenAIBackend.generate_from_context">
+<a class="viewcode-back" href="../../../backends.html#mellea.backends.openai.OpenAIBackend.generate_from_context">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">generate_from_context</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">action</span><span class="p">:</span> <span class="n">Component</span><span class="p">[</span><span class="n">C</span><span class="p">]</span> <span class="o">|</span> <span class="n">CBlock</span><span class="p">,</span>
+        <span class="n">ctx</span><span class="p">:</span> <span class="n">Context</span><span class="p">,</span>
+        <span class="o">*</span><span class="p">,</span>
+        <span class="nb">format</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="n">BaseModelSubclass</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">model_options</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">tool_calls</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">ModelOutputThunk</span><span class="p">[</span><span class="n">C</span><span class="p">],</span> <span class="n">Context</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;See `generate_from_chat_context`.&quot;&quot;&quot;</span>
+        <span class="k">assert</span> <span class="n">ctx</span><span class="o">.</span><span class="n">is_chat_context</span><span class="p">,</span> <span class="ne">NotImplementedError</span><span class="p">(</span>
+            <span class="s2">&quot;The Openai backend only supports chat-like contexts.&quot;</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">generate_from_chat_context</span><span class="p">(</span>
+            <span class="n">action</span><span class="p">,</span>
+            <span class="n">ctx</span><span class="p">,</span>
+            <span class="n">_format</span><span class="o">=</span><span class="nb">format</span><span class="p">,</span>
+            <span class="n">model_options</span><span class="o">=</span><span class="n">model_options</span><span class="p">,</span>
+            <span class="n">tool_calls</span><span class="o">=</span><span class="n">tool_calls</span><span class="p">,</span>
+        <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="OpenAIBackend.generate_from_chat_context">
+<a class="viewcode-back" href="../../../backends.html#mellea.backends.openai.OpenAIBackend.generate_from_chat_context">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">generate_from_chat_context</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">action</span><span class="p">:</span> <span class="n">Component</span><span class="p">[</span><span class="n">C</span><span class="p">]</span> <span class="o">|</span> <span class="n">CBlock</span><span class="p">,</span>
+        <span class="n">ctx</span><span class="p">:</span> <span class="n">Context</span><span class="p">,</span>
+        <span class="o">*</span><span class="p">,</span>
+        <span class="n">_format</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="n">BaseModelSubclass</span><span class="p">]</span>
+        <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>  <span class="c1"># Type[BaseModelSubclass] is a class object of a subclass of BaseModel</span>
+        <span class="n">model_options</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">tool_calls</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">ModelOutputThunk</span><span class="p">[</span><span class="n">C</span><span class="p">],</span> <span class="n">Context</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Generates a new completion from the provided Context using this backend&#39;s `Formatter`.&quot;&quot;&quot;</span>
+        <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">do_generate_walk</span><span class="p">(</span><span class="n">action</span><span class="p">)</span>
+
+        <span class="c1"># Requirements can be automatically rerouted to a requirement adapter.</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">action</span><span class="p">,</span> <span class="n">Requirement</span><span class="p">):</span>
+            <span class="c1"># See docs/dev/requirement_aLoRA_rerouting.md</span>
+            <span class="n">reroute_to_alora</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">default_to_constraint_checking_alora</span>
+            <span class="n">adapter_name</span> <span class="o">=</span> <span class="s2">&quot;requirement_check&quot;</span>
+
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">action</span><span class="p">,</span> <span class="n">ALoraRequirement</span><span class="p">):</span>
+                <span class="n">reroute_to_alora</span> <span class="o">=</span> <span class="kc">True</span>
+                <span class="n">adapter_name</span> <span class="o">=</span> <span class="n">action</span><span class="o">.</span><span class="n">intrinsic_name</span>
+                <span class="n">alora_action</span> <span class="o">=</span> <span class="n">action</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">assert</span> <span class="n">action</span><span class="o">.</span><span class="n">description</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">,</span> <span class="p">(</span>
+                    <span class="s2">&quot;must have a description when generating from a requirement&quot;</span>
+                <span class="p">)</span>
+                <span class="n">alora_action</span> <span class="o">=</span> <span class="n">ALoraRequirement</span><span class="p">(</span><span class="n">action</span><span class="o">.</span><span class="n">description</span><span class="p">,</span> <span class="n">adapter_name</span><span class="p">)</span>
+
+            <span class="c1"># Check if a requirement_check (or AloraRequirement specified) adapter exists.</span>
+            <span class="n">alora_req_adapter</span> <span class="o">=</span> <span class="n">get_adapter_for_intrinsic</span><span class="p">(</span>
+                <span class="n">adapter_name</span><span class="p">,</span> <span class="p">[</span><span class="n">AdapterType</span><span class="o">.</span><span class="n">ALORA</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">_added_adapters</span>
+            <span class="p">)</span>
+            <span class="k">if</span> <span class="n">alora_req_adapter</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="c1"># Log a warning if using an AloraRequirement but no adapter fit.</span>
+                <span class="k">if</span> <span class="n">reroute_to_alora</span> <span class="ow">and</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">action</span><span class="p">,</span> <span class="n">ALoraRequirement</span><span class="p">):</span>
+                    <span class="n">FancyLogger</span><span class="o">.</span><span class="n">get_logger</span><span class="p">()</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
+                        <span class="sa">f</span><span class="s2">&quot;attempted to use an AloraRequirement but backend </span><span class="si">{</span><span class="bp">self</span><span class="si">}</span><span class="s2"> doesn&#39;t have the specified adapter added </span><span class="si">{</span><span class="n">adapter_name</span><span class="si">}</span><span class="s2">; defaulting to regular generation&quot;</span>
+                    <span class="p">)</span>
+                <span class="n">reroute_to_alora</span> <span class="o">=</span> <span class="kc">False</span>
+
+            <span class="k">if</span> <span class="nb">issubclass</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">action</span><span class="p">),</span> <span class="n">LLMaJRequirement</span><span class="p">):</span>
+                <span class="n">reroute_to_alora</span> <span class="o">=</span> <span class="kc">False</span>
+
+            <span class="k">if</span> <span class="n">reroute_to_alora</span><span class="p">:</span>
+                <span class="c1"># Keep the alora requirement handling separate for now.</span>
+                <span class="n">mot</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_generate_from_intrinsic</span><span class="p">(</span>
+                    <span class="n">alora_action</span><span class="p">,</span> <span class="n">ctx</span><span class="p">,</span> <span class="n">model_options</span><span class="o">=</span><span class="n">model_options</span>
+                <span class="p">)</span>
+                <span class="k">return</span> <span class="n">mot</span><span class="p">,</span> <span class="n">ctx</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">alora_action</span><span class="p">)</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">mot</span><span class="p">)</span>
+
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">action</span><span class="p">,</span> <span class="n">Intrinsic</span><span class="p">):</span>
+            <span class="n">mot</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_generate_from_intrinsic</span><span class="p">(</span>
+                <span class="n">action</span><span class="p">,</span> <span class="n">ctx</span><span class="p">,</span> <span class="n">model_options</span><span class="o">=</span><span class="n">model_options</span>
+            <span class="p">)</span>
+            <span class="k">return</span> <span class="n">mot</span><span class="p">,</span> <span class="n">ctx</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">action</span><span class="p">)</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">mot</span><span class="p">)</span>
+
+        <span class="n">mot</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_generate_from_chat_context_standard</span><span class="p">(</span>
+            <span class="n">action</span><span class="p">,</span>
+            <span class="n">ctx</span><span class="p">,</span>
+            <span class="n">_format</span><span class="o">=</span><span class="n">_format</span><span class="p">,</span>
+            <span class="n">model_options</span><span class="o">=</span><span class="n">model_options</span><span class="p">,</span>
+            <span class="n">tool_calls</span><span class="o">=</span><span class="n">tool_calls</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="n">mot</span><span class="p">,</span> <span class="n">ctx</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">action</span><span class="p">)</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">mot</span><span class="p">)</span></div>
+
+
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">_generate_from_intrinsic</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">action</span><span class="p">:</span> <span class="n">Intrinsic</span><span class="p">,</span> <span class="n">ctx</span><span class="p">:</span> <span class="n">Context</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">model_options</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ModelOutputThunk</span><span class="p">:</span>
+        <span class="n">model_opts</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_simplify_and_merge</span><span class="p">(</span>
+            <span class="n">model_options</span><span class="p">,</span> <span class="n">is_chat_context</span><span class="o">=</span><span class="n">ctx</span><span class="o">.</span><span class="n">is_chat_context</span>
+        <span class="p">)</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">model_opts</span><span class="o">.</span><span class="n">items</span><span class="p">())</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">FancyLogger</span><span class="o">.</span><span class="n">get_logger</span><span class="p">()</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
+                <span class="s2">&quot;passing in model options when generating with an adapter; some model options may be overwritten / ignored&quot;</span>
+            <span class="p">)</span>
+
+        <span class="n">linearized_context</span> <span class="o">=</span> <span class="n">ctx</span><span class="o">.</span><span class="n">view_for_generation</span><span class="p">()</span>
+        <span class="k">assert</span> <span class="n">linearized_context</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">,</span> <span class="p">(</span>
+            <span class="s2">&quot;Cannot generate from a non-linear context in a FormatterBackend.&quot;</span>
+        <span class="p">)</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">linearized_context</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">FancyLogger</span><span class="o">.</span><span class="n">get_logger</span><span class="p">()</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;generating with an intrinsic when the context is empty; this is typically incorrect: </span><span class="si">{</span><span class="n">action</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="p">)</span>
+
+        <span class="c1"># Convert our linearized context into a sequence of chat messages. Template formatters have a standard way of doing this.</span>
+        <span class="n">messages</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">Message</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">formatter</span><span class="o">.</span><span class="n">to_chat_messages</span><span class="p">(</span><span class="n">linearized_context</span><span class="p">)</span>
+
+        <span class="n">conversation</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">dict</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="n">system_prompt</span> <span class="o">=</span> <span class="n">model_opts</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">ModelOption</span><span class="o">.</span><span class="n">SYSTEM_PROMPT</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">system_prompt</span> <span class="o">!=</span> <span class="s2">&quot;&quot;</span><span class="p">:</span>
+            <span class="n">conversation</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;system&quot;</span><span class="p">,</span> <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="n">system_prompt</span><span class="p">})</span>
+        <span class="n">conversation</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">message_to_openai_message</span><span class="p">(</span><span class="n">m</span><span class="p">)</span> <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">messages</span><span class="p">])</span>
+        <span class="n">docs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">messages_to_docs</span><span class="p">(</span><span class="n">messages</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">model_opts</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">ModelOption</span><span class="o">.</span><span class="n">STREAM</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="c1"># Intrinsics don&#39;t support streaming because of their post-processing step.</span>
+            <span class="n">FancyLogger</span><span class="o">.</span><span class="n">get_logger</span><span class="p">()</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
+                <span class="s2">&quot;intrinsics cannot use streaming; removing model option&quot;</span>
+            <span class="p">)</span>
+            <span class="k">del</span> <span class="n">model_opts</span><span class="p">[</span><span class="n">ModelOption</span><span class="o">.</span><span class="n">STREAM</span><span class="p">]</span>
+
+        <span class="n">adapter</span> <span class="o">=</span> <span class="n">get_adapter_for_intrinsic</span><span class="p">(</span>
+            <span class="n">action</span><span class="o">.</span><span class="n">intrinsic_name</span><span class="p">,</span> <span class="n">action</span><span class="o">.</span><span class="n">adapter_types</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_added_adapters</span>
+        <span class="p">)</span>
+        <span class="k">if</span> <span class="n">adapter</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;backend (</span><span class="si">{</span><span class="bp">self</span><span class="si">}</span><span class="s2">) has no adapter for processing intrinsic: </span><span class="si">{</span><span class="n">action</span><span class="o">.</span><span class="n">intrinsic_name</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="p">)</span>
+
+        <span class="c1"># TODO: Code below this point is mostly specific to RagIntrinsics (and granite_common).</span>
+        <span class="c1">#       It should be refactored into a specific adapter.transform() function.</span>
+        <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">adapter</span><span class="p">,</span> <span class="n">GraniteCommonAdapter</span><span class="p">),</span> <span class="p">(</span>
+            <span class="s2">&quot;currently Mellea only supports GraniteCommonAdapters and Intrinsics&quot;</span>
+        <span class="p">)</span>
+        <span class="k">assert</span> <span class="n">adapter</span><span class="o">.</span><span class="n">config</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+        <span class="n">rewriter</span> <span class="o">=</span> <span class="n">granite_common</span><span class="o">.</span><span class="n">IntrinsicsRewriter</span><span class="p">(</span>
+            <span class="n">config_dict</span><span class="o">=</span><span class="n">adapter</span><span class="o">.</span><span class="n">config</span><span class="p">,</span> <span class="n">model_name</span><span class="o">=</span><span class="n">adapter</span><span class="o">.</span><span class="n">qualified_name</span>
+        <span class="p">)</span>
+        <span class="n">result_processor</span> <span class="o">=</span> <span class="n">granite_common</span><span class="o">.</span><span class="n">IntrinsicsResultProcessor</span><span class="p">(</span>
+            <span class="n">config_dict</span><span class="o">=</span><span class="n">adapter</span><span class="o">.</span><span class="n">config</span>
+        <span class="p">)</span>
+
+        <span class="c1"># Convert our conversation into a proper chat completions dict.</span>
+        <span class="c1"># [{role: user, content: Hello}, {...}] -&gt; {messages: [{role:user,...}, ...], model:..., ...}</span>
+        <span class="n">request_json</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;messages&quot;</span><span class="p">:</span> <span class="n">conversation</span><span class="p">,</span>
+            <span class="s2">&quot;extra_body&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;documents&quot;</span><span class="p">:</span> <span class="n">docs</span><span class="p">},</span>
+        <span class="p">}</span>
+
+        <span class="c1"># Convert other parameters from Mellea proprietary format to standard format.</span>
+        <span class="k">if</span> <span class="n">model_options</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">model_option</span> <span class="ow">in</span> <span class="n">model_options</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">model_option</span> <span class="o">==</span> <span class="n">ModelOption</span><span class="o">.</span><span class="n">TEMPERATURE</span><span class="p">:</span>
+                    <span class="n">request_json</span><span class="p">[</span><span class="s2">&quot;temperature&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">model_options</span><span class="p">[</span><span class="n">model_option</span><span class="p">]</span>
+
+        <span class="n">rewritten</span> <span class="o">=</span> <span class="n">rewriter</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">request_json</span><span class="p">,</span> <span class="o">**</span><span class="n">action</span><span class="o">.</span><span class="n">intrinsic_kwargs</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">load_adapter</span><span class="p">(</span><span class="n">adapter</span><span class="o">.</span><span class="n">qualified_name</span><span class="p">)</span>
+        <span class="n">chat_response</span><span class="p">:</span> <span class="n">Coroutine</span><span class="p">[</span><span class="n">Any</span><span class="p">,</span> <span class="n">Any</span><span class="p">,</span> <span class="n">ChatCompletion</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_async_client</span><span class="o">.</span><span class="n">chat</span><span class="o">.</span><span class="n">completions</span><span class="o">.</span><span class="n">create</span><span class="p">(</span><span class="o">**</span><span class="n">rewritten</span><span class="o">.</span><span class="n">model_dump</span><span class="p">())</span>
+        <span class="p">)</span>
+
+        <span class="n">output</span> <span class="o">=</span> <span class="n">ModelOutputThunk</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+        <span class="n">output</span><span class="o">.</span><span class="n">_context</span> <span class="o">=</span> <span class="n">linearized_context</span>
+        <span class="n">output</span><span class="o">.</span><span class="n">_action</span> <span class="o">=</span> <span class="n">action</span>
+        <span class="n">output</span><span class="o">.</span><span class="n">_model_options</span> <span class="o">=</span> <span class="n">model_opts</span>
+        <span class="n">output</span><span class="o">.</span><span class="n">_meta</span><span class="p">[</span><span class="s2">&quot;granite_common_chat_response&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">rewritten</span>
+
+        <span class="c1"># Add another step to the processing function.</span>
+        <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">granite_common_processing</span><span class="p">(</span>
+            <span class="n">mot</span><span class="p">:</span> <span class="n">ModelOutputThunk</span><span class="p">,</span>
+            <span class="n">chunk</span><span class="p">:</span> <span class="n">ChatCompletion</span><span class="p">,</span>
+            <span class="n">rewritten</span><span class="p">:</span> <span class="n">ChatCompletion</span><span class="p">,</span>
+            <span class="n">result_processor</span><span class="p">:</span> <span class="n">granite_common</span><span class="o">.</span><span class="n">IntrinsicsResultProcessor</span><span class="p">,</span>
+        <span class="p">):</span>
+            <span class="n">res</span> <span class="o">=</span> <span class="n">result_processor</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">chunk</span><span class="p">,</span> <span class="n">rewritten</span><span class="p">)</span>  <span class="c1"># type: ignore</span>
+
+            <span class="c1"># processing expects a ChatCompletion object. Granite common differs slightly from this. Re-create the necessary object.</span>
+            <span class="n">full_res</span> <span class="o">=</span> <span class="n">ChatCompletion</span><span class="p">(</span>
+                <span class="nb">id</span><span class="o">=</span><span class="n">chunk</span><span class="o">.</span><span class="n">id</span><span class="p">,</span>
+                <span class="n">choices</span><span class="o">=</span><span class="p">[],</span>
+                <span class="n">created</span><span class="o">=</span><span class="n">chunk</span><span class="o">.</span><span class="n">created</span><span class="p">,</span>
+                <span class="n">model</span><span class="o">=</span><span class="n">chunk</span><span class="o">.</span><span class="n">model</span><span class="p">,</span>
+                <span class="n">usage</span><span class="o">=</span><span class="n">chunk</span><span class="o">.</span><span class="n">usage</span><span class="p">,</span>
+                <span class="nb">object</span><span class="o">=</span><span class="s2">&quot;chat.completion&quot;</span><span class="p">,</span>
+            <span class="p">)</span>
+
+            <span class="c1"># Set the choices here so that pydantic validation doesn&#39;t error out.</span>
+            <span class="n">full_res</span><span class="o">.</span><span class="n">choices</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">choices</span>  <span class="c1"># type: ignore</span>
+
+            <span class="k">return</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">processing</span><span class="p">(</span><span class="n">mot</span><span class="p">,</span> <span class="n">full_res</span><span class="p">)</span>
+
+        <span class="n">output</span><span class="o">.</span><span class="n">_process</span> <span class="o">=</span> <span class="n">functools</span><span class="o">.</span><span class="n">partial</span><span class="p">(</span>
+            <span class="n">granite_common_processing</span><span class="p">,</span>
+            <span class="n">rewritten</span><span class="o">=</span><span class="n">rewritten</span><span class="p">,</span>  <span class="c1"># type: ignore</span>
+            <span class="n">result_processor</span><span class="o">=</span><span class="n">result_processor</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="n">output</span><span class="o">.</span><span class="n">_post_process</span> <span class="o">=</span> <span class="n">functools</span><span class="o">.</span><span class="n">partial</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">post_processing</span><span class="p">,</span>
+            <span class="n">tools</span><span class="o">=</span><span class="p">{},</span>
+            <span class="n">conversation</span><span class="o">=</span><span class="n">conversation</span><span class="p">,</span>
+            <span class="n">thinking</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+            <span class="n">seed</span><span class="o">=</span><span class="n">model_opts</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">ModelOption</span><span class="o">.</span><span class="n">SEED</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+            <span class="n">_format</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="c1"># To support lazy computation, will need to remove this create_task and store just the unexecuted coroutine.</span>
+            <span class="c1"># We can also support synchronous calls by adding a flag and changing this ._generate function.</span>
+
+            <span class="c1"># This function should always be called from a running event loop so we don&#39;t have to worry about</span>
+            <span class="c1"># scheduling the task to a specific event loop here.</span>
+            <span class="n">output</span><span class="o">.</span><span class="n">_generate</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">create_task</span><span class="p">(</span>
+                <span class="n">send_to_queue</span><span class="p">(</span><span class="n">chat_response</span><span class="p">,</span> <span class="n">output</span><span class="o">.</span><span class="n">_async_queue</span><span class="p">)</span>
+            <span class="p">)</span>
+            <span class="n">output</span><span class="o">.</span><span class="n">_generate_type</span> <span class="o">=</span> <span class="n">GenerateType</span><span class="o">.</span><span class="n">ASYNC</span>
+        <span class="k">except</span> <span class="ne">RuntimeError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="c1"># Most likely cause is running this function without an event loop present</span>
+            <span class="k">raise</span> <span class="n">e</span>
+
+        <span class="k">return</span> <span class="n">output</span>
+
+<div class="viewcode-block" id="OpenAIBackend.message_to_openai_message">
+<a class="viewcode-back" href="../../../backends.html#mellea.backends.openai.OpenAIBackend.message_to_openai_message">[docs]</a>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">message_to_openai_message</span><span class="p">(</span><span class="n">msg</span><span class="p">:</span> <span class="n">Message</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Serializes a mellea Message object to the message format required by OpenAI compatible api providers.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">msg</span><span class="o">.</span><span class="n">images</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">img_list</span> <span class="o">=</span> <span class="p">[</span>
+                <span class="p">{</span>
+                    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;image_url&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;image_url&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;url&quot;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;data:image/png;base64,</span><span class="si">{</span><span class="n">img</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">},</span>
+                <span class="p">}</span>
+                <span class="k">for</span> <span class="n">img</span> <span class="ow">in</span> <span class="n">msg</span><span class="o">.</span><span class="n">images</span>
+            <span class="p">]</span>
+
+            <span class="k">return</span> <span class="p">{</span>
+                <span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="n">msg</span><span class="o">.</span><span class="n">role</span><span class="p">,</span>
+                <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="p">[{</span><span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;text&quot;</span><span class="p">,</span> <span class="s2">&quot;text&quot;</span><span class="p">:</span> <span class="n">msg</span><span class="o">.</span><span class="n">content</span><span class="p">},</span> <span class="o">*</span><span class="n">img_list</span><span class="p">],</span>
+            <span class="p">}</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="n">msg</span><span class="o">.</span><span class="n">role</span><span class="p">,</span> <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="n">msg</span><span class="o">.</span><span class="n">content</span><span class="p">}</span></div>
+
+            <span class="c1"># Target format:</span>
+            <span class="c1"># {</span>
+            <span class="c1">#     &quot;role&quot;: &quot;user&quot;,</span>
+            <span class="c1">#     &quot;content&quot;: [</span>
+            <span class="c1">#       {</span>
+            <span class="c1">#         &quot;type&quot;: &quot;text&quot;,</span>
+            <span class="c1">#         &quot;text&quot;: &quot;What&#39;s in this picture?&quot;</span>
+            <span class="c1">#       },</span>
+            <span class="c1">#       {</span>
+            <span class="c1">#         &quot;type&quot;: &quot;image_url&quot;,</span>
+            <span class="c1">#         &quot;image_url&quot;: {</span>
+            <span class="c1">#           &quot;url&quot;: &quot;data:image/jpeg;base64,&lt;base64_string&gt;&quot;</span>
+            <span class="c1">#         }</span>
+            <span class="c1">#       }</span>
+            <span class="c1">#     ]</span>
+            <span class="c1">#   }</span>
+
+<div class="viewcode-block" id="OpenAIBackend.messages_to_docs">
+<a class="viewcode-back" href="../../../backends.html#mellea.backends.openai.OpenAIBackend.messages_to_docs">[docs]</a>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">messages_to_docs</span><span class="p">(</span><span class="n">msgs</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">Message</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Extracts the docs from a list of messages.&quot;&quot;&quot;</span>
+        <span class="n">docs</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">Document</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">message</span> <span class="ow">in</span> <span class="n">msgs</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">message</span><span class="o">.</span><span class="n">_docs</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">docs</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">message</span><span class="o">.</span><span class="n">_docs</span><span class="p">)</span>
+
+        <span class="n">json_docs</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">doc</span> <span class="ow">in</span> <span class="n">docs</span><span class="p">:</span>
+            <span class="n">json_doc</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;text&quot;</span><span class="p">:</span> <span class="n">doc</span><span class="o">.</span><span class="n">text</span><span class="p">}</span>
+            <span class="k">if</span> <span class="n">doc</span><span class="o">.</span><span class="n">title</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">json_doc</span><span class="p">[</span><span class="s2">&quot;title&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">doc</span><span class="o">.</span><span class="n">title</span>
+            <span class="k">if</span> <span class="n">doc</span><span class="o">.</span><span class="n">doc_id</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">json_doc</span><span class="p">[</span><span class="s2">&quot;doc_id&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">doc</span><span class="o">.</span><span class="n">doc_id</span>
+            <span class="n">json_docs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">json_doc</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">json_docs</span></div>
+
+
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">_generate_from_chat_context_standard</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">action</span><span class="p">:</span> <span class="n">Component</span> <span class="o">|</span> <span class="n">CBlock</span><span class="p">,</span>
+        <span class="n">ctx</span><span class="p">:</span> <span class="n">Context</span><span class="p">,</span>
+        <span class="o">*</span><span class="p">,</span>
+        <span class="n">_format</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="n">BaseModelSubclass</span><span class="p">]</span>
+        <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>  <span class="c1"># Type[BaseModelSubclass] is a class object of a subclass of BaseModel</span>
+        <span class="n">model_options</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">tool_calls</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ModelOutputThunk</span><span class="p">:</span>
+        <span class="n">model_opts</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_simplify_and_merge</span><span class="p">(</span>
+            <span class="n">model_options</span><span class="p">,</span> <span class="n">is_chat_context</span><span class="o">=</span><span class="n">ctx</span><span class="o">.</span><span class="n">is_chat_context</span>
+        <span class="p">)</span>
+        <span class="n">linearized_context</span> <span class="o">=</span> <span class="n">ctx</span><span class="o">.</span><span class="n">view_for_generation</span><span class="p">()</span>
+        <span class="k">assert</span> <span class="n">linearized_context</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">,</span> <span class="p">(</span>
+            <span class="s2">&quot;Cannot generate from a non-linear context in a FormatterBackend.&quot;</span>
+        <span class="p">)</span>
+        <span class="c1"># Convert our linearized context into a sequence of chat messages. Template formatters have a standard way of doing this.</span>
+        <span class="n">messages</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">Message</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">formatter</span><span class="o">.</span><span class="n">to_chat_messages</span><span class="p">(</span><span class="n">linearized_context</span><span class="p">)</span>
+        <span class="c1"># Add the final message.</span>
+        <span class="k">match</span> <span class="n">action</span><span class="p">:</span>
+            <span class="k">case</span> <span class="n">ALoraRequirement</span><span class="p">():</span>
+                <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span>
+                    <span class="s2">&quot;The OpenAI backend does not support currently support activated LoRAs.&quot;</span>
+                <span class="p">)</span>
+            <span class="k">case</span><span class="w"> </span><span class="k">_</span><span class="p">:</span>
+                <span class="n">messages</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">formatter</span><span class="o">.</span><span class="n">to_chat_messages</span><span class="p">([</span><span class="n">action</span><span class="p">]))</span>
+        <span class="n">conversation</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">dict</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="n">system_prompt</span> <span class="o">=</span> <span class="n">model_opts</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">ModelOption</span><span class="o">.</span><span class="n">SYSTEM_PROMPT</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">system_prompt</span> <span class="o">!=</span> <span class="s2">&quot;&quot;</span><span class="p">:</span>
+            <span class="n">conversation</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;system&quot;</span><span class="p">,</span> <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="n">system_prompt</span><span class="p">})</span>
+        <span class="n">conversation</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="bp">self</span><span class="o">.</span><span class="n">message_to_openai_message</span><span class="p">(</span><span class="n">m</span><span class="p">)</span> <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">messages</span><span class="p">])</span>
+
+        <span class="n">extra_params</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">if</span> <span class="n">_format</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_server_type</span> <span class="o">==</span> <span class="n">_ServerType</span><span class="o">.</span><span class="n">OPENAI</span><span class="p">:</span>
+                <span class="c1"># The OpenAI platform requires that additionalProperties=False on all response_format schemas.</span>
+                <span class="c1"># However, not all schemas generates by Mellea include additionalProperties.</span>
+                <span class="c1"># GenerativeSlot, in particular, does not add this property.</span>
+                <span class="c1"># The easiest way to address this disparity between OpenAI and other inference providers is to</span>
+                <span class="c1"># monkey-patch the response format exactly when we are actually using the OpenAI server.</span>
+                <span class="c1">#</span>
+                <span class="c1"># This only addresses the additionalProperties=False constraint.</span>
+                <span class="c1"># Other constraints we should be checking/patching are described here:</span>
+                <span class="c1"># https://platform.openai.com/docs/guides/structured-outputs?api-mode=chat</span>
+                <span class="n">monkey_patched_response_schema</span> <span class="o">=</span> <span class="n">_format</span><span class="o">.</span><span class="n">model_json_schema</span><span class="p">()</span>  <span class="c1"># type: ignore</span>
+                <span class="n">monkey_patched_response_schema</span><span class="p">[</span><span class="s2">&quot;additionalProperties&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span>
+                <span class="n">extra_params</span><span class="p">[</span><span class="s2">&quot;response_format&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+                    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;json_schema&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;json_schema&quot;</span><span class="p">:</span> <span class="p">{</span>
+                        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="n">_format</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span>
+                        <span class="s2">&quot;schema&quot;</span><span class="p">:</span> <span class="n">monkey_patched_response_schema</span><span class="p">,</span>
+                        <span class="s2">&quot;strict&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+                    <span class="p">},</span>
+                <span class="p">}</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">FancyLogger</span><span class="p">()</span><span class="o">.</span><span class="n">get_logger</span><span class="p">()</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
+                    <span class="s2">&quot;Mellea assumes you are NOT using the OpenAI platform, and that other model providers have less strict requirements on support JSON schemas passed into `format=`. If you encounter a server-side error following this message, then you found an exception to this assumption. Please open an issue at github.com/generative_computing/mellea with this stack trace and your inference engine / model provider.&quot;</span>
+                <span class="p">)</span>
+                <span class="n">extra_params</span><span class="p">[</span><span class="s2">&quot;response_format&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+                    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;json_schema&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;json_schema&quot;</span><span class="p">:</span> <span class="p">{</span>
+                        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="n">_format</span><span class="o">.</span><span class="vm">__name__</span><span class="p">,</span>
+                        <span class="s2">&quot;schema&quot;</span><span class="p">:</span> <span class="n">_format</span><span class="o">.</span><span class="n">model_json_schema</span><span class="p">(),</span>  <span class="c1"># type: ignore</span>
+                        <span class="s2">&quot;strict&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+                    <span class="p">},</span>
+                <span class="p">}</span>
+
+        <span class="c1"># Append tool call information if applicable.</span>
+        <span class="n">tools</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Callable</span><span class="p">]</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">tool_calls</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">_format</span><span class="p">:</span>
+                <span class="n">FancyLogger</span><span class="o">.</span><span class="n">get_logger</span><span class="p">()</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
+                    <span class="sa">f</span><span class="s2">&quot;Tool calling typically uses constrained generation, but you have specified a `format` in your generate call. NB: tool calling is superseded by format; we will NOT call tools for your request: </span><span class="si">{</span><span class="n">action</span><span class="si">}</span><span class="s2">&quot;</span>
+                <span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">add_tools_from_model_options</span><span class="p">(</span><span class="n">tools</span><span class="p">,</span> <span class="n">model_opts</span><span class="p">)</span>
+                <span class="n">add_tools_from_context_actions</span><span class="p">(</span><span class="n">tools</span><span class="p">,</span> <span class="n">ctx</span><span class="o">.</span><span class="n">actions_for_available_tools</span><span class="p">())</span>
+
+                <span class="c1"># Add the tools from the action for this generation last so that</span>
+                <span class="c1"># they overwrite conflicting names.</span>
+                <span class="n">add_tools_from_context_actions</span><span class="p">(</span><span class="n">tools</span><span class="p">,</span> <span class="p">[</span><span class="n">action</span><span class="p">])</span>
+            <span class="n">FancyLogger</span><span class="o">.</span><span class="n">get_logger</span><span class="p">()</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Tools for call: </span><span class="si">{</span><span class="n">tools</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+        <span class="n">thinking</span> <span class="o">=</span> <span class="n">model_opts</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">ModelOption</span><span class="o">.</span><span class="n">THINKING</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">thinking</span><span class="p">)</span> <span class="ow">is</span> <span class="nb">bool</span> <span class="ow">and</span> <span class="n">thinking</span><span class="p">:</span>
+            <span class="c1"># OpenAI uses strings for its reasoning levels.</span>
+            <span class="n">thinking</span> <span class="o">=</span> <span class="s2">&quot;medium&quot;</span>
+
+        <span class="n">formatted_tools</span> <span class="o">=</span> <span class="n">convert_tools_to_json</span><span class="p">(</span><span class="n">tools</span><span class="p">)</span>
+        <span class="n">use_tools</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">formatted_tools</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span>
+
+        <span class="c1"># Build optional reasoning parameters</span>
+        <span class="c1"># NOTE: the openai SDK doesn&#39;t like it if you pass `reasoning_effort` param to a non-reasoning model e.g. gpt4o</span>
+        <span class="n">reasoning_params</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">if</span> <span class="n">thinking</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">reasoning_params</span><span class="p">[</span><span class="s2">&quot;reasoning_effort&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">thinking</span>
+
+        <span class="n">chat_response</span><span class="p">:</span> <span class="n">Coroutine</span><span class="p">[</span>
+            <span class="n">Any</span><span class="p">,</span> <span class="n">Any</span><span class="p">,</span> <span class="n">ChatCompletion</span> <span class="o">|</span> <span class="n">openai</span><span class="o">.</span><span class="n">AsyncStream</span><span class="p">[</span><span class="n">ChatCompletionChunk</span><span class="p">]</span>
+        <span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_async_client</span><span class="o">.</span><span class="n">chat</span><span class="o">.</span><span class="n">completions</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
+            <span class="n">model</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_model_id</span><span class="p">,</span>
+            <span class="n">messages</span><span class="o">=</span><span class="n">conversation</span><span class="p">,</span>  <span class="c1"># type: ignore</span>
+            <span class="n">tools</span><span class="o">=</span><span class="n">formatted_tools</span> <span class="k">if</span> <span class="n">use_tools</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>  <span class="c1"># type: ignore</span>
+            <span class="c1"># parallel_tool_calls=False, # We only support calling one tool per turn. But we do the choosing on our side so we leave this False.</span>
+            <span class="o">**</span><span class="n">extra_params</span><span class="p">,</span>
+            <span class="o">**</span><span class="n">reasoning_params</span><span class="p">,</span>  <span class="c1"># type: ignore</span>
+            <span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">_make_backend_specific_and_remove</span><span class="p">(</span>
+                <span class="n">model_opts</span><span class="p">,</span> <span class="n">is_chat_context</span><span class="o">=</span><span class="n">ctx</span><span class="o">.</span><span class="n">is_chat_context</span>
+            <span class="p">),</span>
+        <span class="p">)</span>  <span class="c1"># type: ignore</span>
+
+        <span class="n">output</span> <span class="o">=</span> <span class="n">ModelOutputThunk</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+        <span class="n">output</span><span class="o">.</span><span class="n">_context</span> <span class="o">=</span> <span class="n">linearized_context</span>
+        <span class="n">output</span><span class="o">.</span><span class="n">_action</span> <span class="o">=</span> <span class="n">action</span>
+        <span class="n">output</span><span class="o">.</span><span class="n">_model_options</span> <span class="o">=</span> <span class="n">model_opts</span>
+
+        <span class="c1"># Processing functions only pass the ModelOutputThunk (and current chunk of response). Bind the other vars necessary for</span>
+        <span class="c1"># each processing step.</span>
+        <span class="n">output</span><span class="o">.</span><span class="n">_process</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">processing</span>
+        <span class="n">output</span><span class="o">.</span><span class="n">_post_process</span> <span class="o">=</span> <span class="n">functools</span><span class="o">.</span><span class="n">partial</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">post_processing</span><span class="p">,</span>
+            <span class="n">tools</span><span class="o">=</span><span class="n">tools</span><span class="p">,</span>
+            <span class="n">conversation</span><span class="o">=</span><span class="n">conversation</span><span class="p">,</span>
+            <span class="n">thinking</span><span class="o">=</span><span class="n">thinking</span><span class="p">,</span>
+            <span class="n">seed</span><span class="o">=</span><span class="n">model_opts</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">ModelOption</span><span class="o">.</span><span class="n">SEED</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+            <span class="n">_format</span><span class="o">=</span><span class="n">_format</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="c1"># To support lazy computation, will need to remove this create_task and store just the unexecuted coroutine.</span>
+            <span class="c1"># We can also support synchronous calls by adding a flag and changing this ._generate function.</span>
+
+            <span class="c1"># This function should always be called from a running event loop so we don&#39;t have to worry about</span>
+            <span class="c1"># scheduling the task to a specific event loop here.</span>
+            <span class="n">output</span><span class="o">.</span><span class="n">_generate</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">create_task</span><span class="p">(</span>
+                <span class="n">send_to_queue</span><span class="p">(</span><span class="n">chat_response</span><span class="p">,</span> <span class="n">output</span><span class="o">.</span><span class="n">_async_queue</span><span class="p">)</span>
+            <span class="p">)</span>
+            <span class="n">output</span><span class="o">.</span><span class="n">_generate_type</span> <span class="o">=</span> <span class="n">GenerateType</span><span class="o">.</span><span class="n">ASYNC</span>
+        <span class="k">except</span> <span class="ne">RuntimeError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="c1"># Most likely cause is running this function without an event loop present</span>
+            <span class="k">raise</span> <span class="n">e</span>
+
+        <span class="k">return</span> <span class="n">output</span>
+
+<div class="viewcode-block" id="OpenAIBackend.processing">
+<a class="viewcode-back" href="../../../backends.html#mellea.backends.openai.OpenAIBackend.processing">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">processing</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">mot</span><span class="p">:</span> <span class="n">ModelOutputThunk</span><span class="p">,</span> <span class="n">chunk</span><span class="p">:</span> <span class="n">ChatCompletion</span> <span class="o">|</span> <span class="n">ChatCompletionChunk</span>
+    <span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Called during generation to add information from a single ChatCompletion or ChatCompletionChunk to the ModelOutputThunk.</span>
+
+<span class="sd">        For OpenAI, tool call parsing is handled in the post processing step.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">mot</span><span class="o">.</span><span class="n">_thinking</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">mot</span><span class="o">.</span><span class="n">_thinking</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">mot</span><span class="o">.</span><span class="n">_underlying_value</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">mot</span><span class="o">.</span><span class="n">_underlying_value</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">chunk</span><span class="p">,</span> <span class="n">ChatCompletion</span><span class="p">):</span>
+            <span class="n">message</span> <span class="o">=</span> <span class="n">chunk</span><span class="o">.</span><span class="n">choices</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">message</span>
+
+            <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">message</span><span class="p">,</span> <span class="s2">&quot;reasoning_content&quot;</span><span class="p">):</span>
+                <span class="n">thinking_chunk</span> <span class="o">=</span> <span class="n">message</span><span class="o">.</span><span class="n">reasoning_content</span>  <span class="c1"># type: ignore</span>
+                <span class="k">if</span> <span class="n">thinking_chunk</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="n">mot</span><span class="o">.</span><span class="n">_thinking</span> <span class="o">+=</span> <span class="n">thinking_chunk</span>
+
+            <span class="n">content_chunk</span> <span class="o">=</span> <span class="n">message</span><span class="o">.</span><span class="n">content</span>
+            <span class="k">if</span> <span class="n">content_chunk</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">mot</span><span class="o">.</span><span class="n">_underlying_value</span> <span class="o">+=</span> <span class="n">content_chunk</span>
+
+            <span class="n">mot</span><span class="o">.</span><span class="n">_meta</span><span class="p">[</span><span class="s2">&quot;oai_chat_response&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">chunk</span><span class="o">.</span><span class="n">choices</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">model_dump</span><span class="p">()</span>
+
+        <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">chunk</span><span class="p">,</span> <span class="n">ChatCompletionChunk</span><span class="p">):</span>
+            <span class="n">message_delta</span> <span class="o">=</span> <span class="n">chunk</span><span class="o">.</span><span class="n">choices</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">delta</span>
+            <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">message_delta</span><span class="p">,</span> <span class="s2">&quot;reasoning_content&quot;</span><span class="p">):</span>
+                <span class="n">thinking_chunk</span> <span class="o">=</span> <span class="n">message_delta</span><span class="o">.</span><span class="n">reasoning_content</span>  <span class="c1"># type: ignore</span>
+                <span class="k">if</span> <span class="n">thinking_chunk</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="n">mot</span><span class="o">.</span><span class="n">_thinking</span> <span class="o">+=</span> <span class="n">thinking_chunk</span>
+
+            <span class="n">content_chunk</span> <span class="o">=</span> <span class="n">message_delta</span><span class="o">.</span><span class="n">content</span>
+            <span class="k">if</span> <span class="n">content_chunk</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">mot</span><span class="o">.</span><span class="n">_underlying_value</span> <span class="o">+=</span> <span class="n">content_chunk</span>
+
+            <span class="k">if</span> <span class="n">mot</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;oai_chat_response_streamed&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">mot</span><span class="o">.</span><span class="n">_meta</span><span class="p">[</span><span class="s2">&quot;oai_chat_response_streamed&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+            <span class="n">mot</span><span class="o">.</span><span class="n">_meta</span><span class="p">[</span><span class="s2">&quot;oai_chat_response_streamed&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                <span class="n">chunk</span><span class="o">.</span><span class="n">choices</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">model_dump</span><span class="p">()</span>
+            <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="OpenAIBackend.post_processing">
+<a class="viewcode-back" href="../../../backends.html#mellea.backends.openai.OpenAIBackend.post_processing">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">post_processing</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">mot</span><span class="p">:</span> <span class="n">ModelOutputThunk</span><span class="p">,</span>
+        <span class="n">tools</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Callable</span><span class="p">],</span>
+        <span class="n">conversation</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">dict</span><span class="p">],</span>
+        <span class="n">thinking</span><span class="p">,</span>
+        <span class="n">seed</span><span class="p">,</span>
+        <span class="n">_format</span><span class="p">,</span>
+    <span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Called when generation is done.&quot;&quot;&quot;</span>
+        <span class="c1"># Reconstruct the chat_response from chunks if streamed.</span>
+        <span class="n">streamed_chunks</span> <span class="o">=</span> <span class="n">mot</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;oai_chat_response_streamed&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">streamed_chunks</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">mot</span><span class="o">.</span><span class="n">_meta</span><span class="p">[</span><span class="s2">&quot;oai_chat_response&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">chat_completion_delta_merge</span><span class="p">(</span>
+                <span class="n">streamed_chunks</span>
+            <span class="p">)</span>
+
+        <span class="k">assert</span> <span class="n">mot</span><span class="o">.</span><span class="n">_action</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">,</span> <span class="p">(</span>
+            <span class="s2">&quot;ModelOutputThunks should have their action assigned during generation&quot;</span>
+        <span class="p">)</span>
+        <span class="k">assert</span> <span class="n">mot</span><span class="o">.</span><span class="n">_model_options</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">,</span> <span class="p">(</span>
+            <span class="s2">&quot;ModelOutputThunks should have their model_opts assigned during generation&quot;</span>
+        <span class="p">)</span>
+
+        <span class="c1"># OpenAI streamed responses give you chunks of tool calls.</span>
+        <span class="c1"># As a result, we have to store data between calls and only then</span>
+        <span class="c1"># check for complete tool calls in the post_processing step.</span>
+        <span class="n">tool_chunk</span> <span class="o">=</span> <span class="n">extract_model_tool_requests</span><span class="p">(</span><span class="n">tools</span><span class="p">,</span> <span class="n">mot</span><span class="o">.</span><span class="n">_meta</span><span class="p">[</span><span class="s2">&quot;oai_chat_response&quot;</span><span class="p">])</span>
+        <span class="k">if</span> <span class="n">tool_chunk</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">mot</span><span class="o">.</span><span class="n">tool_calls</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">mot</span><span class="o">.</span><span class="n">tool_calls</span> <span class="o">=</span> <span class="p">{}</span>
+            <span class="c1"># Merge the tool_chunk dict.</span>
+            <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">tool_chunk</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                <span class="n">mot</span><span class="o">.</span><span class="n">tool_calls</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">val</span>
+
+        <span class="c1"># Generate the log for this ModelOutputThunk.</span>
+        <span class="n">generate_log</span> <span class="o">=</span> <span class="n">GenerateLog</span><span class="p">()</span>
+        <span class="n">generate_log</span><span class="o">.</span><span class="n">prompt</span> <span class="o">=</span> <span class="n">conversation</span>
+        <span class="n">generate_log</span><span class="o">.</span><span class="n">backend</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;openai::</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">model_id</span><span class="si">!s}</span><span class="s2">&quot;</span>
+        <span class="n">generate_log</span><span class="o">.</span><span class="n">model_options</span> <span class="o">=</span> <span class="n">mot</span><span class="o">.</span><span class="n">_model_options</span>
+        <span class="n">generate_log</span><span class="o">.</span><span class="n">date</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
+        <span class="n">generate_log</span><span class="o">.</span><span class="n">model_output</span> <span class="o">=</span> <span class="n">mot</span><span class="o">.</span><span class="n">_meta</span><span class="p">[</span><span class="s2">&quot;oai_chat_response&quot;</span><span class="p">]</span>
+        <span class="n">generate_log</span><span class="o">.</span><span class="n">extra</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;format&quot;</span><span class="p">:</span> <span class="n">_format</span><span class="p">,</span>
+            <span class="s2">&quot;thinking&quot;</span><span class="p">:</span> <span class="n">thinking</span><span class="p">,</span>
+            <span class="s2">&quot;tools_available&quot;</span><span class="p">:</span> <span class="n">tools</span><span class="p">,</span>
+            <span class="s2">&quot;tools_called&quot;</span><span class="p">:</span> <span class="n">mot</span><span class="o">.</span><span class="n">tool_calls</span><span class="p">,</span>
+            <span class="s2">&quot;seed&quot;</span><span class="p">:</span> <span class="n">seed</span><span class="p">,</span>
+        <span class="p">}</span>
+        <span class="n">generate_log</span><span class="o">.</span><span class="n">action</span> <span class="o">=</span> <span class="n">mot</span><span class="o">.</span><span class="n">_action</span>
+        <span class="n">generate_log</span><span class="o">.</span><span class="n">result</span> <span class="o">=</span> <span class="n">mot</span>
+        <span class="n">mot</span><span class="o">.</span><span class="n">_generate_log</span> <span class="o">=</span> <span class="n">generate_log</span></div>
+
+
+    <span class="nd">@overload</span>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">generate_from_raw</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">actions</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">Component</span><span class="p">[</span><span class="n">C</span><span class="p">]],</span>
+        <span class="n">ctx</span><span class="p">:</span> <span class="n">Context</span><span class="p">,</span>
+        <span class="o">*</span><span class="p">,</span>
+        <span class="nb">format</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="n">BaseModelSubclass</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">model_options</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">tool_calls</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">ModelOutputThunk</span><span class="p">[</span><span class="n">C</span><span class="p">]]:</span> <span class="o">...</span>
+
+    <span class="nd">@overload</span>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">generate_from_raw</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">actions</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">Component</span><span class="p">[</span><span class="n">C</span><span class="p">]</span> <span class="o">|</span> <span class="n">CBlock</span><span class="p">],</span>
+        <span class="n">ctx</span><span class="p">:</span> <span class="n">Context</span><span class="p">,</span>
+        <span class="o">*</span><span class="p">,</span>
+        <span class="nb">format</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="n">BaseModelSubclass</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">model_options</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">tool_calls</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">ModelOutputThunk</span><span class="p">[</span><span class="n">C</span> <span class="o">|</span> <span class="nb">str</span><span class="p">]]:</span> <span class="o">...</span>
+
+<div class="viewcode-block" id="OpenAIBackend.generate_from_raw">
+<a class="viewcode-back" href="../../../backends.html#mellea.backends.openai.OpenAIBackend.generate_from_raw">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">generate_from_raw</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">actions</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">Component</span><span class="p">[</span><span class="n">C</span><span class="p">]</span> <span class="o">|</span> <span class="n">CBlock</span><span class="p">],</span>
+        <span class="n">ctx</span><span class="p">:</span> <span class="n">Context</span><span class="p">,</span>
+        <span class="o">*</span><span class="p">,</span>
+        <span class="nb">format</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="n">BaseModelSubclass</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">model_options</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">tool_calls</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">ModelOutputThunk</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Generate using the completions api. Gives the input provided to the model without templating.&quot;&quot;&quot;</span>
+        <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">do_generate_walks</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">actions</span><span class="p">))</span>
+
+        <span class="n">extra_body</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="k">if</span> <span class="nb">format</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">FancyLogger</span><span class="o">.</span><span class="n">get_logger</span><span class="p">()</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
+                <span class="s2">&quot;The official OpenAI completion api does not accept response format / structured decoding; &quot;</span>
+                <span class="s2">&quot;it will be passed as an extra arg.&quot;</span>
+            <span class="p">)</span>
+
+            <span class="c1"># Some versions (like vllm&#39;s version) of the OpenAI API support structured decoding for completions requests.</span>
+            <span class="n">extra_body</span><span class="p">[</span><span class="s2">&quot;guided_json&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">format</span><span class="o">.</span><span class="n">model_json_schema</span><span class="p">()</span>  <span class="c1"># type: ignore</span>
+        <span class="k">if</span> <span class="n">tool_calls</span><span class="p">:</span>
+            <span class="n">FancyLogger</span><span class="o">.</span><span class="n">get_logger</span><span class="p">()</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
+                <span class="s2">&quot;The completion endpoint does not support tool calling at the moment.&quot;</span>
+            <span class="p">)</span>
+
+        <span class="n">model_opts</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_simplify_and_merge</span><span class="p">(</span><span class="n">model_options</span><span class="p">,</span> <span class="n">is_chat_context</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+        <span class="n">prompts</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">formatter</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="n">action</span><span class="p">)</span> <span class="k">for</span> <span class="n">action</span> <span class="ow">in</span> <span class="n">actions</span><span class="p">]</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">completion_response</span><span class="p">:</span> <span class="n">Completion</span> <span class="o">=</span> <span class="p">(</span>
+                <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">_async_client</span><span class="o">.</span><span class="n">completions</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
+                    <span class="n">model</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_model_id</span><span class="p">,</span>
+                    <span class="n">prompt</span><span class="o">=</span><span class="n">prompts</span><span class="p">,</span>
+                    <span class="n">extra_body</span><span class="o">=</span><span class="n">extra_body</span><span class="p">,</span>
+                    <span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">_make_backend_specific_and_remove</span><span class="p">(</span>
+                        <span class="n">model_opts</span><span class="p">,</span> <span class="n">is_chat_context</span><span class="o">=</span><span class="kc">False</span>
+                    <span class="p">),</span>
+                <span class="p">)</span>
+            <span class="p">)</span>  <span class="c1"># type: ignore</span>
+        <span class="k">except</span> <span class="n">openai</span><span class="o">.</span><span class="n">BadRequestError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">openai_ollama_batching_error</span> <span class="ow">in</span> <span class="n">e</span><span class="o">.</span><span class="n">message</span><span class="p">:</span>
+                <span class="n">FancyLogger</span><span class="o">.</span><span class="n">get_logger</span><span class="p">()</span><span class="o">.</span><span class="n">error</span><span class="p">(</span>
+                    <span class="s2">&quot;If you are trying to call `OpenAIBackend._generate_from_raw while targeting an ollama server, &quot;</span>
+                    <span class="s2">&quot;your requests will fail since ollama doesn&#39;t support batching requests.&quot;</span>
+                <span class="p">)</span>
+            <span class="k">raise</span> <span class="n">e</span>
+
+        <span class="c1"># Necessary for type checker.</span>
+        <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">completion_response</span><span class="p">,</span> <span class="n">Completion</span><span class="p">)</span>
+
+        <span class="n">results</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">response</span><span class="p">,</span> <span class="n">action</span><span class="p">,</span> <span class="n">prompt</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span>
+            <span class="n">completion_response</span><span class="o">.</span><span class="n">choices</span><span class="p">,</span> <span class="n">actions</span><span class="p">,</span> <span class="n">prompts</span>
+        <span class="p">):</span>
+            <span class="n">output</span> <span class="o">=</span> <span class="n">ModelOutputThunk</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+            <span class="n">output</span><span class="o">.</span><span class="n">_context</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1"># There is no context for generate_from_raw for now</span>
+            <span class="n">output</span><span class="o">.</span><span class="n">_action</span> <span class="o">=</span> <span class="n">action</span>
+            <span class="n">output</span><span class="o">.</span><span class="n">_model_options</span> <span class="o">=</span> <span class="n">model_opts</span>
+            <span class="n">output</span><span class="o">.</span><span class="n">_meta</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="s2">&quot;oai_completion_response&quot;</span><span class="p">:</span> <span class="n">response</span><span class="o">.</span><span class="n">model_dump</span><span class="p">(),</span>
+                <span class="s2">&quot;usage&quot;</span><span class="p">:</span> <span class="n">completion_response</span><span class="o">.</span><span class="n">usage</span><span class="o">.</span><span class="n">model_dump</span><span class="p">()</span>
+                <span class="k">if</span> <span class="n">completion_response</span><span class="o">.</span><span class="n">usage</span>
+                <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>
+            <span class="p">}</span>
+
+            <span class="n">output</span><span class="o">.</span><span class="n">parsed_repr</span> <span class="o">=</span> <span class="p">(</span>
+                <span class="n">action</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">output</span><span class="p">)</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">action</span><span class="p">,</span> <span class="n">Component</span><span class="p">)</span> <span class="k">else</span> <span class="n">output</span><span class="o">.</span><span class="n">value</span>
+            <span class="p">)</span>
+
+            <span class="n">generate_log</span> <span class="o">=</span> <span class="n">GenerateLog</span><span class="p">()</span>
+            <span class="n">generate_log</span><span class="o">.</span><span class="n">prompt</span> <span class="o">=</span> <span class="n">prompt</span>
+            <span class="n">generate_log</span><span class="o">.</span><span class="n">backend</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;openai::</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">model_id</span><span class="si">!s}</span><span class="s2">&quot;</span>
+            <span class="n">generate_log</span><span class="o">.</span><span class="n">model_options</span> <span class="o">=</span> <span class="n">model_opts</span>
+            <span class="n">generate_log</span><span class="o">.</span><span class="n">date</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
+            <span class="n">generate_log</span><span class="o">.</span><span class="n">model_output</span> <span class="o">=</span> <span class="n">completion_response</span>
+            <span class="n">generate_log</span><span class="o">.</span><span class="n">extra</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;seed&quot;</span><span class="p">:</span> <span class="n">model_opts</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;seed&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)}</span>
+            <span class="n">generate_log</span><span class="o">.</span><span class="n">action</span> <span class="o">=</span> <span class="n">action</span>
+            <span class="n">output</span><span class="o">.</span><span class="n">_generate_log</span> <span class="o">=</span> <span class="n">generate_log</span>
+
+            <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">output</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">results</span></div>
+
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">base_model_name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the base_model_id of the model used by the backend. For example, `granite-3.3-8b-instruct` for `ibm-granite/granite-3.3-8b-instruct`.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="s2">&quot;/&quot;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model_id</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model_id</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_model_id</span>
+
+<div class="viewcode-block" id="OpenAIBackend.add_adapter">
+<a class="viewcode-back" href="../../../backends.html#mellea.backends.openai.OpenAIBackend.add_adapter">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">add_adapter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">adapter</span><span class="p">:</span> <span class="n">OpenAIAdapter</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Adds the given adapter to the backend. Must not have been added to a different backend.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">adapter</span><span class="o">.</span><span class="n">backend</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">adapter</span><span class="o">.</span><span class="n">backend</span> <span class="ow">is</span> <span class="bp">self</span><span class="p">:</span>
+                <span class="n">FancyLogger</span><span class="o">.</span><span class="n">get_logger</span><span class="p">()</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
+                    <span class="sa">f</span><span class="s2">&quot;attempted to add adapter </span><span class="si">{</span><span class="n">adapter</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2"> with type </span><span class="si">{</span><span class="n">adapter</span><span class="o">.</span><span class="n">adapter_type</span><span class="si">}</span><span class="s2"> to the same backend </span><span class="si">{</span><span class="n">adapter</span><span class="o">.</span><span class="n">backend</span><span class="si">}</span><span class="s2">&quot;</span>
+                <span class="p">)</span>
+                <span class="k">return</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span>
+                    <span class="sa">f</span><span class="s2">&quot;adapter </span><span class="si">{</span><span class="n">adapter</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2"> with type </span><span class="si">{</span><span class="n">adapter</span><span class="o">.</span><span class="n">adapter_type</span><span class="si">}</span><span class="s2"> has already been added to backend </span><span class="si">{</span><span class="n">adapter</span><span class="o">.</span><span class="n">backend</span><span class="si">}</span><span class="s2">&quot;</span>
+                <span class="p">)</span>
+
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_added_adapters</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">adapter</span><span class="o">.</span><span class="n">qualified_name</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">FancyLogger</span><span class="o">.</span><span class="n">get_logger</span><span class="p">()</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;Client code attempted to add </span><span class="si">{</span><span class="n">adapter</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2"> with type </span><span class="si">{</span><span class="n">adapter</span><span class="o">.</span><span class="n">adapter_type</span><span class="si">}</span><span class="s2"> but it was already added to </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="si">}</span><span class="s2">. This attempt to add the adapter will be ignored.&quot;</span>
+            <span class="p">)</span>
+            <span class="k">return</span> <span class="kc">None</span>
+
+        <span class="n">adapter</span><span class="o">.</span><span class="n">path</span> <span class="o">=</span> <span class="n">adapter</span><span class="o">.</span><span class="n">get_open_ai_path</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">base_model_name</span><span class="p">,</span> <span class="n">server_type</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_server_type</span>
+        <span class="p">)</span>
+        <span class="n">adapter</span><span class="o">.</span><span class="n">backend</span> <span class="o">=</span> <span class="bp">self</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_added_adapters</span><span class="p">[</span><span class="n">adapter</span><span class="o">.</span><span class="n">qualified_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">adapter</span></div>
+
+
+<div class="viewcode-block" id="OpenAIBackend.load_adapter">
+<a class="viewcode-back" href="../../../backends.html#mellea.backends.openai.OpenAIBackend.load_adapter">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">load_adapter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">adapter_qualified_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Loads the given adapter for the backend. Must have previously been added.&quot;&quot;&quot;</span>
+        <span class="n">adapter</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_added_adapters</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">adapter_qualified_name</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">adapter</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;could not load adapter </span><span class="si">{</span><span class="n">adapter_qualified_name</span><span class="si">}</span><span class="s2"> for backend </span><span class="si">{</span><span class="bp">self</span><span class="si">}</span><span class="s2">: adapter was not previously added&quot;</span>
+            <span class="p">)</span>
+
+        <span class="n">url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_base_url</span><span class="si">}</span><span class="s2">/load_lora_adapter&quot;</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span>
+            <span class="n">url</span><span class="p">,</span>
+            <span class="n">json</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;lora_name&quot;</span><span class="p">:</span> <span class="n">adapter_qualified_name</span><span class="p">,</span> <span class="s2">&quot;lora_path&quot;</span><span class="p">:</span> <span class="n">adapter</span><span class="o">.</span><span class="n">path</span><span class="p">},</span>
+            <span class="n">headers</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;Content-Type&quot;</span><span class="p">:</span> <span class="s2">&quot;application/json&quot;</span><span class="p">},</span>
+        <span class="p">)</span>
+
+        <span class="n">err</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">match</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="p">:</span>
+            <span class="k">case</span> <span class="mi">200</span><span class="p">:</span>
+                <span class="n">FancyLogger</span><span class="o">.</span><span class="n">get_logger</span><span class="p">()</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
+                    <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">url</span><span class="si">}</span><span class="s2">: status </span><span class="si">{</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="si">}</span><span class="s2">&quot;</span>
+                <span class="p">)</span>
+            <span class="k">case</span> <span class="mi">400</span><span class="p">:</span>
+                <span class="k">if</span> <span class="s2">&quot;has already been loaded.&quot;</span> <span class="ow">in</span> <span class="nb">str</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">content</span><span class="p">):</span>
+                    <span class="n">FancyLogger</span><span class="o">.</span><span class="n">get_logger</span><span class="p">()</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
+                        <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">url</span><span class="si">}</span><span class="s2">: status </span><span class="si">{</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="si">}</span><span class="s2">&quot;</span>
+                    <span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">err</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">url</span><span class="si">}</span><span class="s2">: status </span><span class="si">{</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="k">case</span><span class="w"> </span><span class="k">_</span><span class="p">:</span>
+                <span class="n">err</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">url</span><span class="si">}</span><span class="s2">: status </span><span class="si">{</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="si">}</span><span class="s2">&quot;</span>
+
+        <span class="k">if</span> <span class="n">err</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">FancyLogger</span><span class="o">.</span><span class="n">get_logger</span><span class="p">()</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;error loading adapter </span><span class="si">{</span><span class="n">adapter_qualified_name</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">err</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_loaded_adapters</span><span class="p">[</span><span class="n">adapter</span><span class="o">.</span><span class="n">qualified_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">adapter</span></div>
+
+
+<div class="viewcode-block" id="OpenAIBackend.unload_adapter">
+<a class="viewcode-back" href="../../../backends.html#mellea.backends.openai.OpenAIBackend.unload_adapter">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">unload_adapter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">adapter_qualified_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Unloads the given adapter from the backend.&quot;&quot;&quot;</span>
+        <span class="c1"># Check if the backend knows about this adapter.</span>
+        <span class="n">adapter</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_loaded_adapters</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">adapter_qualified_name</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">adapter</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">FancyLogger</span><span class="o">.</span><span class="n">get_logger</span><span class="p">()</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;could not unload adapter </span><span class="si">{</span><span class="n">adapter_qualified_name</span><span class="si">}</span><span class="s2"> for backend </span><span class="si">{</span><span class="bp">self</span><span class="si">}</span><span class="s2">: adapter is not loaded&quot;</span>
+            <span class="p">)</span>
+            <span class="k">return</span>
+
+        <span class="n">url</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_base_url</span><span class="si">}</span><span class="s2">/unload_lora_adapter&quot;</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span>
+            <span class="n">url</span><span class="p">,</span>
+            <span class="n">json</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;lora_name&quot;</span><span class="p">:</span> <span class="n">adapter_qualified_name</span><span class="p">},</span>
+            <span class="n">headers</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;Content-Type&quot;</span><span class="p">:</span> <span class="s2">&quot;application/json&quot;</span><span class="p">},</span>
+        <span class="p">)</span>
+
+        <span class="k">match</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="p">:</span>
+            <span class="k">case</span> <span class="mi">200</span><span class="p">:</span>
+                <span class="n">FancyLogger</span><span class="o">.</span><span class="n">get_logger</span><span class="p">()</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
+                    <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">url</span><span class="si">}</span><span class="s2">: status </span><span class="si">{</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="si">}</span><span class="s2">&quot;</span>
+                <span class="p">)</span>
+            <span class="k">case</span> <span class="mi">404</span><span class="p">:</span>
+                <span class="c1"># This response code indicates that the adapter isn&#39;t currently loaded;</span>
+                <span class="c1"># which is the goal of this function. Log it but proceed as if successful.</span>
+                <span class="n">FancyLogger</span><span class="o">.</span><span class="n">get_logger</span><span class="p">()</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
+                    <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">url</span><span class="si">}</span><span class="s2">: status </span><span class="si">{</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="si">}</span><span class="s2">&quot;</span>
+                <span class="p">)</span>
+            <span class="k">case</span><span class="w"> </span><span class="k">_</span><span class="p">:</span>
+                <span class="c1"># Unknown err.</span>
+                <span class="n">FancyLogger</span><span class="o">.</span><span class="n">get_logger</span><span class="p">()</span><span class="o">.</span><span class="n">error</span><span class="p">(</span>
+                    <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">url</span><span class="si">}</span><span class="s2">: status </span><span class="si">{</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="si">}</span><span class="s2">&quot;</span>
+                <span class="p">)</span>
+                <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span>
+                    <span class="sa">f</span><span class="s2">&quot;error unloading adapter </span><span class="si">{</span><span class="n">adapter_qualified_name</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">url</span><span class="si">}</span><span class="s2">: status </span><span class="si">{</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="si">}</span><span class="s2">&quot;</span>
+                <span class="p">)</span>
+
+        <span class="c1"># Remove the adapter from the list of loaded adapters.</span>
+        <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">_loaded_adapters</span><span class="p">[</span><span class="n">adapter</span><span class="o">.</span><span class="n">qualified_name</span><span class="p">]</span></div>
+
+
+<div class="viewcode-block" id="OpenAIBackend.list_adapters">
+<a class="viewcode-back" href="../../../backends.html#mellea.backends.openai.OpenAIBackend.list_adapters">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">list_adapters</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Lists the adapters added via add_adapter().</span>
+
+<span class="sd">        :returns: list of adapter names that are currently registered with this backend</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_loaded_adapters</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span></div>
+</div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Mellea Contributors.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

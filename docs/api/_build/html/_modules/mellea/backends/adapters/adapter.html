@@ -1,0 +1,645 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>mellea.backends.adapters.adapter &mdash; Mellea unknown documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../../_static/documentation_options.js?v=3f1b9271"></script>
+      <script src="../../../../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../../index.html" class="icon icon-home">
+            Mellea
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../quickref.html">Quick Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../quickref.html#core-session-methods">Core Session Methods</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../quickref.html#creating-a-session">Creating a Session</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../quickref.html#key-methods">Key Methods</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../quickref.html#instruct">instruct</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../quickref.html#chat">chat</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../quickref.html#generate">generate</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../quickref.html#functional-api">Functional API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../quickref.html#instruct-functional">instruct (functional)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../quickref.html#sampling-strategies">Sampling Strategies</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../quickref.html#rejectionsamplingstrategy">RejectionSamplingStrategy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../quickref.html#bestofnsamplingstrategy">BestOfNSamplingStrategy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../quickref.html#majorityvotingsamplingstrategy">MajorityVotingSamplingStrategy</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../quickref.html#requirements">Requirements</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../quickref.html#creating-requirements">Creating Requirements</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../quickref.html#see-also">See Also</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../stdlib.html">Standard Library (stdlib)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../stdlib.html#core-modules">Core Modules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../stdlib.html#module-mellea.stdlib.chat">Chat</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../stdlib.html#mellea.stdlib.chat.Message"><code class="docutils literal notranslate"><span class="pre">Message</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../stdlib.html#mellea.stdlib.chat.ToolMessage"><code class="docutils literal notranslate"><span class="pre">ToolMessage</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../stdlib.html#mellea.stdlib.chat.as_chat_history"><code class="docutils literal notranslate"><span class="pre">as_chat_history()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../stdlib.html#module-mellea.stdlib.functional">Functional</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../stdlib.html#mellea.stdlib.functional.act"><code class="docutils literal notranslate"><span class="pre">act()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../stdlib.html#mellea.stdlib.functional.instruct"><code class="docutils literal notranslate"><span class="pre">instruct()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../stdlib.html#mellea.stdlib.functional.chat"><code class="docutils literal notranslate"><span class="pre">chat()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../stdlib.html#mellea.stdlib.functional.validate"><code class="docutils literal notranslate"><span class="pre">validate()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../stdlib.html#mellea.stdlib.functional.query"><code class="docutils literal notranslate"><span class="pre">query()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../stdlib.html#mellea.stdlib.functional.transform"><code class="docutils literal notranslate"><span class="pre">transform()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../stdlib.html#mellea.stdlib.functional.aact"><code class="docutils literal notranslate"><span class="pre">aact()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../stdlib.html#mellea.stdlib.functional.ainstruct"><code class="docutils literal notranslate"><span class="pre">ainstruct()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../stdlib.html#mellea.stdlib.functional.achat"><code class="docutils literal notranslate"><span class="pre">achat()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../stdlib.html#mellea.stdlib.functional.avalidate"><code class="docutils literal notranslate"><span class="pre">avalidate()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../stdlib.html#mellea.stdlib.functional.aquery"><code class="docutils literal notranslate"><span class="pre">aquery()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../stdlib.html#mellea.stdlib.functional.atransform"><code class="docutils literal notranslate"><span class="pre">atransform()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../stdlib.html#session">Session</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../stdlib.html#module-mellea.stdlib.test_based_eval">Test-Based Evaluation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../stdlib.html#mellea.stdlib.test_based_eval.Message"><code class="docutils literal notranslate"><span class="pre">Message</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../stdlib.html#mellea.stdlib.test_based_eval.Example"><code class="docutils literal notranslate"><span class="pre">Example</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../stdlib.html#mellea.stdlib.test_based_eval.TestData"><code class="docutils literal notranslate"><span class="pre">TestData</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../stdlib.html#mellea.stdlib.test_based_eval.TestBasedEval"><code class="docutils literal notranslate"><span class="pre">TestBasedEval</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../stdlib.html#sampling-strategies">Sampling Strategies</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../stdlib.html#module-mellea.stdlib.sampling.base">Base</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../stdlib.html#mellea.stdlib.sampling.base.BaseSamplingStrategy"><code class="docutils literal notranslate"><span class="pre">BaseSamplingStrategy</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../stdlib.html#mellea.stdlib.sampling.base.RejectionSamplingStrategy"><code class="docutils literal notranslate"><span class="pre">RejectionSamplingStrategy</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../stdlib.html#mellea.stdlib.sampling.base.RepairTemplateStrategy"><code class="docutils literal notranslate"><span class="pre">RepairTemplateStrategy</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../stdlib.html#mellea.stdlib.sampling.base.MultiTurnStrategy"><code class="docutils literal notranslate"><span class="pre">MultiTurnStrategy</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../stdlib.html#best-of-n">Best of N</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../stdlib.html#budget-forcing">Budget Forcing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../stdlib.html#majority-voting">Majority Voting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../stdlib.html#module-mellea.stdlib.sampling.types">Types</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../stdlib.html#mellea.stdlib.sampling.types.SamplingResult"><code class="docutils literal notranslate"><span class="pre">SamplingResult</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../stdlib.html#mellea.stdlib.sampling.types.SamplingStrategy"><code class="docutils literal notranslate"><span class="pre">SamplingStrategy</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../stdlib.html#rewards">Rewards</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../stdlib.html#prm-scorer">PRM Scorer</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../stdlib.html#document-processing">Document Processing</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../stdlib.html#rich-document">Rich Document</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../stdlib.html#requirement-libraries">Requirement Libraries</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../stdlib.html#markdown">Markdown</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../stdlib.html#module-mellea.stdlib.reqlib.python">Python</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../stdlib.html#mellea.stdlib.reqlib.python.PythonExecutionReq"><code class="docutils literal notranslate"><span class="pre">PythonExecutionReq</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../stdlib.html#module-mellea.stdlib.reqlib.tools">Tools</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../stdlib.html#mellea.stdlib.reqlib.tools.uses_tool"><code class="docutils literal notranslate"><span class="pre">uses_tool()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../stdlib.html#mellea.stdlib.reqlib.tools.tool_arg_validator"><code class="docutils literal notranslate"><span class="pre">tool_arg_validator()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../backends.html">Backends</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../backends.html#core-backend-modules">Core Backend Modules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../backends.html#module-mellea.backends.types">Types</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../backends.html#mellea.backends.types.ModelOption"><code class="docutils literal notranslate"><span class="pre">ModelOption</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../backends.html#module-mellea.backends.formatter">Formatter</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../backends.html#mellea.backends.formatter.Formatter"><code class="docutils literal notranslate"><span class="pre">Formatter</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../backends.html#mellea.backends.formatter.TemplateFormatter"><code class="docutils literal notranslate"><span class="pre">TemplateFormatter</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../backends.html#mellea.backends.formatter.FormatterBackend"><code class="docutils literal notranslate"><span class="pre">FormatterBackend</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../backends.html#module-mellea.backends.cache">Cache</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../backends.html#mellea.backends.cache.Cache"><code class="docutils literal notranslate"><span class="pre">Cache</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../backends.html#mellea.backends.cache.SimpleLRUCache"><code class="docutils literal notranslate"><span class="pre">SimpleLRUCache</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../backends.html#tools">Tools</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../backends.html#backend-implementations">Backend Implementations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../backends.html#huggingface">HuggingFace</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../backends.html#openai">OpenAI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../backends.html#litellm">LiteLLM</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../backends.html#vllm">vLLM</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../backends.html#ollama">Ollama</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../backends.html#watsonx">WatsonX</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../backends.html#module-mellea.backends.dummy">Dummy</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../backends.html#mellea.backends.dummy.DummyBackend"><code class="docutils literal notranslate"><span class="pre">DummyBackend</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../backends.html#adapters">Adapters</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../backends.html#module-mellea.backends.adapters.adapter">Adapter</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../backends.html#mellea.backends.adapters.adapter.Adapter"><code class="docutils literal notranslate"><span class="pre">Adapter</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../backends.html#mellea.backends.adapters.adapter.OpenAIAdapter"><code class="docutils literal notranslate"><span class="pre">OpenAIAdapter</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../backends.html#mellea.backends.adapters.adapter.LocalHFAdapter"><code class="docutils literal notranslate"><span class="pre">LocalHFAdapter</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../backends.html#mellea.backends.adapters.adapter.GraniteCommonAdapter"><code class="docutils literal notranslate"><span class="pre">GraniteCommonAdapter</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../backends.html#mellea.backends.adapters.adapter.get_adapter_for_intrinsic"><code class="docutils literal notranslate"><span class="pre">get_adapter_for_intrinsic()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../backends.html#mellea.backends.adapters.adapter.AdapterMixin"><code class="docutils literal notranslate"><span class="pre">AdapterMixin</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../backends.html#module-mellea.backends.adapters.catalog">Catalog</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../backends.html#mellea.backends.adapters.catalog.AdapterType"><code class="docutils literal notranslate"><span class="pre">AdapterType</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../backends.html#mellea.backends.adapters.catalog.IntriniscsCatalogEntry"><code class="docutils literal notranslate"><span class="pre">IntriniscsCatalogEntry</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../backends.html#mellea.backends.adapters.catalog.known_intrinsic_names"><code class="docutils literal notranslate"><span class="pre">known_intrinsic_names()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../backends.html#mellea.backends.adapters.catalog.fetch_intrinsic_metadata"><code class="docutils literal notranslate"><span class="pre">fetch_intrinsic_metadata()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../backends.html#process-reward-models">Process Reward Models</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../backends.html#huggingface-prms">HuggingFace PRMs</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../helpers.html">Helpers</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../helpers.html#module-mellea.helpers.async_helpers">Async Helpers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../helpers.html#mellea.helpers.async_helpers.send_to_queue"><code class="docutils literal notranslate"><span class="pre">send_to_queue()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../helpers.html#mellea.helpers.async_helpers.wait_for_all_mots"><code class="docutils literal notranslate"><span class="pre">wait_for_all_mots()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../helpers.html#mellea.helpers.async_helpers.get_current_event_loop"><code class="docutils literal notranslate"><span class="pre">get_current_event_loop()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../helpers.html#mellea.helpers.async_helpers.ClientCache"><code class="docutils literal notranslate"><span class="pre">ClientCache</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../helpers.html#mellea.helpers.async_helpers.ClientCache.__init__"><code class="docutils literal notranslate"><span class="pre">ClientCache.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../helpers.html#mellea.helpers.async_helpers.ClientCache.current_size"><code class="docutils literal notranslate"><span class="pre">ClientCache.current_size()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../helpers.html#mellea.helpers.async_helpers.ClientCache.get"><code class="docutils literal notranslate"><span class="pre">ClientCache.get()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../helpers.html#mellea.helpers.async_helpers.ClientCache.put"><code class="docutils literal notranslate"><span class="pre">ClientCache.put()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../helpers.html#module-mellea.helpers.event_loop_helper">Event Loop Helper</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../helpers.html#module-mellea.helpers.fancy_logger">Fancy Logger</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../helpers.html#mellea.helpers.fancy_logger.RESTHandler"><code class="docutils literal notranslate"><span class="pre">RESTHandler</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../helpers.html#mellea.helpers.fancy_logger.RESTHandler.__init__"><code class="docutils literal notranslate"><span class="pre">RESTHandler.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../helpers.html#mellea.helpers.fancy_logger.RESTHandler.emit"><code class="docutils literal notranslate"><span class="pre">RESTHandler.emit()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../helpers.html#mellea.helpers.fancy_logger.JsonFormatter"><code class="docutils literal notranslate"><span class="pre">JsonFormatter</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../helpers.html#mellea.helpers.fancy_logger.JsonFormatter.format"><code class="docutils literal notranslate"><span class="pre">JsonFormatter.format()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../helpers.html#mellea.helpers.fancy_logger.CustomFormatter"><code class="docutils literal notranslate"><span class="pre">CustomFormatter</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../helpers.html#mellea.helpers.fancy_logger.CustomFormatter.cyan"><code class="docutils literal notranslate"><span class="pre">CustomFormatter.cyan</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../helpers.html#mellea.helpers.fancy_logger.CustomFormatter.grey"><code class="docutils literal notranslate"><span class="pre">CustomFormatter.grey</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../helpers.html#mellea.helpers.fancy_logger.CustomFormatter.yellow"><code class="docutils literal notranslate"><span class="pre">CustomFormatter.yellow</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../helpers.html#mellea.helpers.fancy_logger.CustomFormatter.red"><code class="docutils literal notranslate"><span class="pre">CustomFormatter.red</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../helpers.html#mellea.helpers.fancy_logger.CustomFormatter.bold_red"><code class="docutils literal notranslate"><span class="pre">CustomFormatter.bold_red</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../helpers.html#mellea.helpers.fancy_logger.CustomFormatter.reset"><code class="docutils literal notranslate"><span class="pre">CustomFormatter.reset</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../helpers.html#mellea.helpers.fancy_logger.CustomFormatter.FORMATS"><code class="docutils literal notranslate"><span class="pre">CustomFormatter.FORMATS</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../helpers.html#mellea.helpers.fancy_logger.CustomFormatter.format"><code class="docutils literal notranslate"><span class="pre">CustomFormatter.format()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../helpers.html#mellea.helpers.fancy_logger.FancyLogger"><code class="docutils literal notranslate"><span class="pre">FancyLogger</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../helpers.html#mellea.helpers.fancy_logger.FancyLogger.logger"><code class="docutils literal notranslate"><span class="pre">FancyLogger.logger</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../helpers.html#mellea.helpers.fancy_logger.FancyLogger.CRITICAL"><code class="docutils literal notranslate"><span class="pre">FancyLogger.CRITICAL</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../helpers.html#mellea.helpers.fancy_logger.FancyLogger.FATAL"><code class="docutils literal notranslate"><span class="pre">FancyLogger.FATAL</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../helpers.html#mellea.helpers.fancy_logger.FancyLogger.ERROR"><code class="docutils literal notranslate"><span class="pre">FancyLogger.ERROR</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../helpers.html#mellea.helpers.fancy_logger.FancyLogger.WARNING"><code class="docutils literal notranslate"><span class="pre">FancyLogger.WARNING</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../helpers.html#mellea.helpers.fancy_logger.FancyLogger.WARN"><code class="docutils literal notranslate"><span class="pre">FancyLogger.WARN</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../helpers.html#mellea.helpers.fancy_logger.FancyLogger.INFO"><code class="docutils literal notranslate"><span class="pre">FancyLogger.INFO</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../helpers.html#mellea.helpers.fancy_logger.FancyLogger.DEBUG"><code class="docutils literal notranslate"><span class="pre">FancyLogger.DEBUG</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../helpers.html#mellea.helpers.fancy_logger.FancyLogger.NOTSET"><code class="docutils literal notranslate"><span class="pre">FancyLogger.NOTSET</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../helpers.html#mellea.helpers.fancy_logger.FancyLogger.get_logger"><code class="docutils literal notranslate"><span class="pre">FancyLogger.get_logger()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../helpers.html#module-mellea.helpers.openai_compatible_helpers">OpenAI Compatible Helpers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../helpers.html#mellea.helpers.openai_compatible_helpers.extract_model_tool_requests"><code class="docutils literal notranslate"><span class="pre">extract_model_tool_requests()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../helpers.html#mellea.helpers.openai_compatible_helpers.chat_completion_delta_merge"><code class="docutils literal notranslate"><span class="pre">chat_completion_delta_merge()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">Mellea</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">mellea.backends.adapters.adapter</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for mellea.backends.adapters.adapter</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;Module for adapters to backends.&quot;&quot;&quot;</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">abc</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">pathlib</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">TypeVar</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">granite_common.intrinsics</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">yaml</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">mellea.backends</span><span class="w"> </span><span class="kn">import</span> <span class="n">Backend</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">mellea.backends.adapters.catalog</span><span class="w"> </span><span class="kn">import</span> <span class="n">AdapterType</span><span class="p">,</span> <span class="n">fetch_intrinsic_metadata</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">mellea.backends.types</span><span class="w"> </span><span class="kn">import</span> <span class="n">_ServerType</span>
+
+
+<div class="viewcode-block" id="Adapter">
+<a class="viewcode-back" href="../../../../backends.html#mellea.backends.adapters.adapter.Adapter">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">Adapter</span><span class="p">(</span><span class="n">abc</span><span class="o">.</span><span class="n">ABC</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;An adapter that can be added to a single backend.&quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="Adapter.__init__">
+<a class="viewcode-back" href="../../../../backends.html#mellea.backends.adapters.adapter.Adapter.__init__">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">adapter_type</span><span class="p">:</span> <span class="n">AdapterType</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;An adapter that can be added to a backend.</span>
+
+<span class="sd">        Note: An adapter can only be added to a single backend.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            name: name of the adapter; when referencing this adapter, use</span>
+<span class="sd">                adapter.qualified_name</span>
+<span class="sd">            adapter_type: enum describing what type of adapter it is (ie LORA / ALORA)</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">adapter_type</span> <span class="o">=</span> <span class="n">adapter_type</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">qualified_name</span> <span class="o">=</span> <span class="n">name</span> <span class="o">+</span> <span class="s2">&quot;_&quot;</span> <span class="o">+</span> <span class="n">adapter_type</span><span class="o">.</span><span class="n">value</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;the name of the adapter to use when loading / looking it up&quot;&quot;&quot;</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">backend</span><span class="p">:</span> <span class="n">Backend</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;set when the adapter is added to a backend&quot;&quot;&quot;</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">path</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;set when the adapter is added to a backend&quot;&quot;&quot;</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="OpenAIAdapter">
+<a class="viewcode-back" href="../../../../backends.html#mellea.backends.adapters.adapter.OpenAIAdapter">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">OpenAIAdapter</span><span class="p">(</span><span class="n">Adapter</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Adapter for OpenAIBackends.&quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="OpenAIAdapter.get_open_ai_path">
+<a class="viewcode-back" href="../../../../backends.html#mellea.backends.adapters.adapter.OpenAIAdapter.get_open_ai_path">[docs]</a>
+    <span class="nd">@abc</span><span class="o">.</span><span class="n">abstractmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_open_ai_path</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">base_model_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">server_type</span><span class="p">:</span> <span class="n">_ServerType</span> <span class="o">=</span> <span class="n">_ServerType</span><span class="o">.</span><span class="n">LOCALHOST</span><span class="p">,</span>
+        <span class="n">remote_path</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the path needed to load the adapter.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            base_model_name: the base model; typically the last part of the huggingface model id like &quot;granite-3.3-8b-instruct&quot;</span>
+<span class="sd">            server_type: the server type (ie LOCALHOST / OPENAI); usually the backend has information on this</span>
+<span class="sd">            remote_path: optional; used only if the server_type is REMOTE_VLLM; base path at which to find the adapter</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="o">...</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="LocalHFAdapter">
+<a class="viewcode-back" href="../../../../backends.html#mellea.backends.adapters.adapter.LocalHFAdapter">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">LocalHFAdapter</span><span class="p">(</span><span class="n">Adapter</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Adapter for LocalHFBackends.&quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="LocalHFAdapter.get_local_hf_path">
+<a class="viewcode-back" href="../../../../backends.html#mellea.backends.adapters.adapter.LocalHFAdapter.get_local_hf_path">[docs]</a>
+    <span class="nd">@abc</span><span class="o">.</span><span class="n">abstractmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_local_hf_path</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">base_model_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the path needed to load the adapter.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            base_model_name: the base model; typically the last part of the huggingface model id like &quot;granite-3.3-8b-instruct&quot;</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="o">...</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="GraniteCommonAdapter">
+<a class="viewcode-back" href="../../../../backends.html#mellea.backends.adapters.adapter.GraniteCommonAdapter">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">GraniteCommonAdapter</span><span class="p">(</span><span class="n">OpenAIAdapter</span><span class="p">,</span> <span class="n">LocalHFAdapter</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Adapter for intrinsics that utilize the ``granite-common`` library.&quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="GraniteCommonAdapter.__init__">
+<a class="viewcode-back" href="../../../../backends.html#mellea.backends.adapters.adapter.GraniteCommonAdapter.__init__">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">intrinsic_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">adapter_type</span><span class="p">:</span> <span class="n">AdapterType</span> <span class="o">=</span> <span class="n">AdapterType</span><span class="o">.</span><span class="n">ALORA</span><span class="p">,</span>
+        <span class="n">config_file</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">config_dict</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">base_model_name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Entry point for creating GraniteCommonAdapter objects.</span>
+
+<span class="sd">        An adapter that can be added to either an `OpenAIBackend` or a `LocalHFBackend`.</span>
+<span class="sd">        Most intrinsics support LoRA or aLoRA adapter types.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            intrinsic_name: name of the intrinsic; the local name of the loaded adapter</span>
+<span class="sd">                that implements this intrinsic will be adapter.qualified_name</span>
+<span class="sd">            adapter_type: enum describing what type of adapter it is (ie LORA / ALORA)</span>
+<span class="sd">            config_file: optional; file for defining the intrinsic / transformations</span>
+<span class="sd">            config_dict: optional; dict for defining the intrinsic / transformations</span>
+<span class="sd">            base_model_name: optional; if provided with no config_file/config_dict,</span>
+<span class="sd">                will be used to look up the granite_common config for this adapter</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">intrinsic_name</span><span class="p">,</span> <span class="n">adapter_type</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">intrinsic_name</span> <span class="o">=</span> <span class="n">intrinsic_name</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">intrinsic_metadata</span> <span class="o">=</span> <span class="n">fetch_intrinsic_metadata</span><span class="p">(</span><span class="n">intrinsic_name</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">base_model_name</span> <span class="o">=</span> <span class="n">base_model_name</span>
+
+        <span class="k">if</span> <span class="n">adapter_type</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">intrinsic_metadata</span><span class="o">.</span><span class="n">adapter_types</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;Intrinsic &#39;</span><span class="si">{</span><span class="n">intrinsic_name</span><span class="si">}</span><span class="s2">&#39; not available as an adapter of type &quot;</span>
+                <span class="sa">f</span><span class="s2">&quot;&#39;</span><span class="si">{</span><span class="n">adapter_type</span><span class="si">}</span><span class="s2">. Available types are &quot;</span>
+                <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">intrinsic_metadata</span><span class="o">.</span><span class="n">adapter_types</span><span class="si">}</span><span class="s2">.&quot;</span>
+            <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">adapter_type</span> <span class="o">=</span> <span class="n">adapter_type</span>
+
+        <span class="c1"># If any of the optional params are specified, attempt to set up the</span>
+        <span class="c1"># config for the intrinsic here.</span>
+        <span class="k">if</span> <span class="n">config_file</span> <span class="ow">and</span> <span class="n">config_dict</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;Conflicting values for config_file and config_dict &quot;</span>
+                <span class="sa">f</span><span class="s2">&quot;parameters provided. Values were </span><span class="si">{</span><span class="n">config_file</span><span class="si">=}</span><span class="s2"> &quot;</span>
+                <span class="sa">f</span><span class="s2">&quot;and </span><span class="si">{</span><span class="n">config_dict</span><span class="si">=}</span><span class="s2">&quot;</span>
+            <span class="p">)</span>
+        <span class="k">if</span> <span class="n">config_file</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">config_dict</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">base_model_name</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="s2">&quot;At least one of [config_file, config_dict, base_model_name] &quot;</span>
+                <span class="s2">&quot;must be provided.&quot;</span>
+            <span class="p">)</span>
+        <span class="k">if</span> <span class="n">config_file</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">config_dict</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">base_model_name</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">,</span> <span class="p">(</span>
+                <span class="s2">&quot;must provide `base_model_name` if not providing a `config_file` or `config_dict`&quot;</span>
+            <span class="p">)</span>
+            <span class="c1"># We&#39;re converting the adapter type to a boolean flag here.</span>
+            <span class="k">assert</span> <span class="n">adapter_type</span> <span class="ow">in</span> <span class="p">(</span><span class="n">AdapterType</span><span class="o">.</span><span class="n">ALORA</span><span class="p">,</span> <span class="n">AdapterType</span><span class="o">.</span><span class="n">LORA</span><span class="p">),</span> <span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">adapter_type</span><span class="si">}</span><span class="s2"> not supported&quot;</span>
+            <span class="p">)</span>
+            <span class="n">is_alora</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">adapter_type</span> <span class="o">==</span> <span class="n">AdapterType</span><span class="o">.</span><span class="n">ALORA</span>
+            <span class="n">config_file</span> <span class="o">=</span> <span class="n">granite_common</span><span class="o">.</span><span class="n">intrinsics</span><span class="o">.</span><span class="n">obtain_io_yaml</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">intrinsic_name</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">base_model_name</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">intrinsic_metadata</span><span class="o">.</span><span class="n">repo_id</span><span class="p">,</span>
+                <span class="n">alora</span><span class="o">=</span><span class="n">is_alora</span><span class="p">,</span>
+            <span class="p">)</span>
+        <span class="k">if</span> <span class="n">config_file</span><span class="p">:</span>
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">config_file</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+                <span class="n">config_dict</span> <span class="o">=</span> <span class="n">yaml</span><span class="o">.</span><span class="n">safe_load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+                <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">config_dict</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+                    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                        <span class="sa">f</span><span class="s2">&quot;YAML file </span><span class="si">{</span><span class="n">config_file</span><span class="si">}</span><span class="s2"> does not evaluate to a &quot;</span>
+                        <span class="sa">f</span><span class="s2">&quot;dictionary when parsed.&quot;</span>
+                    <span class="p">)</span>
+        <span class="k">assert</span> <span class="n">config_dict</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>  <span class="c1"># Code above should initialize this variable</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="n">config_dict</span></div>
+
+
+<div class="viewcode-block" id="GraniteCommonAdapter.get_open_ai_path">
+<a class="viewcode-back" href="../../../../backends.html#mellea.backends.adapters.adapter.GraniteCommonAdapter.get_open_ai_path">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_open_ai_path</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">base_model_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">server_type</span><span class="p">:</span> <span class="n">_ServerType</span> <span class="o">=</span> <span class="n">_ServerType</span><span class="o">.</span><span class="n">LOCALHOST</span><span class="p">,</span>
+        <span class="n">remote_path</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the path needed to load the adapter.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            base_model_name: the base model; typically the last part of the huggingface</span>
+<span class="sd">                model id like &quot;granite-3.3-8b-instruct&quot;</span>
+<span class="sd">            server_type: the server type (ie LOCALHOST / OPENAI); usually the backend</span>
+<span class="sd">                has information on this</span>
+<span class="sd">            remote_path: optional; used only if the server_type is REMOTE_VLLM; base</span>
+<span class="sd">                path at which to find the adapter</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">server_type</span> <span class="o">==</span> <span class="n">_ServerType</span><span class="o">.</span><span class="n">LOCALHOST</span><span class="p">:</span>
+            <span class="n">path</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">download_and_get_path</span><span class="p">(</span><span class="n">base_model_name</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">server_type</span> <span class="o">==</span> <span class="n">_ServerType</span><span class="o">.</span><span class="n">REMOTE_VLLM</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">remote_path</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">remote_path</span> <span class="o">=</span> <span class="s2">&quot;rag-intrinsics-lib&quot;</span>
+            <span class="n">path</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_path_on_remote</span><span class="p">(</span><span class="n">base_model_name</span><span class="p">,</span> <span class="n">remote_path</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="si">}</span><span class="s2"> not supported for OpenAIBackend with server_type: </span><span class="si">{</span><span class="n">server_type</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">path</span></div>
+
+
+<div class="viewcode-block" id="GraniteCommonAdapter.get_local_hf_path">
+<a class="viewcode-back" href="../../../../backends.html#mellea.backends.adapters.adapter.GraniteCommonAdapter.get_local_hf_path">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_local_hf_path</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">base_model_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the path needed to load the adapter.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            base_model_name: the base model; typically the last part of the huggingface</span>
+<span class="sd">                model id like &quot;granite-3.3-8b-instruct&quot;</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">download_and_get_path</span><span class="p">(</span><span class="n">base_model_name</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="GraniteCommonAdapter.download_and_get_path">
+<a class="viewcode-back" href="../../../../backends.html#mellea.backends.adapters.adapter.GraniteCommonAdapter.download_and_get_path">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">download_and_get_path</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">base_model_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Downloads the required rag intrinsics files if necessary and returns the path to them.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            base_model_name: the base model; typically the last part of the huggingface</span>
+<span class="sd">                model id like &quot;granite-3.3-8b-instruct&quot;</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            a path to the files</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">is_alora</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">adapter_type</span> <span class="o">==</span> <span class="n">AdapterType</span><span class="o">.</span><span class="n">ALORA</span>
+        <span class="k">return</span> <span class="nb">str</span><span class="p">(</span>
+            <span class="n">granite_common</span><span class="o">.</span><span class="n">intrinsics</span><span class="o">.</span><span class="n">obtain_lora</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">intrinsic_name</span><span class="p">,</span>
+                <span class="n">base_model_name</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">intrinsic_metadata</span><span class="o">.</span><span class="n">repo_id</span><span class="p">,</span>
+                <span class="n">alora</span><span class="o">=</span><span class="n">is_alora</span><span class="p">,</span>
+            <span class="p">)</span>
+        <span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="GraniteCommonAdapter.get_path_on_remote">
+<a class="viewcode-back" href="../../../../backends.html#mellea.backends.adapters.adapter.GraniteCommonAdapter.get_path_on_remote">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_path_on_remote</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">base_model_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">base_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Assumes the files have already been downloaded on the remote server.&quot;&quot;&quot;</span>
+        <span class="c1"># TODO: This will break when we switch to the new repo!!!</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;./</span><span class="si">{</span><span class="n">base_path</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">adapter_type</span><span class="o">.</span><span class="n">value</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">base_model_name</span><span class="si">}</span><span class="s2">&quot;</span></div>
+</div>
+
+
+
+<span class="n">T</span> <span class="o">=</span> <span class="n">TypeVar</span><span class="p">(</span><span class="s2">&quot;T&quot;</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="get_adapter_for_intrinsic">
+<a class="viewcode-back" href="../../../../backends.html#mellea.backends.adapters.adapter.get_adapter_for_intrinsic">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_adapter_for_intrinsic</span><span class="p">(</span>
+    <span class="n">intrinsic_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="n">intrinsic_adapter_types</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">AdapterType</span><span class="p">]</span> <span class="o">|</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">AdapterType</span><span class="p">,</span> <span class="o">...</span><span class="p">],</span>
+    <span class="n">available_adapters</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">T</span><span class="p">],</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">T</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Finds an adapter from a dict of available adapters based on the intrinsic name and its allowed adapter types.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        repo_id: Name of Hugging Face Hub repository containing the adapters that</span>
+<span class="sd">                implement the intrinsic</span>
+<span class="sd">        intrinsic_name: the name of the intrinsic, like &quot;answerability&quot;</span>
+<span class="sd">        intrinsic_adapter_types: the adapter types allowed for this intrinsic, like ALORA / LORA</span>
+<span class="sd">        available_adapters: the available adapters to choose from; maps adapter.qualified_name to the Adapter</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        an Adapter if found; else None</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">adapter</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="k">for</span> <span class="n">adapter_type</span> <span class="ow">in</span> <span class="n">intrinsic_adapter_types</span><span class="p">:</span>
+        <span class="n">qualified_name</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">intrinsic_name</span><span class="si">}</span><span class="s2">_</span><span class="si">{</span><span class="n">adapter_type</span><span class="o">.</span><span class="n">value</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="n">adapter</span> <span class="o">=</span> <span class="n">available_adapters</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">qualified_name</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">adapter</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">break</span>
+
+    <span class="k">return</span> <span class="n">adapter</span></div>
+
+
+
+<div class="viewcode-block" id="AdapterMixin">
+<a class="viewcode-back" href="../../../../backends.html#mellea.backends.adapters.adapter.AdapterMixin">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">AdapterMixin</span><span class="p">(</span><span class="n">Backend</span><span class="p">,</span> <span class="n">abc</span><span class="o">.</span><span class="n">ABC</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Mixin class for backends capable of utilizing adapters.&quot;&quot;&quot;</span>
+
+    <span class="nd">@property</span>
+    <span class="nd">@abc</span><span class="o">.</span><span class="n">abstractmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">base_model_name</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Returns the base_model_id of the model used by the backend. For example, `granite-3.3-8b-instruct` for `ibm-granite/granite-3.3-8b-instruct`.&quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="AdapterMixin.add_adapter">
+<a class="viewcode-back" href="../../../../backends.html#mellea.backends.adapters.adapter.AdapterMixin.add_adapter">[docs]</a>
+    <span class="nd">@abc</span><span class="o">.</span><span class="n">abstractmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">add_adapter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Adds the given adapter to the backend. Must not have been added to a different backend.&quot;&quot;&quot;</span></div>
+
+
+<div class="viewcode-block" id="AdapterMixin.load_adapter">
+<a class="viewcode-back" href="../../../../backends.html#mellea.backends.adapters.adapter.AdapterMixin.load_adapter">[docs]</a>
+    <span class="nd">@abc</span><span class="o">.</span><span class="n">abstractmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">load_adapter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">adapter_qualified_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Loads the given adapter for the backend. Must have previously been added.&quot;&quot;&quot;</span></div>
+
+
+<div class="viewcode-block" id="AdapterMixin.unload_adapter">
+<a class="viewcode-back" href="../../../../backends.html#mellea.backends.adapters.adapter.AdapterMixin.unload_adapter">[docs]</a>
+    <span class="nd">@abc</span><span class="o">.</span><span class="n">abstractmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">unload_adapter</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">adapter_qualified_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Unloads the given adapter from the backend.&quot;&quot;&quot;</span></div>
+
+
+<div class="viewcode-block" id="AdapterMixin.list_adapters">
+<a class="viewcode-back" href="../../../../backends.html#mellea.backends.adapters.adapter.AdapterMixin.list_adapters">[docs]</a>
+    <span class="nd">@abc</span><span class="o">.</span><span class="n">abstractmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">list_adapters</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Lists the adapters added via add_adapter().</span>
+
+<span class="sd">        :returns: list of adapter names that are currently registered with this backend</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">raise</span> <span class="ne">NotImplementedError</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">&quot;Backend type </span><span class="si">{</span><span class="nb">type</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span><span class="si">}</span><span class="s2"> does not implement list_adapters() API call.&quot;</span>
+        <span class="p">)</span></div>
+</div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Mellea Contributors.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,1405 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Index &mdash; Mellea unknown documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=3f1b9271"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="#" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Mellea
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="quickref.html">Quick Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="quickref.html#core-session-methods">Core Session Methods</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="quickref.html#creating-a-session">Creating a Session</a></li>
+<li class="toctree-l3"><a class="reference internal" href="quickref.html#key-methods">Key Methods</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="quickref.html#instruct">instruct</a></li>
+<li class="toctree-l4"><a class="reference internal" href="quickref.html#chat">chat</a></li>
+<li class="toctree-l4"><a class="reference internal" href="quickref.html#generate">generate</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="quickref.html#functional-api">Functional API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="quickref.html#instruct-functional">instruct (functional)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="quickref.html#sampling-strategies">Sampling Strategies</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="quickref.html#rejectionsamplingstrategy">RejectionSamplingStrategy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="quickref.html#bestofnsamplingstrategy">BestOfNSamplingStrategy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="quickref.html#majorityvotingsamplingstrategy">MajorityVotingSamplingStrategy</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="quickref.html#requirements">Requirements</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="quickref.html#creating-requirements">Creating Requirements</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="quickref.html#see-also">See Also</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="session_api.html">Session API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="session_api.html#creating-a-session">Creating a Session</a></li>
+<li class="toctree-l2"><a class="reference internal" href="session_api.html#melleasession-class">MelleaSession Class</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="session_api.html#mellea.stdlib.session.MelleaSession"><code class="docutils literal notranslate"><span class="pre">mellea.stdlib.session.MelleaSession</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="session_api.html#mellea.stdlib.session.MelleaSession.instruct"><code class="docutils literal notranslate"><span class="pre">mellea.stdlib.session.MelleaSession.instruct()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="session_api.html#mellea.stdlib.session.MelleaSession.chat"><code class="docutils literal notranslate"><span class="pre">mellea.stdlib.session.MelleaSession.chat()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="session_api.html#mellea.stdlib.session.MelleaSession.generate"><code class="docutils literal notranslate"><span class="pre">mellea.stdlib.session.MelleaSession.generate()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="session_api.html#mellea.stdlib.session.MelleaSession.ctx"><code class="docutils literal notranslate"><span class="pre">mellea.stdlib.session.MelleaSession.ctx</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="session_api.html#mellea.stdlib.session.MelleaSession.backend"><code class="docutils literal notranslate"><span class="pre">mellea.stdlib.session.MelleaSession.backend</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="session_api.html#mellea.stdlib.session.MelleaSession.model_options"><code class="docutils literal notranslate"><span class="pre">mellea.stdlib.session.MelleaSession.model_options</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="session_api.html#functional-api">Functional API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="session_api.html#see-also">See Also</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="stdlib.html">Standard Library (stdlib)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="stdlib.html#core-modules">Core Modules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="stdlib.html#module-mellea.stdlib.chat">Chat</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="stdlib.html#mellea.stdlib.chat.Message"><code class="docutils literal notranslate"><span class="pre">Message</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="stdlib.html#mellea.stdlib.chat.ToolMessage"><code class="docutils literal notranslate"><span class="pre">ToolMessage</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="stdlib.html#mellea.stdlib.chat.as_chat_history"><code class="docutils literal notranslate"><span class="pre">as_chat_history()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="stdlib.html#module-mellea.stdlib.functional">Functional</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="stdlib.html#mellea.stdlib.functional.act"><code class="docutils literal notranslate"><span class="pre">act()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="stdlib.html#mellea.stdlib.functional.instruct"><code class="docutils literal notranslate"><span class="pre">instruct()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="stdlib.html#mellea.stdlib.functional.chat"><code class="docutils literal notranslate"><span class="pre">chat()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="stdlib.html#mellea.stdlib.functional.validate"><code class="docutils literal notranslate"><span class="pre">validate()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="stdlib.html#mellea.stdlib.functional.query"><code class="docutils literal notranslate"><span class="pre">query()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="stdlib.html#mellea.stdlib.functional.transform"><code class="docutils literal notranslate"><span class="pre">transform()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="stdlib.html#mellea.stdlib.functional.aact"><code class="docutils literal notranslate"><span class="pre">aact()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="stdlib.html#mellea.stdlib.functional.ainstruct"><code class="docutils literal notranslate"><span class="pre">ainstruct()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="stdlib.html#mellea.stdlib.functional.achat"><code class="docutils literal notranslate"><span class="pre">achat()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="stdlib.html#mellea.stdlib.functional.avalidate"><code class="docutils literal notranslate"><span class="pre">avalidate()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="stdlib.html#mellea.stdlib.functional.aquery"><code class="docutils literal notranslate"><span class="pre">aquery()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="stdlib.html#mellea.stdlib.functional.atransform"><code class="docutils literal notranslate"><span class="pre">atransform()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="stdlib.html#module-mellea.stdlib.session">Session</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="stdlib.html#mellea.stdlib.session.get_session"><code class="docutils literal notranslate"><span class="pre">get_session()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="stdlib.html#mellea.stdlib.session.backend_name_to_class"><code class="docutils literal notranslate"><span class="pre">backend_name_to_class()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="stdlib.html#mellea.stdlib.session.start_session"><code class="docutils literal notranslate"><span class="pre">start_session()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="stdlib.html#mellea.stdlib.session.MelleaSession"><code class="docutils literal notranslate"><span class="pre">MelleaSession</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="stdlib.html#module-mellea.stdlib.test_based_eval">Test-Based Evaluation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="stdlib.html#mellea.stdlib.test_based_eval.Message"><code class="docutils literal notranslate"><span class="pre">Message</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="stdlib.html#mellea.stdlib.test_based_eval.Example"><code class="docutils literal notranslate"><span class="pre">Example</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="stdlib.html#mellea.stdlib.test_based_eval.TestData"><code class="docutils literal notranslate"><span class="pre">TestData</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="stdlib.html#mellea.stdlib.test_based_eval.TestBasedEval"><code class="docutils literal notranslate"><span class="pre">TestBasedEval</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="stdlib.html#sampling-strategies">Sampling Strategies</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="stdlib.html#module-mellea.stdlib.sampling.base">Base</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="stdlib.html#mellea.stdlib.sampling.base.BaseSamplingStrategy"><code class="docutils literal notranslate"><span class="pre">BaseSamplingStrategy</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="stdlib.html#mellea.stdlib.sampling.base.RejectionSamplingStrategy"><code class="docutils literal notranslate"><span class="pre">RejectionSamplingStrategy</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="stdlib.html#mellea.stdlib.sampling.base.RepairTemplateStrategy"><code class="docutils literal notranslate"><span class="pre">RepairTemplateStrategy</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="stdlib.html#mellea.stdlib.sampling.base.MultiTurnStrategy"><code class="docutils literal notranslate"><span class="pre">MultiTurnStrategy</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="stdlib.html#module-mellea.stdlib.sampling.best_of_n">Best of N</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="stdlib.html#mellea.stdlib.sampling.best_of_n.BestofNSamplingStrategy"><code class="docutils literal notranslate"><span class="pre">BestofNSamplingStrategy</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="stdlib.html#module-mellea.stdlib.sampling.budget_forcing">Budget Forcing</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="stdlib.html#mellea.stdlib.sampling.budget_forcing.BudgetForcingSamplingStrategy"><code class="docutils literal notranslate"><span class="pre">BudgetForcingSamplingStrategy</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="stdlib.html#majority-voting">Majority Voting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="stdlib.html#module-mellea.stdlib.sampling.types">Types</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="stdlib.html#mellea.stdlib.sampling.types.SamplingResult"><code class="docutils literal notranslate"><span class="pre">SamplingResult</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="stdlib.html#mellea.stdlib.sampling.types.SamplingStrategy"><code class="docutils literal notranslate"><span class="pre">SamplingStrategy</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="stdlib.html#rewards">Rewards</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="stdlib.html#prm-scorer">PRM Scorer</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="stdlib.html#document-processing">Document Processing</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="stdlib.html#rich-document">Rich Document</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="stdlib.html#requirement-libraries">Requirement Libraries</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="stdlib.html#markdown">Markdown</a></li>
+<li class="toctree-l3"><a class="reference internal" href="stdlib.html#module-mellea.stdlib.reqlib.python">Python</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="stdlib.html#mellea.stdlib.reqlib.python.PythonExecutionReq"><code class="docutils literal notranslate"><span class="pre">PythonExecutionReq</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="stdlib.html#module-mellea.stdlib.reqlib.tools">Tools</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="stdlib.html#mellea.stdlib.reqlib.tools.uses_tool"><code class="docutils literal notranslate"><span class="pre">uses_tool()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="stdlib.html#mellea.stdlib.reqlib.tools.tool_arg_validator"><code class="docutils literal notranslate"><span class="pre">tool_arg_validator()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="backends.html">Backends</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="backends.html#core-backend-modules">Core Backend Modules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="backends.html#module-mellea.backends.types">Types</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="backends.html#mellea.backends.types.ModelOption"><code class="docutils literal notranslate"><span class="pre">ModelOption</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="backends.html#module-mellea.backends.formatter">Formatter</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="backends.html#mellea.backends.formatter.Formatter"><code class="docutils literal notranslate"><span class="pre">Formatter</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="backends.html#mellea.backends.formatter.TemplateFormatter"><code class="docutils literal notranslate"><span class="pre">TemplateFormatter</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="backends.html#mellea.backends.formatter.FormatterBackend"><code class="docutils literal notranslate"><span class="pre">FormatterBackend</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="backends.html#module-mellea.backends.cache">Cache</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="backends.html#mellea.backends.cache.Cache"><code class="docutils literal notranslate"><span class="pre">Cache</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="backends.html#mellea.backends.cache.SimpleLRUCache"><code class="docutils literal notranslate"><span class="pre">SimpleLRUCache</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="backends.html#module-mellea.backends.tools">Tools</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="backends.html#mellea.backends.tools.add_tools_from_model_options"><code class="docutils literal notranslate"><span class="pre">add_tools_from_model_options()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="backends.html#mellea.backends.tools.add_tools_from_context_actions"><code class="docutils literal notranslate"><span class="pre">add_tools_from_context_actions()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="backends.html#mellea.backends.tools.convert_tools_to_json"><code class="docutils literal notranslate"><span class="pre">convert_tools_to_json()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="backends.html#mellea.backends.tools.json_extraction"><code class="docutils literal notranslate"><span class="pre">json_extraction()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="backends.html#mellea.backends.tools.find_func"><code class="docutils literal notranslate"><span class="pre">find_func()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="backends.html#mellea.backends.tools.parse_tools"><code class="docutils literal notranslate"><span class="pre">parse_tools()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="backends.html#backend-implementations">Backend Implementations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="backends.html#huggingface">HuggingFace</a></li>
+<li class="toctree-l3"><a class="reference internal" href="backends.html#module-mellea.backends.openai">OpenAI</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="backends.html#mellea.backends.openai.OpenAIBackend"><code class="docutils literal notranslate"><span class="pre">OpenAIBackend</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="backends.html#litellm">LiteLLM</a></li>
+<li class="toctree-l3"><a class="reference internal" href="backends.html#vllm">vLLM</a></li>
+<li class="toctree-l3"><a class="reference internal" href="backends.html#module-mellea.backends.ollama">Ollama</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="backends.html#mellea.backends.ollama.OllamaModelBackend"><code class="docutils literal notranslate"><span class="pre">OllamaModelBackend</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="backends.html#mellea.backends.ollama.chat_response_delta_merge"><code class="docutils literal notranslate"><span class="pre">chat_response_delta_merge()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="backends.html#module-mellea.backends.watsonx">WatsonX</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="backends.html#mellea.backends.watsonx.WatsonxAIBackend"><code class="docutils literal notranslate"><span class="pre">WatsonxAIBackend</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="backends.html#module-mellea.backends.dummy">Dummy</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="backends.html#mellea.backends.dummy.DummyBackend"><code class="docutils literal notranslate"><span class="pre">DummyBackend</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="backends.html#adapters">Adapters</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="backends.html#module-mellea.backends.adapters.adapter">Adapter</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="backends.html#mellea.backends.adapters.adapter.Adapter"><code class="docutils literal notranslate"><span class="pre">Adapter</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="backends.html#mellea.backends.adapters.adapter.OpenAIAdapter"><code class="docutils literal notranslate"><span class="pre">OpenAIAdapter</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="backends.html#mellea.backends.adapters.adapter.LocalHFAdapter"><code class="docutils literal notranslate"><span class="pre">LocalHFAdapter</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="backends.html#mellea.backends.adapters.adapter.GraniteCommonAdapter"><code class="docutils literal notranslate"><span class="pre">GraniteCommonAdapter</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="backends.html#mellea.backends.adapters.adapter.get_adapter_for_intrinsic"><code class="docutils literal notranslate"><span class="pre">get_adapter_for_intrinsic()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="backends.html#mellea.backends.adapters.adapter.AdapterMixin"><code class="docutils literal notranslate"><span class="pre">AdapterMixin</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="backends.html#module-mellea.backends.adapters.catalog">Catalog</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="backends.html#mellea.backends.adapters.catalog.AdapterType"><code class="docutils literal notranslate"><span class="pre">AdapterType</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="backends.html#mellea.backends.adapters.catalog.IntriniscsCatalogEntry"><code class="docutils literal notranslate"><span class="pre">IntriniscsCatalogEntry</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="backends.html#mellea.backends.adapters.catalog.known_intrinsic_names"><code class="docutils literal notranslate"><span class="pre">known_intrinsic_names()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="backends.html#mellea.backends.adapters.catalog.fetch_intrinsic_metadata"><code class="docutils literal notranslate"><span class="pre">fetch_intrinsic_metadata()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="backends.html#process-reward-models">Process Reward Models</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="backends.html#huggingface-prms">HuggingFace PRMs</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="helpers.html">Helpers</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="helpers.html#module-mellea.helpers.async_helpers">Async Helpers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="helpers.html#mellea.helpers.async_helpers.send_to_queue"><code class="docutils literal notranslate"><span class="pre">send_to_queue()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="helpers.html#mellea.helpers.async_helpers.wait_for_all_mots"><code class="docutils literal notranslate"><span class="pre">wait_for_all_mots()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="helpers.html#mellea.helpers.async_helpers.get_current_event_loop"><code class="docutils literal notranslate"><span class="pre">get_current_event_loop()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="helpers.html#mellea.helpers.async_helpers.ClientCache"><code class="docutils literal notranslate"><span class="pre">ClientCache</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="helpers.html#mellea.helpers.async_helpers.ClientCache.__init__"><code class="docutils literal notranslate"><span class="pre">ClientCache.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="helpers.html#mellea.helpers.async_helpers.ClientCache.current_size"><code class="docutils literal notranslate"><span class="pre">ClientCache.current_size()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="helpers.html#mellea.helpers.async_helpers.ClientCache.get"><code class="docutils literal notranslate"><span class="pre">ClientCache.get()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="helpers.html#mellea.helpers.async_helpers.ClientCache.put"><code class="docutils literal notranslate"><span class="pre">ClientCache.put()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="helpers.html#module-mellea.helpers.event_loop_helper">Event Loop Helper</a></li>
+<li class="toctree-l2"><a class="reference internal" href="helpers.html#module-mellea.helpers.fancy_logger">Fancy Logger</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="helpers.html#mellea.helpers.fancy_logger.RESTHandler"><code class="docutils literal notranslate"><span class="pre">RESTHandler</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="helpers.html#mellea.helpers.fancy_logger.RESTHandler.__init__"><code class="docutils literal notranslate"><span class="pre">RESTHandler.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="helpers.html#mellea.helpers.fancy_logger.RESTHandler.emit"><code class="docutils literal notranslate"><span class="pre">RESTHandler.emit()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="helpers.html#mellea.helpers.fancy_logger.JsonFormatter"><code class="docutils literal notranslate"><span class="pre">JsonFormatter</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="helpers.html#mellea.helpers.fancy_logger.JsonFormatter.format"><code class="docutils literal notranslate"><span class="pre">JsonFormatter.format()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="helpers.html#mellea.helpers.fancy_logger.CustomFormatter"><code class="docutils literal notranslate"><span class="pre">CustomFormatter</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="helpers.html#mellea.helpers.fancy_logger.CustomFormatter.cyan"><code class="docutils literal notranslate"><span class="pre">CustomFormatter.cyan</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="helpers.html#mellea.helpers.fancy_logger.CustomFormatter.grey"><code class="docutils literal notranslate"><span class="pre">CustomFormatter.grey</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="helpers.html#mellea.helpers.fancy_logger.CustomFormatter.yellow"><code class="docutils literal notranslate"><span class="pre">CustomFormatter.yellow</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="helpers.html#mellea.helpers.fancy_logger.CustomFormatter.red"><code class="docutils literal notranslate"><span class="pre">CustomFormatter.red</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="helpers.html#mellea.helpers.fancy_logger.CustomFormatter.bold_red"><code class="docutils literal notranslate"><span class="pre">CustomFormatter.bold_red</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="helpers.html#mellea.helpers.fancy_logger.CustomFormatter.reset"><code class="docutils literal notranslate"><span class="pre">CustomFormatter.reset</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="helpers.html#mellea.helpers.fancy_logger.CustomFormatter.FORMATS"><code class="docutils literal notranslate"><span class="pre">CustomFormatter.FORMATS</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="helpers.html#mellea.helpers.fancy_logger.CustomFormatter.format"><code class="docutils literal notranslate"><span class="pre">CustomFormatter.format()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="helpers.html#mellea.helpers.fancy_logger.FancyLogger"><code class="docutils literal notranslate"><span class="pre">FancyLogger</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="helpers.html#mellea.helpers.fancy_logger.FancyLogger.logger"><code class="docutils literal notranslate"><span class="pre">FancyLogger.logger</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="helpers.html#mellea.helpers.fancy_logger.FancyLogger.CRITICAL"><code class="docutils literal notranslate"><span class="pre">FancyLogger.CRITICAL</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="helpers.html#mellea.helpers.fancy_logger.FancyLogger.FATAL"><code class="docutils literal notranslate"><span class="pre">FancyLogger.FATAL</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="helpers.html#mellea.helpers.fancy_logger.FancyLogger.ERROR"><code class="docutils literal notranslate"><span class="pre">FancyLogger.ERROR</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="helpers.html#mellea.helpers.fancy_logger.FancyLogger.WARNING"><code class="docutils literal notranslate"><span class="pre">FancyLogger.WARNING</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="helpers.html#mellea.helpers.fancy_logger.FancyLogger.WARN"><code class="docutils literal notranslate"><span class="pre">FancyLogger.WARN</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="helpers.html#mellea.helpers.fancy_logger.FancyLogger.INFO"><code class="docutils literal notranslate"><span class="pre">FancyLogger.INFO</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="helpers.html#mellea.helpers.fancy_logger.FancyLogger.DEBUG"><code class="docutils literal notranslate"><span class="pre">FancyLogger.DEBUG</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="helpers.html#mellea.helpers.fancy_logger.FancyLogger.NOTSET"><code class="docutils literal notranslate"><span class="pre">FancyLogger.NOTSET</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="helpers.html#mellea.helpers.fancy_logger.FancyLogger.get_logger"><code class="docutils literal notranslate"><span class="pre">FancyLogger.get_logger()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="helpers.html#module-mellea.helpers.openai_compatible_helpers">OpenAI Compatible Helpers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="helpers.html#mellea.helpers.openai_compatible_helpers.extract_model_tool_requests"><code class="docutils literal notranslate"><span class="pre">extract_model_tool_requests()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="helpers.html#mellea.helpers.openai_compatible_helpers.chat_completion_delta_merge"><code class="docutils literal notranslate"><span class="pre">chat_completion_delta_merge()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Mellea</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Index</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+
+<h1 id="index">Index</h1>
+
+<div class="genindex-jumpbox">
+ <a href="#_"><strong>_</strong></a>
+ | <a href="#A"><strong>A</strong></a>
+ | <a href="#B"><strong>B</strong></a>
+ | <a href="#C"><strong>C</strong></a>
+ | <a href="#D"><strong>D</strong></a>
+ | <a href="#E"><strong>E</strong></a>
+ | <a href="#F"><strong>F</strong></a>
+ | <a href="#G"><strong>G</strong></a>
+ | <a href="#I"><strong>I</strong></a>
+ | <a href="#J"><strong>J</strong></a>
+ | <a href="#K"><strong>K</strong></a>
+ | <a href="#L"><strong>L</strong></a>
+ | <a href="#M"><strong>M</strong></a>
+ | <a href="#N"><strong>N</strong></a>
+ | <a href="#O"><strong>O</strong></a>
+ | <a href="#P"><strong>P</strong></a>
+ | <a href="#Q"><strong>Q</strong></a>
+ | <a href="#R"><strong>R</strong></a>
+ | <a href="#S"><strong>S</strong></a>
+ | <a href="#T"><strong>T</strong></a>
+ | <a href="#U"><strong>U</strong></a>
+ | <a href="#V"><strong>V</strong></a>
+ | <a href="#W"><strong>W</strong></a>
+ | <a href="#Y"><strong>Y</strong></a>
+ 
+</div>
+<h2 id="_">_</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="stdlib.html#mellea.stdlib.session.MelleaSession.__copy__">__copy__() (mellea.stdlib.session.MelleaSession method)</a>
+</li>
+      <li><a href="stdlib.html#mellea.stdlib.session.MelleaSession.__enter__">__enter__() (mellea.stdlib.session.MelleaSession method)</a>
+</li>
+      <li><a href="stdlib.html#mellea.stdlib.session.MelleaSession.__exit__">__exit__() (mellea.stdlib.session.MelleaSession method)</a>
+</li>
+      <li><a href="backends.html#mellea.backends.adapters.adapter.Adapter.__init__">__init__() (mellea.backends.adapters.adapter.Adapter method)</a>
+
+      <ul>
+        <li><a href="backends.html#mellea.backends.adapters.adapter.GraniteCommonAdapter.__init__">(mellea.backends.adapters.adapter.GraniteCommonAdapter method)</a>
+</li>
+        <li><a href="backends.html#mellea.backends.cache.SimpleLRUCache.__init__">(mellea.backends.cache.SimpleLRUCache method)</a>
+</li>
+        <li><a href="backends.html#mellea.backends.dummy.DummyBackend.__init__">(mellea.backends.dummy.DummyBackend method)</a>
+</li>
+        <li><a href="backends.html#mellea.backends.formatter.FormatterBackend.__init__">(mellea.backends.formatter.FormatterBackend method)</a>
+</li>
+        <li><a href="backends.html#mellea.backends.formatter.TemplateFormatter.__init__">(mellea.backends.formatter.TemplateFormatter method)</a>
+</li>
+        <li><a href="backends.html#mellea.backends.ollama.OllamaModelBackend.__init__">(mellea.backends.ollama.OllamaModelBackend method)</a>
+</li>
+        <li><a href="backends.html#mellea.backends.openai.OpenAIBackend.__init__">(mellea.backends.openai.OpenAIBackend method)</a>
+</li>
+        <li><a href="backends.html#mellea.backends.watsonx.WatsonxAIBackend.__init__">(mellea.backends.watsonx.WatsonxAIBackend method)</a>
+</li>
+        <li><a href="helpers.html#mellea.helpers.async_helpers.ClientCache.__init__">(mellea.helpers.async_helpers.ClientCache method)</a>
+</li>
+        <li><a href="helpers.html#mellea.helpers.fancy_logger.RESTHandler.__init__">(mellea.helpers.fancy_logger.RESTHandler method)</a>
+</li>
+        <li><a href="stdlib.html#mellea.stdlib.chat.Message.__init__">(mellea.stdlib.chat.Message method)</a>
+</li>
+        <li><a href="stdlib.html#mellea.stdlib.chat.ToolMessage.__init__">(mellea.stdlib.chat.ToolMessage method)</a>
+</li>
+        <li><a href="stdlib.html#mellea.stdlib.reqlib.python.PythonExecutionReq.__init__">(mellea.stdlib.reqlib.python.PythonExecutionReq method)</a>
+</li>
+        <li><a href="stdlib.html#mellea.stdlib.sampling.base.BaseSamplingStrategy.__init__">(mellea.stdlib.sampling.base.BaseSamplingStrategy method)</a>
+</li>
+        <li><a href="stdlib.html#mellea.stdlib.sampling.budget_forcing.BudgetForcingSamplingStrategy.__init__">(mellea.stdlib.sampling.budget_forcing.BudgetForcingSamplingStrategy method)</a>
+</li>
+        <li><a href="stdlib.html#mellea.stdlib.sampling.types.SamplingResult.__init__">(mellea.stdlib.sampling.types.SamplingResult method)</a>
+</li>
+        <li><a href="stdlib.html#mellea.stdlib.session.MelleaSession.__init__">(mellea.stdlib.session.MelleaSession method)</a>
+</li>
+        <li><a href="stdlib.html#mellea.stdlib.test_based_eval.TestBasedEval.__init__">(mellea.stdlib.test_based_eval.TestBasedEval method)</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="stdlib.html#mellea.stdlib.chat.Message.__str__">__str__() (mellea.stdlib.chat.Message method)</a>
+
+      <ul>
+        <li><a href="stdlib.html#mellea.stdlib.chat.ToolMessage.__str__">(mellea.stdlib.chat.ToolMessage method)</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="A">A</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="stdlib.html#mellea.stdlib.functional.aact">aact() (in module mellea.stdlib.functional)</a>
+
+      <ul>
+        <li><a href="stdlib.html#mellea.stdlib.session.MelleaSession.aact">(mellea.stdlib.session.MelleaSession method)</a>
+</li>
+      </ul></li>
+      <li><a href="stdlib.html#mellea.stdlib.functional.achat">achat() (in module mellea.stdlib.functional)</a>
+
+      <ul>
+        <li><a href="stdlib.html#mellea.stdlib.session.MelleaSession.achat">(mellea.stdlib.session.MelleaSession method)</a>
+</li>
+      </ul></li>
+      <li><a href="stdlib.html#mellea.stdlib.functional.act">act() (in module mellea.stdlib.functional)</a>
+
+      <ul>
+        <li><a href="stdlib.html#mellea.stdlib.session.MelleaSession.act">(mellea.stdlib.session.MelleaSession method)</a>
+</li>
+      </ul></li>
+      <li><a href="backends.html#mellea.backends.adapters.adapter.Adapter">Adapter (class in mellea.backends.adapters.adapter)</a>
+</li>
+      <li><a href="backends.html#mellea.backends.adapters.catalog.IntriniscsCatalogEntry.adapter_types">adapter_types (mellea.backends.adapters.catalog.IntriniscsCatalogEntry attribute)</a>
+</li>
+      <li><a href="backends.html#mellea.backends.adapters.adapter.AdapterMixin">AdapterMixin (class in mellea.backends.adapters.adapter)</a>
+</li>
+      <li><a href="backends.html#mellea.backends.adapters.catalog.AdapterType">AdapterType (class in mellea.backends.adapters.catalog)</a>
+</li>
+      <li><a href="backends.html#mellea.backends.adapters.adapter.AdapterMixin.add_adapter">add_adapter() (mellea.backends.adapters.adapter.AdapterMixin method)</a>
+
+      <ul>
+        <li><a href="backends.html#mellea.backends.openai.OpenAIBackend.add_adapter">(mellea.backends.openai.OpenAIBackend method)</a>
+</li>
+      </ul></li>
+      <li><a href="backends.html#mellea.backends.tools.add_tools_from_context_actions">add_tools_from_context_actions() (in module mellea.backends.tools)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="backends.html#mellea.backends.tools.add_tools_from_model_options">add_tools_from_model_options() (in module mellea.backends.tools)</a>
+</li>
+      <li><a href="stdlib.html#mellea.stdlib.functional.ainstruct">ainstruct() (in module mellea.stdlib.functional)</a>
+
+      <ul>
+        <li><a href="stdlib.html#mellea.stdlib.session.MelleaSession.ainstruct">(mellea.stdlib.session.MelleaSession method)</a>
+</li>
+      </ul></li>
+      <li><a href="backends.html#mellea.backends.adapters.catalog.AdapterType.ALORA">ALORA (mellea.backends.adapters.catalog.AdapterType attribute)</a>
+</li>
+      <li><a href="stdlib.html#mellea.stdlib.sampling.budget_forcing.BudgetForcingSamplingStrategy.answer_max_tokens">answer_max_tokens (mellea.stdlib.sampling.budget_forcing.BudgetForcingSamplingStrategy attribute)</a>
+</li>
+      <li><a href="stdlib.html#mellea.stdlib.sampling.budget_forcing.BudgetForcingSamplingStrategy.answer_suffix">answer_suffix (mellea.stdlib.sampling.budget_forcing.BudgetForcingSamplingStrategy attribute)</a>
+</li>
+      <li><a href="stdlib.html#mellea.stdlib.functional.aquery">aquery() (in module mellea.stdlib.functional)</a>
+
+      <ul>
+        <li><a href="stdlib.html#mellea.stdlib.session.MelleaSession.aquery">(mellea.stdlib.session.MelleaSession method)</a>
+</li>
+      </ul></li>
+      <li><a href="stdlib.html#mellea.stdlib.chat.as_chat_history">as_chat_history() (in module mellea.stdlib.chat)</a>
+</li>
+      <li><a href="stdlib.html#mellea.stdlib.functional.atransform">atransform() (in module mellea.stdlib.functional)</a>
+
+      <ul>
+        <li><a href="stdlib.html#mellea.stdlib.session.MelleaSession.atransform">(mellea.stdlib.session.MelleaSession method)</a>
+</li>
+      </ul></li>
+      <li><a href="stdlib.html#mellea.stdlib.functional.avalidate">avalidate() (in module mellea.stdlib.functional)</a>
+
+      <ul>
+        <li><a href="stdlib.html#mellea.stdlib.session.MelleaSession.avalidate">(mellea.stdlib.session.MelleaSession method)</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="B">B</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="backends.html#mellea.backends.adapters.adapter.Adapter.backend">backend (mellea.backends.adapters.adapter.Adapter attribute)</a>
+
+      <ul>
+        <li><a href="session_api.html#mellea.stdlib.session.MelleaSession.backend">(mellea.stdlib.session.MelleaSession attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="stdlib.html#mellea.stdlib.session.backend_name_to_class">backend_name_to_class() (in module mellea.stdlib.session)</a>
+</li>
+      <li><a href="backends.html#mellea.backends.adapters.adapter.AdapterMixin.base_model_name">base_model_name (mellea.backends.adapters.adapter.AdapterMixin property)</a>
+
+      <ul>
+        <li><a href="backends.html#mellea.backends.openai.OpenAIBackend.base_model_name">(mellea.backends.openai.OpenAIBackend property)</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="stdlib.html#mellea.stdlib.sampling.base.BaseSamplingStrategy">BaseSamplingStrategy (class in mellea.stdlib.sampling.base)</a>
+</li>
+      <li><a href="stdlib.html#mellea.stdlib.sampling.budget_forcing.BudgetForcingSamplingStrategy.begin_response_token">begin_response_token (mellea.stdlib.sampling.budget_forcing.BudgetForcingSamplingStrategy attribute)</a>
+</li>
+      <li><a href="stdlib.html#mellea.stdlib.sampling.best_of_n.BestofNSamplingStrategy">BestofNSamplingStrategy (class in mellea.stdlib.sampling.best_of_n)</a>
+</li>
+      <li><a href="helpers.html#mellea.helpers.fancy_logger.CustomFormatter.bold_red">bold_red (mellea.helpers.fancy_logger.CustomFormatter attribute)</a>
+</li>
+      <li><a href="stdlib.html#mellea.stdlib.sampling.budget_forcing.BudgetForcingSamplingStrategy">BudgetForcingSamplingStrategy (class in mellea.stdlib.sampling.budget_forcing)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="C">C</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="backends.html#mellea.backends.cache.Cache">Cache (class in mellea.backends.cache)</a>
+</li>
+      <li><a href="stdlib.html#mellea.stdlib.functional.chat">chat() (in module mellea.stdlib.functional)</a>
+
+      <ul>
+        <li><a href="session_api.html#mellea.stdlib.session.MelleaSession.chat">(mellea.stdlib.session.MelleaSession method)</a>, <a href="stdlib.html#mellea.stdlib.session.MelleaSession.chat">[1]</a>
+</li>
+      </ul></li>
+      <li><a href="helpers.html#mellea.helpers.openai_compatible_helpers.chat_completion_delta_merge">chat_completion_delta_merge() (in module mellea.helpers.openai_compatible_helpers)</a>
+</li>
+      <li><a href="backends.html#mellea.backends.ollama.chat_response_delta_merge">chat_response_delta_merge() (in module mellea.backends.ollama)</a>
+</li>
+      <li><a href="stdlib.html#mellea.stdlib.session.MelleaSession.cleanup">cleanup() (mellea.stdlib.session.MelleaSession method)</a>
+</li>
+      <li><a href="helpers.html#mellea.helpers.async_helpers.ClientCache">ClientCache (class in mellea.helpers.async_helpers)</a>
+</li>
+      <li><a href="stdlib.html#mellea.stdlib.session.MelleaSession.clone">clone() (mellea.stdlib.session.MelleaSession method)</a>
+</li>
+      <li><a href="backends.html#mellea.backends.adapters.adapter.GraniteCommonAdapter.config">config (mellea.backends.adapters.adapter.GraniteCommonAdapter attribute)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="stdlib.html#mellea.stdlib.test_based_eval.Message.content">content (mellea.stdlib.test_based_eval.Message attribute)</a>
+</li>
+      <li><a href="backends.html#mellea.backends.types.ModelOption.CONTEXT_WINDOW">CONTEXT_WINDOW (mellea.backends.types.ModelOption attribute)</a>
+</li>
+      <li><a href="backends.html#mellea.backends.tools.convert_tools_to_json">convert_tools_to_json() (in module mellea.backends.tools)</a>
+</li>
+      <li><a href="helpers.html#mellea.helpers.fancy_logger.FancyLogger.CRITICAL">CRITICAL (mellea.helpers.fancy_logger.FancyLogger attribute)</a>
+</li>
+      <li><a href="session_api.html#mellea.stdlib.session.MelleaSession.ctx">ctx (mellea.stdlib.session.MelleaSession attribute)</a>, <a href="stdlib.html#mellea.stdlib.session.MelleaSession.ctx">[1]</a>
+</li>
+      <li><a href="backends.html#mellea.backends.cache.Cache.current_size">current_size() (mellea.backends.cache.Cache method)</a>
+
+      <ul>
+        <li><a href="backends.html#mellea.backends.cache.SimpleLRUCache.current_size">(mellea.backends.cache.SimpleLRUCache method)</a>
+</li>
+        <li><a href="helpers.html#mellea.helpers.async_helpers.ClientCache.current_size">(mellea.helpers.async_helpers.ClientCache method)</a>
+</li>
+      </ul></li>
+      <li><a href="helpers.html#mellea.helpers.fancy_logger.CustomFormatter">CustomFormatter (class in mellea.helpers.fancy_logger)</a>
+</li>
+      <li><a href="helpers.html#mellea.helpers.fancy_logger.CustomFormatter.cyan">cyan (mellea.helpers.fancy_logger.CustomFormatter attribute)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="D">D</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="helpers.html#mellea.helpers.fancy_logger.FancyLogger.DEBUG">DEBUG (mellea.helpers.fancy_logger.FancyLogger attribute)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="backends.html#mellea.backends.adapters.adapter.GraniteCommonAdapter.download_and_get_path">download_and_get_path() (mellea.backends.adapters.adapter.GraniteCommonAdapter method)</a>
+</li>
+      <li><a href="backends.html#mellea.backends.dummy.DummyBackend">DummyBackend (class in mellea.backends.dummy)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="E">E</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="helpers.html#mellea.helpers.fancy_logger.RESTHandler.emit">emit() (mellea.helpers.fancy_logger.RESTHandler method)</a>
+</li>
+      <li><a href="stdlib.html#mellea.stdlib.sampling.budget_forcing.BudgetForcingSamplingStrategy.end_response_token">end_response_token (mellea.stdlib.sampling.budget_forcing.BudgetForcingSamplingStrategy attribute)</a>
+</li>
+      <li><a href="stdlib.html#mellea.stdlib.sampling.budget_forcing.BudgetForcingSamplingStrategy.end_think_token">end_think_token (mellea.stdlib.sampling.budget_forcing.BudgetForcingSamplingStrategy attribute)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="helpers.html#mellea.helpers.fancy_logger.FancyLogger.ERROR">ERROR (mellea.helpers.fancy_logger.FancyLogger attribute)</a>
+</li>
+      <li><a href="stdlib.html#mellea.stdlib.test_based_eval.Example">Example (class in mellea.stdlib.test_based_eval)</a>
+</li>
+      <li><a href="stdlib.html#mellea.stdlib.test_based_eval.TestData.examples">examples (mellea.stdlib.test_based_eval.TestData attribute)</a>
+</li>
+      <li><a href="helpers.html#mellea.helpers.openai_compatible_helpers.extract_model_tool_requests">extract_model_tool_requests() (in module mellea.helpers.openai_compatible_helpers)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="F">F</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="helpers.html#mellea.helpers.fancy_logger.FancyLogger">FancyLogger (class in mellea.helpers.fancy_logger)</a>
+</li>
+      <li><a href="helpers.html#mellea.helpers.fancy_logger.FancyLogger.FATAL">FATAL (mellea.helpers.fancy_logger.FancyLogger attribute)</a>
+</li>
+      <li><a href="backends.html#mellea.backends.adapters.catalog.fetch_intrinsic_metadata">fetch_intrinsic_metadata() (in module mellea.backends.adapters.catalog)</a>
+</li>
+      <li><a href="backends.html#mellea.backends.openai.OpenAIBackend.filter_chat_completions_kwargs">filter_chat_completions_kwargs() (mellea.backends.openai.OpenAIBackend method)</a>
+
+      <ul>
+        <li><a href="backends.html#mellea.backends.watsonx.WatsonxAIBackend.filter_chat_completions_kwargs">(mellea.backends.watsonx.WatsonxAIBackend method)</a>
+</li>
+      </ul></li>
+      <li><a href="backends.html#mellea.backends.openai.OpenAIBackend.filter_completions_kwargs">filter_completions_kwargs() (mellea.backends.openai.OpenAIBackend method)</a>
+</li>
+      <li><a href="backends.html#mellea.backends.openai.OpenAIBackend.filter_openai_client_kwargs">filter_openai_client_kwargs() (mellea.backends.openai.OpenAIBackend static method)</a>
+</li>
+      <li><a href="backends.html#mellea.backends.tools.find_func">find_func() (in module mellea.backends.tools)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="helpers.html#mellea.helpers.fancy_logger.CustomFormatter.format">format() (mellea.helpers.fancy_logger.CustomFormatter method)</a>
+
+      <ul>
+        <li><a href="helpers.html#mellea.helpers.fancy_logger.JsonFormatter.format">(mellea.helpers.fancy_logger.JsonFormatter method)</a>
+</li>
+      </ul></li>
+      <li><a href="stdlib.html#mellea.stdlib.chat.Message.format_for_llm">format_for_llm() (mellea.stdlib.chat.Message method)</a>
+
+      <ul>
+        <li><a href="stdlib.html#mellea.stdlib.chat.ToolMessage.format_for_llm">(mellea.stdlib.chat.ToolMessage method)</a>
+</li>
+        <li><a href="stdlib.html#mellea.stdlib.test_based_eval.TestBasedEval.format_for_llm">(mellea.stdlib.test_based_eval.TestBasedEval method)</a>
+</li>
+      </ul></li>
+      <li><a href="helpers.html#mellea.helpers.fancy_logger.CustomFormatter.FORMATS">FORMATS (mellea.helpers.fancy_logger.CustomFormatter attribute)</a>
+</li>
+      <li><a href="backends.html#mellea.backends.formatter.Formatter">Formatter (class in mellea.backends.formatter)</a>
+</li>
+      <li><a href="backends.html#mellea.backends.formatter.FormatterBackend">FormatterBackend (class in mellea.backends.formatter)</a>
+</li>
+      <li><a href="stdlib.html#mellea.stdlib.test_based_eval.TestBasedEval.from_json_file">from_json_file() (mellea.stdlib.test_based_eval.TestBasedEval class method)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="G">G</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="session_api.html#mellea.stdlib.session.MelleaSession.generate">generate() (mellea.stdlib.session.MelleaSession method)</a>
+</li>
+      <li><a href="backends.html#mellea.backends.ollama.OllamaModelBackend.generate_from_chat_context">generate_from_chat_context() (mellea.backends.ollama.OllamaModelBackend method)</a>
+
+      <ul>
+        <li><a href="backends.html#mellea.backends.openai.OpenAIBackend.generate_from_chat_context">(mellea.backends.openai.OpenAIBackend method)</a>
+</li>
+        <li><a href="backends.html#mellea.backends.watsonx.WatsonxAIBackend.generate_from_chat_context">(mellea.backends.watsonx.WatsonxAIBackend method)</a>
+</li>
+      </ul></li>
+      <li><a href="backends.html#mellea.backends.dummy.DummyBackend.generate_from_context">generate_from_context() (mellea.backends.dummy.DummyBackend method)</a>
+
+      <ul>
+        <li><a href="backends.html#mellea.backends.ollama.OllamaModelBackend.generate_from_context">(mellea.backends.ollama.OllamaModelBackend method)</a>
+</li>
+        <li><a href="backends.html#mellea.backends.openai.OpenAIBackend.generate_from_context">(mellea.backends.openai.OpenAIBackend method)</a>
+</li>
+        <li><a href="backends.html#mellea.backends.watsonx.WatsonxAIBackend.generate_from_context">(mellea.backends.watsonx.WatsonxAIBackend method)</a>
+</li>
+      </ul></li>
+      <li><a href="backends.html#mellea.backends.ollama.OllamaModelBackend.generate_from_raw">generate_from_raw() (mellea.backends.ollama.OllamaModelBackend method)</a>
+
+      <ul>
+        <li><a href="backends.html#mellea.backends.openai.OpenAIBackend.generate_from_raw">(mellea.backends.openai.OpenAIBackend method)</a>
+</li>
+        <li><a href="backends.html#mellea.backends.watsonx.WatsonxAIBackend.generate_from_raw">(mellea.backends.watsonx.WatsonxAIBackend method)</a>
+</li>
+      </ul></li>
+      <li><a href="backends.html#mellea.backends.cache.Cache.get">get() (mellea.backends.cache.Cache method)</a>
+
+      <ul>
+        <li><a href="backends.html#mellea.backends.cache.SimpleLRUCache.get">(mellea.backends.cache.SimpleLRUCache method)</a>
+</li>
+        <li><a href="helpers.html#mellea.helpers.async_helpers.ClientCache.get">(mellea.helpers.async_helpers.ClientCache method)</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="backends.html#mellea.backends.adapters.adapter.get_adapter_for_intrinsic">get_adapter_for_intrinsic() (in module mellea.backends.adapters.adapter)</a>
+</li>
+      <li><a href="helpers.html#mellea.helpers.async_helpers.get_current_event_loop">get_current_event_loop() (in module mellea.helpers.async_helpers)</a>
+</li>
+      <li><a href="backends.html#mellea.backends.adapters.adapter.GraniteCommonAdapter.get_local_hf_path">get_local_hf_path() (mellea.backends.adapters.adapter.GraniteCommonAdapter method)</a>
+
+      <ul>
+        <li><a href="backends.html#mellea.backends.adapters.adapter.LocalHFAdapter.get_local_hf_path">(mellea.backends.adapters.adapter.LocalHFAdapter method)</a>
+</li>
+      </ul></li>
+      <li><a href="helpers.html#mellea.helpers.fancy_logger.FancyLogger.get_logger">get_logger() (mellea.helpers.fancy_logger.FancyLogger static method)</a>
+</li>
+      <li><a href="backends.html#mellea.backends.adapters.adapter.GraniteCommonAdapter.get_open_ai_path">get_open_ai_path() (mellea.backends.adapters.adapter.GraniteCommonAdapter method)</a>
+
+      <ul>
+        <li><a href="backends.html#mellea.backends.adapters.adapter.OpenAIAdapter.get_open_ai_path">(mellea.backends.adapters.adapter.OpenAIAdapter method)</a>
+</li>
+      </ul></li>
+      <li><a href="backends.html#mellea.backends.adapters.adapter.GraniteCommonAdapter.get_path_on_remote">get_path_on_remote() (mellea.backends.adapters.adapter.GraniteCommonAdapter method)</a>
+</li>
+      <li><a href="stdlib.html#mellea.stdlib.session.get_session">get_session() (in module mellea.stdlib.session)</a>
+</li>
+      <li><a href="backends.html#mellea.backends.adapters.adapter.GraniteCommonAdapter">GraniteCommonAdapter (class in mellea.backends.adapters.adapter)</a>
+</li>
+      <li><a href="helpers.html#mellea.helpers.fancy_logger.CustomFormatter.grey">grey (mellea.helpers.fancy_logger.CustomFormatter attribute)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="I">I</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="stdlib.html#mellea.stdlib.test_based_eval.TestData.id">id (mellea.stdlib.test_based_eval.TestData attribute)</a>
+</li>
+      <li><a href="stdlib.html#mellea.stdlib.chat.Message.images">images (mellea.stdlib.chat.Message property)</a>
+</li>
+      <li><a href="helpers.html#mellea.helpers.fancy_logger.FancyLogger.INFO">INFO (mellea.helpers.fancy_logger.FancyLogger attribute)</a>
+</li>
+      <li><a href="stdlib.html#mellea.stdlib.test_based_eval.Example.input">input (mellea.stdlib.test_based_eval.Example attribute)</a>
+</li>
+      <li><a href="stdlib.html#mellea.stdlib.test_based_eval.Example.input_id">input_id (mellea.stdlib.test_based_eval.Example attribute)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="stdlib.html#mellea.stdlib.functional.instruct">instruct() (in module mellea.stdlib.functional)</a>
+
+      <ul>
+        <li><a href="session_api.html#mellea.stdlib.session.MelleaSession.instruct">(mellea.stdlib.session.MelleaSession method)</a>, <a href="stdlib.html#mellea.stdlib.session.MelleaSession.instruct">[1]</a>
+</li>
+      </ul></li>
+      <li><a href="stdlib.html#mellea.stdlib.test_based_eval.TestData.instructions">instructions (mellea.stdlib.test_based_eval.TestData attribute)</a>
+</li>
+      <li><a href="backends.html#mellea.backends.adapters.catalog.IntriniscsCatalogEntry.internal_name">internal_name (mellea.backends.adapters.catalog.IntriniscsCatalogEntry attribute)</a>
+</li>
+      <li><a href="backends.html#mellea.backends.adapters.catalog.IntriniscsCatalogEntry">IntriniscsCatalogEntry (class in mellea.backends.adapters.catalog)</a>
+</li>
+      <li><a href="backends.html#mellea.backends.ollama.OllamaModelBackend.is_model_available">is_model_available() (mellea.backends.ollama.OllamaModelBackend method)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="J">J</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="backends.html#mellea.backends.tools.json_extraction">json_extraction() (in module mellea.backends.tools)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="helpers.html#mellea.helpers.fancy_logger.JsonFormatter">JsonFormatter (class in mellea.helpers.fancy_logger)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="K">K</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="backends.html#mellea.backends.adapters.catalog.known_intrinsic_names">known_intrinsic_names() (in module mellea.backends.adapters.catalog)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="L">L</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="stdlib.html#mellea.stdlib.session.MelleaSession.last_prompt">last_prompt() (mellea.stdlib.session.MelleaSession method)</a>
+</li>
+      <li><a href="backends.html#mellea.backends.adapters.adapter.AdapterMixin.list_adapters">list_adapters() (mellea.backends.adapters.adapter.AdapterMixin method)</a>
+
+      <ul>
+        <li><a href="backends.html#mellea.backends.openai.OpenAIBackend.list_adapters">(mellea.backends.openai.OpenAIBackend method)</a>
+</li>
+      </ul></li>
+      <li><a href="backends.html#mellea.backends.adapters.adapter.AdapterMixin.load_adapter">load_adapter() (mellea.backends.adapters.adapter.AdapterMixin method)</a>
+
+      <ul>
+        <li><a href="backends.html#mellea.backends.openai.OpenAIBackend.load_adapter">(mellea.backends.openai.OpenAIBackend method)</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="backends.html#mellea.backends.adapters.adapter.LocalHFAdapter">LocalHFAdapter (class in mellea.backends.adapters.adapter)</a>
+</li>
+      <li><a href="helpers.html#mellea.helpers.fancy_logger.FancyLogger.logger">logger (mellea.helpers.fancy_logger.FancyLogger attribute)</a>
+</li>
+      <li><a href="stdlib.html#mellea.stdlib.sampling.base.BaseSamplingStrategy.loop_budget">loop_budget (mellea.stdlib.sampling.base.BaseSamplingStrategy attribute)</a>
+</li>
+      <li><a href="backends.html#mellea.backends.adapters.catalog.AdapterType.LORA">LORA (mellea.backends.adapters.catalog.AdapterType attribute)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="M">M</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="backends.html#mellea.backends.types.ModelOption.MAX_NEW_TOKENS">MAX_NEW_TOKENS (mellea.backends.types.ModelOption attribute)</a>
+</li>
+      <li>
+    mellea.backends.adapters.adapter
+
+      <ul>
+        <li><a href="backends.html#module-mellea.backends.adapters.adapter">module</a>
+</li>
+      </ul></li>
+      <li>
+    mellea.backends.adapters.catalog
+
+      <ul>
+        <li><a href="backends.html#module-mellea.backends.adapters.catalog">module</a>
+</li>
+      </ul></li>
+      <li>
+    mellea.backends.cache
+
+      <ul>
+        <li><a href="backends.html#module-mellea.backends.cache">module</a>
+</li>
+      </ul></li>
+      <li>
+    mellea.backends.dummy
+
+      <ul>
+        <li><a href="backends.html#module-mellea.backends.dummy">module</a>
+</li>
+      </ul></li>
+      <li>
+    mellea.backends.formatter
+
+      <ul>
+        <li><a href="backends.html#module-mellea.backends.formatter">module</a>
+</li>
+      </ul></li>
+      <li>
+    mellea.backends.ollama
+
+      <ul>
+        <li><a href="backends.html#module-mellea.backends.ollama">module</a>
+</li>
+      </ul></li>
+      <li>
+    mellea.backends.openai
+
+      <ul>
+        <li><a href="backends.html#module-mellea.backends.openai">module</a>
+</li>
+      </ul></li>
+      <li>
+    mellea.backends.tools
+
+      <ul>
+        <li><a href="backends.html#module-mellea.backends.tools">module</a>
+</li>
+      </ul></li>
+      <li>
+    mellea.backends.types
+
+      <ul>
+        <li><a href="backends.html#module-mellea.backends.types">module</a>
+</li>
+      </ul></li>
+      <li>
+    mellea.backends.watsonx
+
+      <ul>
+        <li><a href="backends.html#module-mellea.backends.watsonx">module</a>
+</li>
+      </ul></li>
+      <li>
+    mellea.helpers.async_helpers
+
+      <ul>
+        <li><a href="helpers.html#module-mellea.helpers.async_helpers">module</a>
+</li>
+      </ul></li>
+      <li>
+    mellea.helpers.event_loop_helper
+
+      <ul>
+        <li><a href="helpers.html#module-mellea.helpers.event_loop_helper">module</a>
+</li>
+      </ul></li>
+      <li>
+    mellea.helpers.fancy_logger
+
+      <ul>
+        <li><a href="helpers.html#module-mellea.helpers.fancy_logger">module</a>
+</li>
+      </ul></li>
+      <li>
+    mellea.helpers.openai_compatible_helpers
+
+      <ul>
+        <li><a href="helpers.html#module-mellea.helpers.openai_compatible_helpers">module</a>
+</li>
+      </ul></li>
+      <li>
+    mellea.stdlib.chat
+
+      <ul>
+        <li><a href="stdlib.html#module-mellea.stdlib.chat">module</a>
+</li>
+      </ul></li>
+      <li>
+    mellea.stdlib.functional
+
+      <ul>
+        <li><a href="stdlib.html#module-mellea.stdlib.functional">module</a>
+</li>
+      </ul></li>
+      <li>
+    mellea.stdlib.reqlib.python
+
+      <ul>
+        <li><a href="stdlib.html#module-mellea.stdlib.reqlib.python">module</a>
+</li>
+      </ul></li>
+      <li>
+    mellea.stdlib.reqlib.tools
+
+      <ul>
+        <li><a href="stdlib.html#module-mellea.stdlib.reqlib.tools">module</a>
+</li>
+      </ul></li>
+      <li>
+    mellea.stdlib.sampling.base
+
+      <ul>
+        <li><a href="stdlib.html#module-mellea.stdlib.sampling.base">module</a>
+</li>
+      </ul></li>
+      <li>
+    mellea.stdlib.sampling.best_of_n
+
+      <ul>
+        <li><a href="stdlib.html#module-mellea.stdlib.sampling.best_of_n">module</a>
+</li>
+      </ul></li>
+      <li>
+    mellea.stdlib.sampling.budget_forcing
+
+      <ul>
+        <li><a href="stdlib.html#module-mellea.stdlib.sampling.budget_forcing">module</a>
+</li>
+      </ul></li>
+      <li>
+    mellea.stdlib.sampling.types
+
+      <ul>
+        <li><a href="stdlib.html#module-mellea.stdlib.sampling.types">module</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    mellea.stdlib.session
+
+      <ul>
+        <li><a href="stdlib.html#module-mellea.stdlib.session">module</a>
+</li>
+      </ul></li>
+      <li><a href="session_api.html#mellea.stdlib.session.MelleaSession">mellea.stdlib.session.MelleaSession (built-in class)</a>
+</li>
+      <li>
+    mellea.stdlib.test_based_eval
+
+      <ul>
+        <li><a href="stdlib.html#module-mellea.stdlib.test_based_eval">module</a>
+</li>
+      </ul></li>
+      <li><a href="stdlib.html#mellea.stdlib.session.MelleaSession">MelleaSession (class in mellea.stdlib.session)</a>
+</li>
+      <li><a href="backends.html#mellea.backends.types.ModelOption.merge_model_options">merge_model_options() (mellea.backends.types.ModelOption static method)</a>
+</li>
+      <li><a href="stdlib.html#mellea.stdlib.chat.Message">Message (class in mellea.stdlib.chat)</a>
+
+      <ul>
+        <li><a href="stdlib.html#mellea.stdlib.test_based_eval.Message">(class in mellea.stdlib.test_based_eval)</a>
+</li>
+      </ul></li>
+      <li><a href="backends.html#mellea.backends.openai.OpenAIBackend.message_to_openai_message">message_to_openai_message() (mellea.backends.openai.OpenAIBackend static method)</a>
+</li>
+      <li><a href="backends.html#mellea.backends.openai.OpenAIBackend.messages_to_docs">messages_to_docs() (mellea.backends.openai.OpenAIBackend static method)</a>
+</li>
+      <li><a href="backends.html#mellea.backends.adapters.catalog.IntriniscsCatalogEntry.model_config">model_config (mellea.backends.adapters.catalog.IntriniscsCatalogEntry attribute)</a>
+
+      <ul>
+        <li><a href="stdlib.html#mellea.stdlib.test_based_eval.Example.model_config">(mellea.stdlib.test_based_eval.Example attribute)</a>
+</li>
+        <li><a href="stdlib.html#mellea.stdlib.test_based_eval.Message.model_config">(mellea.stdlib.test_based_eval.Message attribute)</a>
+</li>
+        <li><a href="stdlib.html#mellea.stdlib.test_based_eval.TestData.model_config">(mellea.stdlib.test_based_eval.TestData attribute)</a>
+</li>
+      </ul></li>
+      <li><a href="session_api.html#mellea.stdlib.session.MelleaSession.model_options">model_options (mellea.stdlib.session.MelleaSession attribute)</a>
+</li>
+      <li><a href="backends.html#mellea.backends.types.ModelOption">ModelOption (class in mellea.backends.types)</a>
+</li>
+      <li>
+    module
+
+      <ul>
+        <li><a href="backends.html#module-mellea.backends.adapters.adapter">mellea.backends.adapters.adapter</a>
+</li>
+        <li><a href="backends.html#module-mellea.backends.adapters.catalog">mellea.backends.adapters.catalog</a>
+</li>
+        <li><a href="backends.html#module-mellea.backends.cache">mellea.backends.cache</a>
+</li>
+        <li><a href="backends.html#module-mellea.backends.dummy">mellea.backends.dummy</a>
+</li>
+        <li><a href="backends.html#module-mellea.backends.formatter">mellea.backends.formatter</a>
+</li>
+        <li><a href="backends.html#module-mellea.backends.ollama">mellea.backends.ollama</a>
+</li>
+        <li><a href="backends.html#module-mellea.backends.openai">mellea.backends.openai</a>
+</li>
+        <li><a href="backends.html#module-mellea.backends.tools">mellea.backends.tools</a>
+</li>
+        <li><a href="backends.html#module-mellea.backends.types">mellea.backends.types</a>
+</li>
+        <li><a href="backends.html#module-mellea.backends.watsonx">mellea.backends.watsonx</a>
+</li>
+        <li><a href="helpers.html#module-mellea.helpers.async_helpers">mellea.helpers.async_helpers</a>
+</li>
+        <li><a href="helpers.html#module-mellea.helpers.event_loop_helper">mellea.helpers.event_loop_helper</a>
+</li>
+        <li><a href="helpers.html#module-mellea.helpers.fancy_logger">mellea.helpers.fancy_logger</a>
+</li>
+        <li><a href="helpers.html#module-mellea.helpers.openai_compatible_helpers">mellea.helpers.openai_compatible_helpers</a>
+</li>
+        <li><a href="stdlib.html#module-mellea.stdlib.chat">mellea.stdlib.chat</a>
+</li>
+        <li><a href="stdlib.html#module-mellea.stdlib.functional">mellea.stdlib.functional</a>
+</li>
+        <li><a href="stdlib.html#module-mellea.stdlib.reqlib.python">mellea.stdlib.reqlib.python</a>
+</li>
+        <li><a href="stdlib.html#module-mellea.stdlib.reqlib.tools">mellea.stdlib.reqlib.tools</a>
+</li>
+        <li><a href="stdlib.html#module-mellea.stdlib.sampling.base">mellea.stdlib.sampling.base</a>
+</li>
+        <li><a href="stdlib.html#module-mellea.stdlib.sampling.best_of_n">mellea.stdlib.sampling.best_of_n</a>
+</li>
+        <li><a href="stdlib.html#module-mellea.stdlib.sampling.budget_forcing">mellea.stdlib.sampling.budget_forcing</a>
+</li>
+        <li><a href="stdlib.html#module-mellea.stdlib.sampling.types">mellea.stdlib.sampling.types</a>
+</li>
+        <li><a href="stdlib.html#module-mellea.stdlib.session">mellea.stdlib.session</a>
+</li>
+        <li><a href="stdlib.html#module-mellea.stdlib.test_based_eval">mellea.stdlib.test_based_eval</a>
+</li>
+      </ul></li>
+      <li><a href="stdlib.html#mellea.stdlib.sampling.base.MultiTurnStrategy">MultiTurnStrategy (class in mellea.stdlib.sampling.base)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="N">N</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="backends.html#mellea.backends.adapters.catalog.IntriniscsCatalogEntry.name">name (mellea.backends.adapters.catalog.IntriniscsCatalogEntry attribute)</a>
+
+      <ul>
+        <li><a href="stdlib.html#mellea.stdlib.test_based_eval.TestData.name">(mellea.stdlib.test_based_eval.TestData attribute)</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="helpers.html#mellea.helpers.fancy_logger.FancyLogger.NOTSET">NOTSET (mellea.helpers.fancy_logger.FancyLogger attribute)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="O">O</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="backends.html#mellea.backends.ollama.OllamaModelBackend">OllamaModelBackend (class in mellea.backends.ollama)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="backends.html#mellea.backends.adapters.adapter.OpenAIAdapter">OpenAIAdapter (class in mellea.backends.adapters.adapter)</a>
+</li>
+      <li><a href="backends.html#mellea.backends.openai.OpenAIBackend">OpenAIBackend (class in mellea.backends.openai)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="P">P</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="backends.html#mellea.backends.tools.parse_tools">parse_tools() (in module mellea.backends.tools)</a>
+</li>
+      <li><a href="stdlib.html#mellea.stdlib.chat.Message.parts">parts() (mellea.stdlib.chat.Message method)</a>
+
+      <ul>
+        <li><a href="stdlib.html#mellea.stdlib.test_based_eval.TestBasedEval.parts">(mellea.stdlib.test_based_eval.TestBasedEval method)</a>
+</li>
+      </ul></li>
+      <li><a href="backends.html#mellea.backends.adapters.adapter.Adapter.path">path (mellea.backends.adapters.adapter.Adapter attribute)</a>
+</li>
+      <li><a href="backends.html#mellea.backends.ollama.OllamaModelBackend.post_processing">post_processing() (mellea.backends.ollama.OllamaModelBackend method)</a>
+
+      <ul>
+        <li><a href="backends.html#mellea.backends.openai.OpenAIBackend.post_processing">(mellea.backends.openai.OpenAIBackend method)</a>
+</li>
+        <li><a href="backends.html#mellea.backends.watsonx.WatsonxAIBackend.post_processing">(mellea.backends.watsonx.WatsonxAIBackend method)</a>
+</li>
+      </ul></li>
+      <li><a href="stdlib.html#mellea.stdlib.session.MelleaSession.powerup">powerup() (mellea.stdlib.session.MelleaSession class method)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="backends.html#mellea.backends.formatter.Formatter.print">print() (mellea.backends.formatter.Formatter method)</a>
+
+      <ul>
+        <li><a href="backends.html#mellea.backends.formatter.TemplateFormatter.print">(mellea.backends.formatter.TemplateFormatter method)</a>
+</li>
+      </ul></li>
+      <li><a href="backends.html#mellea.backends.ollama.OllamaModelBackend.processing">processing() (mellea.backends.ollama.OllamaModelBackend method)</a>
+
+      <ul>
+        <li><a href="backends.html#mellea.backends.openai.OpenAIBackend.processing">(mellea.backends.openai.OpenAIBackend method)</a>
+</li>
+        <li><a href="backends.html#mellea.backends.watsonx.WatsonxAIBackend.processing">(mellea.backends.watsonx.WatsonxAIBackend method)</a>
+</li>
+      </ul></li>
+      <li><a href="backends.html#mellea.backends.cache.Cache.put">put() (mellea.backends.cache.Cache method)</a>
+
+      <ul>
+        <li><a href="backends.html#mellea.backends.cache.SimpleLRUCache.put">(mellea.backends.cache.SimpleLRUCache method)</a>
+</li>
+        <li><a href="helpers.html#mellea.helpers.async_helpers.ClientCache.put">(mellea.helpers.async_helpers.ClientCache method)</a>
+</li>
+      </ul></li>
+      <li><a href="stdlib.html#mellea.stdlib.reqlib.python.PythonExecutionReq">PythonExecutionReq (class in mellea.stdlib.reqlib.python)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="Q">Q</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="backends.html#mellea.backends.adapters.adapter.Adapter.qualified_name">qualified_name (mellea.backends.adapters.adapter.Adapter attribute)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="stdlib.html#mellea.stdlib.functional.query">query() (in module mellea.stdlib.functional)</a>
+
+      <ul>
+        <li><a href="stdlib.html#mellea.stdlib.session.MelleaSession.query">(mellea.stdlib.session.MelleaSession method)</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="R">R</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="helpers.html#mellea.helpers.fancy_logger.CustomFormatter.red">red (mellea.helpers.fancy_logger.CustomFormatter attribute)</a>
+</li>
+      <li><a href="stdlib.html#mellea.stdlib.sampling.base.RejectionSamplingStrategy">RejectionSamplingStrategy (class in mellea.stdlib.sampling.base)</a>
+</li>
+      <li><a href="backends.html#mellea.backends.types.ModelOption.remove_special_keys">remove_special_keys() (mellea.backends.types.ModelOption static method)</a>
+</li>
+      <li><a href="stdlib.html#mellea.stdlib.sampling.base.BaseSamplingStrategy.repair">repair() (mellea.stdlib.sampling.base.BaseSamplingStrategy static method)</a>
+
+      <ul>
+        <li><a href="stdlib.html#mellea.stdlib.sampling.base.MultiTurnStrategy.repair">(mellea.stdlib.sampling.base.MultiTurnStrategy static method)</a>
+</li>
+        <li><a href="stdlib.html#mellea.stdlib.sampling.base.RejectionSamplingStrategy.repair">(mellea.stdlib.sampling.base.RejectionSamplingStrategy static method)</a>
+</li>
+        <li><a href="stdlib.html#mellea.stdlib.sampling.base.RepairTemplateStrategy.repair">(mellea.stdlib.sampling.base.RepairTemplateStrategy static method)</a>
+</li>
+        <li><a href="stdlib.html#mellea.stdlib.sampling.best_of_n.BestofNSamplingStrategy.repair">(mellea.stdlib.sampling.best_of_n.BestofNSamplingStrategy static method)</a>
+</li>
+      </ul></li>
+      <li><a href="stdlib.html#mellea.stdlib.sampling.base.RepairTemplateStrategy">RepairTemplateStrategy (class in mellea.stdlib.sampling.base)</a>
+</li>
+      <li><a href="backends.html#mellea.backends.types.ModelOption.replace_keys">replace_keys() (mellea.backends.types.ModelOption static method)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="backends.html#mellea.backends.adapters.catalog.IntriniscsCatalogEntry.repo_id">repo_id (mellea.backends.adapters.catalog.IntriniscsCatalogEntry attribute)</a>
+</li>
+      <li><a href="helpers.html#mellea.helpers.fancy_logger.CustomFormatter.reset">reset (mellea.helpers.fancy_logger.CustomFormatter attribute)</a>
+</li>
+      <li><a href="stdlib.html#mellea.stdlib.session.MelleaSession.reset">reset() (mellea.stdlib.session.MelleaSession method)</a>
+</li>
+      <li><a href="helpers.html#mellea.helpers.fancy_logger.RESTHandler">RESTHandler (class in mellea.helpers.fancy_logger)</a>
+</li>
+      <li><a href="stdlib.html#mellea.stdlib.sampling.types.SamplingResult.result">result (mellea.stdlib.sampling.types.SamplingResult property)</a>
+</li>
+      <li><a href="stdlib.html#mellea.stdlib.sampling.types.SamplingResult.result_action">result_action (mellea.stdlib.sampling.types.SamplingResult property)</a>
+</li>
+      <li><a href="stdlib.html#mellea.stdlib.sampling.types.SamplingResult.result_ctx">result_ctx (mellea.stdlib.sampling.types.SamplingResult property)</a>
+</li>
+      <li><a href="stdlib.html#mellea.stdlib.sampling.types.SamplingResult.result_validations">result_validations (mellea.stdlib.sampling.types.SamplingResult property)</a>
+</li>
+      <li><a href="stdlib.html#mellea.stdlib.chat.Message.Role">Role (mellea.stdlib.chat.Message attribute)</a>
+</li>
+      <li><a href="stdlib.html#mellea.stdlib.test_based_eval.Message.role">role (mellea.stdlib.test_based_eval.Message attribute)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="S">S</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="stdlib.html#mellea.stdlib.sampling.base.BaseSamplingStrategy.sample">sample() (mellea.stdlib.sampling.base.BaseSamplingStrategy method)</a>
+
+      <ul>
+        <li><a href="stdlib.html#mellea.stdlib.sampling.best_of_n.BestofNSamplingStrategy.sample">(mellea.stdlib.sampling.best_of_n.BestofNSamplingStrategy method)</a>
+</li>
+        <li><a href="stdlib.html#mellea.stdlib.sampling.budget_forcing.BudgetForcingSamplingStrategy.sample">(mellea.stdlib.sampling.budget_forcing.BudgetForcingSamplingStrategy method)</a>
+</li>
+        <li><a href="stdlib.html#mellea.stdlib.sampling.types.SamplingStrategy.sample">(mellea.stdlib.sampling.types.SamplingStrategy method)</a>
+</li>
+      </ul></li>
+      <li><a href="stdlib.html#mellea.stdlib.sampling.types.SamplingResult">SamplingResult (class in mellea.stdlib.sampling.types)</a>
+</li>
+      <li><a href="stdlib.html#mellea.stdlib.sampling.types.SamplingStrategy">SamplingStrategy (class in mellea.stdlib.sampling.types)</a>
+</li>
+      <li><a href="backends.html#mellea.backends.types.ModelOption.SEED">SEED (mellea.backends.types.ModelOption attribute)</a>
+</li>
+      <li><a href="stdlib.html#mellea.stdlib.sampling.base.BaseSamplingStrategy.select_from_failure">select_from_failure() (mellea.stdlib.sampling.base.BaseSamplingStrategy static method)</a>
+
+      <ul>
+        <li><a href="stdlib.html#mellea.stdlib.sampling.base.MultiTurnStrategy.select_from_failure">(mellea.stdlib.sampling.base.MultiTurnStrategy static method)</a>
+</li>
+        <li><a href="stdlib.html#mellea.stdlib.sampling.base.RejectionSamplingStrategy.select_from_failure">(mellea.stdlib.sampling.base.RejectionSamplingStrategy static method)</a>
+</li>
+        <li><a href="stdlib.html#mellea.stdlib.sampling.base.RepairTemplateStrategy.select_from_failure">(mellea.stdlib.sampling.base.RepairTemplateStrategy static method)</a>
+</li>
+        <li><a href="stdlib.html#mellea.stdlib.sampling.best_of_n.BestofNSamplingStrategy.select_from_failure">(mellea.stdlib.sampling.best_of_n.BestofNSamplingStrategy static method)</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="helpers.html#mellea.helpers.async_helpers.send_to_queue">send_to_queue() (in module mellea.helpers.async_helpers)</a>
+</li>
+      <li><a href="stdlib.html#mellea.stdlib.test_based_eval.TestBasedEval.set_judge_context">set_judge_context() (mellea.stdlib.test_based_eval.TestBasedEval method)</a>
+</li>
+      <li><a href="backends.html#mellea.backends.cache.SimpleLRUCache">SimpleLRUCache (class in mellea.backends.cache)</a>
+</li>
+      <li><a href="stdlib.html#mellea.stdlib.test_based_eval.TestData.source">source (mellea.stdlib.test_based_eval.TestData attribute)</a>
+</li>
+      <li><a href="stdlib.html#mellea.stdlib.session.start_session">start_session() (in module mellea.stdlib.session)</a>
+</li>
+      <li><a href="stdlib.html#mellea.stdlib.sampling.budget_forcing.BudgetForcingSamplingStrategy.start_think_token">start_think_token (mellea.stdlib.sampling.budget_forcing.BudgetForcingSamplingStrategy attribute)</a>
+</li>
+      <li><a href="backends.html#mellea.backends.types.ModelOption.STREAM">STREAM (mellea.backends.types.ModelOption attribute)</a>
+</li>
+      <li><a href="backends.html#mellea.backends.types.ModelOption.SYSTEM_PROMPT">SYSTEM_PROMPT (mellea.backends.types.ModelOption attribute)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="T">T</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="stdlib.html#mellea.stdlib.test_based_eval.Example.targets">targets (mellea.stdlib.test_based_eval.Example attribute)</a>
+</li>
+      <li><a href="backends.html#mellea.backends.types.ModelOption.TEMPERATURE">TEMPERATURE (mellea.backends.types.ModelOption attribute)</a>
+</li>
+      <li><a href="backends.html#mellea.backends.formatter.TemplateFormatter">TemplateFormatter (class in mellea.backends.formatter)</a>
+</li>
+      <li><a href="stdlib.html#mellea.stdlib.test_based_eval.TestBasedEval">TestBasedEval (class in mellea.stdlib.test_based_eval)</a>
+</li>
+      <li><a href="stdlib.html#mellea.stdlib.test_based_eval.TestData">TestData (class in mellea.stdlib.test_based_eval)</a>
+</li>
+      <li><a href="stdlib.html#mellea.stdlib.sampling.budget_forcing.BudgetForcingSamplingStrategy.think_max_tokens">think_max_tokens (mellea.stdlib.sampling.budget_forcing.BudgetForcingSamplingStrategy attribute)</a>
+</li>
+      <li><a href="stdlib.html#mellea.stdlib.sampling.budget_forcing.BudgetForcingSamplingStrategy.think_more_suffix">think_more_suffix (mellea.stdlib.sampling.budget_forcing.BudgetForcingSamplingStrategy attribute)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="backends.html#mellea.backends.types.ModelOption.THINKING">THINKING (mellea.backends.types.ModelOption attribute)</a>
+</li>
+      <li><a href="backends.html#mellea.backends.formatter.Formatter.to_chat_messages">to_chat_messages() (mellea.backends.formatter.Formatter method)</a>
+</li>
+      <li><a href="stdlib.html#mellea.stdlib.reqlib.tools.tool_arg_validator">tool_arg_validator() (in module mellea.stdlib.reqlib.tools)</a>
+</li>
+      <li><a href="stdlib.html#mellea.stdlib.chat.ToolMessage">ToolMessage (class in mellea.stdlib.chat)</a>
+</li>
+      <li><a href="backends.html#mellea.backends.types.ModelOption.TOOLS">TOOLS (mellea.backends.types.ModelOption attribute)</a>
+</li>
+      <li><a href="stdlib.html#mellea.stdlib.functional.transform">transform() (in module mellea.stdlib.functional)</a>
+
+      <ul>
+        <li><a href="stdlib.html#mellea.stdlib.session.MelleaSession.transform">(mellea.stdlib.session.MelleaSession method)</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="U">U</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="backends.html#mellea.backends.adapters.adapter.AdapterMixin.unload_adapter">unload_adapter() (mellea.backends.adapters.adapter.AdapterMixin method)</a>
+
+      <ul>
+        <li><a href="backends.html#mellea.backends.openai.OpenAIBackend.unload_adapter">(mellea.backends.openai.OpenAIBackend method)</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="stdlib.html#mellea.stdlib.reqlib.tools.uses_tool">uses_tool() (in module mellea.stdlib.reqlib.tools)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="V">V</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="stdlib.html#mellea.stdlib.functional.validate">validate() (in module mellea.stdlib.functional)</a>
+
+      <ul>
+        <li><a href="stdlib.html#mellea.stdlib.session.MelleaSession.validate">(mellea.stdlib.session.MelleaSession method)</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="stdlib.html#mellea.stdlib.test_based_eval.TestData.validate_examples">validate_examples() (mellea.stdlib.test_based_eval.TestData class method)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="W">W</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="helpers.html#mellea.helpers.async_helpers.wait_for_all_mots">wait_for_all_mots() (in module mellea.helpers.async_helpers)</a>
+</li>
+      <li><a href="helpers.html#mellea.helpers.fancy_logger.FancyLogger.WARN">WARN (mellea.helpers.fancy_logger.FancyLogger attribute)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="helpers.html#mellea.helpers.fancy_logger.FancyLogger.WARNING">WARNING (mellea.helpers.fancy_logger.FancyLogger attribute)</a>
+</li>
+      <li><a href="backends.html#mellea.backends.watsonx.WatsonxAIBackend">WatsonxAIBackend (class in mellea.backends.watsonx)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="Y">Y</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="helpers.html#mellea.helpers.fancy_logger.CustomFormatter.yellow">yellow (mellea.helpers.fancy_logger.CustomFormatter attribute)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Mellea Contributors.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,382 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>mellea.helpers.async_helpers &mdash; Mellea unknown documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../_static/documentation_options.js?v=3f1b9271"></script>
+      <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            Mellea
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../stdlib.html">Standard Library (stdlib)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../stdlib.html#core-modules">Core Modules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../stdlib.html#module-mellea.stdlib.chat">Chat</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../stdlib.html#mellea.stdlib.chat.Message"><code class="docutils literal notranslate"><span class="pre">Message</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../stdlib.html#mellea.stdlib.chat.ToolMessage"><code class="docutils literal notranslate"><span class="pre">ToolMessage</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../stdlib.html#mellea.stdlib.chat.as_chat_history"><code class="docutils literal notranslate"><span class="pre">as_chat_history()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../stdlib.html#functional">Functional</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../stdlib.html#session">Session</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../stdlib.html#module-mellea.stdlib.test_based_eval">Test-Based Evaluation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../stdlib.html#mellea.stdlib.test_based_eval.Message"><code class="docutils literal notranslate"><span class="pre">Message</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../stdlib.html#mellea.stdlib.test_based_eval.Example"><code class="docutils literal notranslate"><span class="pre">Example</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../stdlib.html#mellea.stdlib.test_based_eval.TestData"><code class="docutils literal notranslate"><span class="pre">TestData</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../stdlib.html#mellea.stdlib.test_based_eval.TestBasedEval"><code class="docutils literal notranslate"><span class="pre">TestBasedEval</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../stdlib.html#sampling-strategies">Sampling Strategies</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../stdlib.html#base">Base</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../stdlib.html#best-of-n">Best of N</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../stdlib.html#budget-forcing">Budget Forcing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../stdlib.html#majority-voting">Majority Voting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../stdlib.html#types">Types</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../stdlib.html#rewards">Rewards</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../stdlib.html#prm-scorer">PRM Scorer</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../stdlib.html#document-processing">Document Processing</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../stdlib.html#rich-document">Rich Document</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../stdlib.html#requirement-libraries">Requirement Libraries</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../stdlib.html#markdown">Markdown</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../stdlib.html#python">Python</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../stdlib.html#tools">Tools</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../backends.html">Backends</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../backends.html#core-backend-modules">Core Backend Modules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../backends.html#module-mellea.backends.types">Types</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../backends.html#mellea.backends.types.ModelOption"><code class="docutils literal notranslate"><span class="pre">ModelOption</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../backends.html#module-mellea.backends.formatter">Formatter</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../backends.html#mellea.backends.formatter.Formatter"><code class="docutils literal notranslate"><span class="pre">Formatter</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../backends.html#mellea.backends.formatter.TemplateFormatter"><code class="docutils literal notranslate"><span class="pre">TemplateFormatter</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../backends.html#mellea.backends.formatter.FormatterBackend"><code class="docutils literal notranslate"><span class="pre">FormatterBackend</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../backends.html#module-mellea.backends.cache">Cache</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../backends.html#mellea.backends.cache.Cache"><code class="docutils literal notranslate"><span class="pre">Cache</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../backends.html#mellea.backends.cache.SimpleLRUCache"><code class="docutils literal notranslate"><span class="pre">SimpleLRUCache</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../backends.html#module-mellea.backends.tools">Tools</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../backends.html#mellea.backends.tools.add_tools_from_model_options"><code class="docutils literal notranslate"><span class="pre">add_tools_from_model_options()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../backends.html#mellea.backends.tools.add_tools_from_context_actions"><code class="docutils literal notranslate"><span class="pre">add_tools_from_context_actions()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../backends.html#mellea.backends.tools.convert_tools_to_json"><code class="docutils literal notranslate"><span class="pre">convert_tools_to_json()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../backends.html#mellea.backends.tools.json_extraction"><code class="docutils literal notranslate"><span class="pre">json_extraction()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../backends.html#mellea.backends.tools.find_func"><code class="docutils literal notranslate"><span class="pre">find_func()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../backends.html#mellea.backends.tools.parse_tools"><code class="docutils literal notranslate"><span class="pre">parse_tools()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../backends.html#backend-implementations">Backend Implementations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../backends.html#huggingface">HuggingFace</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../backends.html#openai">OpenAI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../backends.html#litellm">LiteLLM</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../backends.html#vllm">vLLM</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../backends.html#ollama">Ollama</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../backends.html#watsonx">WatsonX</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../backends.html#module-mellea.backends.dummy">Dummy</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../backends.html#mellea.backends.dummy.DummyBackend"><code class="docutils literal notranslate"><span class="pre">DummyBackend</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../backends.html#adapters">Adapters</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../backends.html#adapter">Adapter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../backends.html#module-mellea.backends.adapters.catalog">Catalog</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../backends.html#mellea.backends.adapters.catalog.AdapterType"><code class="docutils literal notranslate"><span class="pre">AdapterType</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../backends.html#mellea.backends.adapters.catalog.IntriniscsCatalogEntry"><code class="docutils literal notranslate"><span class="pre">IntriniscsCatalogEntry</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../backends.html#mellea.backends.adapters.catalog.known_intrinsic_names"><code class="docutils literal notranslate"><span class="pre">known_intrinsic_names()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../backends.html#mellea.backends.adapters.catalog.fetch_intrinsic_metadata"><code class="docutils literal notranslate"><span class="pre">fetch_intrinsic_metadata()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../backends.html#process-reward-models">Process Reward Models</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../backends.html#huggingface-prms">HuggingFace PRMs</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../helpers.html">Helpers</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../helpers.html#module-mellea.helpers.async_helpers">Async Helpers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../helpers.html#mellea.helpers.async_helpers.send_to_queue"><code class="docutils literal notranslate"><span class="pre">send_to_queue()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../helpers.html#mellea.helpers.async_helpers.wait_for_all_mots"><code class="docutils literal notranslate"><span class="pre">wait_for_all_mots()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../helpers.html#mellea.helpers.async_helpers.get_current_event_loop"><code class="docutils literal notranslate"><span class="pre">get_current_event_loop()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../helpers.html#mellea.helpers.async_helpers.ClientCache"><code class="docutils literal notranslate"><span class="pre">ClientCache</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../helpers.html#mellea.helpers.async_helpers.ClientCache.__init__"><code class="docutils literal notranslate"><span class="pre">ClientCache.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../helpers.html#mellea.helpers.async_helpers.ClientCache.current_size"><code class="docutils literal notranslate"><span class="pre">ClientCache.current_size()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../helpers.html#mellea.helpers.async_helpers.ClientCache.get"><code class="docutils literal notranslate"><span class="pre">ClientCache.get()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../helpers.html#mellea.helpers.async_helpers.ClientCache.put"><code class="docutils literal notranslate"><span class="pre">ClientCache.put()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../helpers.html#module-mellea.helpers.event_loop_helper">Event Loop Helper</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../helpers.html#module-mellea.helpers.fancy_logger">Fancy Logger</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../helpers.html#mellea.helpers.fancy_logger.RESTHandler"><code class="docutils literal notranslate"><span class="pre">RESTHandler</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../helpers.html#mellea.helpers.fancy_logger.RESTHandler.__init__"><code class="docutils literal notranslate"><span class="pre">RESTHandler.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../helpers.html#mellea.helpers.fancy_logger.RESTHandler.emit"><code class="docutils literal notranslate"><span class="pre">RESTHandler.emit()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../helpers.html#mellea.helpers.fancy_logger.JsonFormatter"><code class="docutils literal notranslate"><span class="pre">JsonFormatter</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../helpers.html#mellea.helpers.fancy_logger.JsonFormatter.format"><code class="docutils literal notranslate"><span class="pre">JsonFormatter.format()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../helpers.html#mellea.helpers.fancy_logger.CustomFormatter"><code class="docutils literal notranslate"><span class="pre">CustomFormatter</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../helpers.html#mellea.helpers.fancy_logger.CustomFormatter.cyan"><code class="docutils literal notranslate"><span class="pre">CustomFormatter.cyan</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../helpers.html#mellea.helpers.fancy_logger.CustomFormatter.grey"><code class="docutils literal notranslate"><span class="pre">CustomFormatter.grey</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../helpers.html#mellea.helpers.fancy_logger.CustomFormatter.yellow"><code class="docutils literal notranslate"><span class="pre">CustomFormatter.yellow</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../helpers.html#mellea.helpers.fancy_logger.CustomFormatter.red"><code class="docutils literal notranslate"><span class="pre">CustomFormatter.red</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../helpers.html#mellea.helpers.fancy_logger.CustomFormatter.bold_red"><code class="docutils literal notranslate"><span class="pre">CustomFormatter.bold_red</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../helpers.html#mellea.helpers.fancy_logger.CustomFormatter.reset"><code class="docutils literal notranslate"><span class="pre">CustomFormatter.reset</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../helpers.html#mellea.helpers.fancy_logger.CustomFormatter.FORMATS"><code class="docutils literal notranslate"><span class="pre">CustomFormatter.FORMATS</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../helpers.html#mellea.helpers.fancy_logger.CustomFormatter.format"><code class="docutils literal notranslate"><span class="pre">CustomFormatter.format()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../helpers.html#mellea.helpers.fancy_logger.FancyLogger"><code class="docutils literal notranslate"><span class="pre">FancyLogger</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../helpers.html#mellea.helpers.fancy_logger.FancyLogger.logger"><code class="docutils literal notranslate"><span class="pre">FancyLogger.logger</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../helpers.html#mellea.helpers.fancy_logger.FancyLogger.CRITICAL"><code class="docutils literal notranslate"><span class="pre">FancyLogger.CRITICAL</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../helpers.html#mellea.helpers.fancy_logger.FancyLogger.FATAL"><code class="docutils literal notranslate"><span class="pre">FancyLogger.FATAL</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../helpers.html#mellea.helpers.fancy_logger.FancyLogger.ERROR"><code class="docutils literal notranslate"><span class="pre">FancyLogger.ERROR</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../helpers.html#mellea.helpers.fancy_logger.FancyLogger.WARNING"><code class="docutils literal notranslate"><span class="pre">FancyLogger.WARNING</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../helpers.html#mellea.helpers.fancy_logger.FancyLogger.WARN"><code class="docutils literal notranslate"><span class="pre">FancyLogger.WARN</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../helpers.html#mellea.helpers.fancy_logger.FancyLogger.INFO"><code class="docutils literal notranslate"><span class="pre">FancyLogger.INFO</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../helpers.html#mellea.helpers.fancy_logger.FancyLogger.DEBUG"><code class="docutils literal notranslate"><span class="pre">FancyLogger.DEBUG</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../helpers.html#mellea.helpers.fancy_logger.FancyLogger.NOTSET"><code class="docutils literal notranslate"><span class="pre">FancyLogger.NOTSET</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../helpers.html#mellea.helpers.fancy_logger.FancyLogger.get_logger"><code class="docutils literal notranslate"><span class="pre">FancyLogger.get_logger()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../helpers.html#module-mellea.helpers.openai_compatible_helpers">OpenAI Compatible Helpers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../helpers.html#mellea.helpers.openai_compatible_helpers.extract_model_tool_requests"><code class="docutils literal notranslate"><span class="pre">extract_model_tool_requests()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../helpers.html#mellea.helpers.openai_compatible_helpers.chat_completion_delta_merge"><code class="docutils literal notranslate"><span class="pre">chat_completion_delta_merge()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Mellea</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">mellea.helpers.async_helpers</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for mellea.helpers.async_helpers</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;Async helper functions.&quot;&quot;&quot;</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">asyncio</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">collections</span><span class="w"> </span><span class="kn">import</span> <span class="n">OrderedDict</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">collections.abc</span><span class="w"> </span><span class="kn">import</span> <span class="n">AsyncIterator</span><span class="p">,</span> <span class="n">Coroutine</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">TypeVar</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">mellea.stdlib.base</span><span class="w"> </span><span class="kn">import</span> <span class="n">ModelOutputThunk</span>
+
+
+<div class="viewcode-block" id="send_to_queue">
+<a class="viewcode-back" href="../../../helpers.html#mellea.helpers.async_helpers.send_to_queue">[docs]</a>
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">send_to_queue</span><span class="p">(</span>
+    <span class="n">co</span><span class="p">:</span> <span class="n">Coroutine</span><span class="p">[</span><span class="n">Any</span><span class="p">,</span> <span class="n">Any</span><span class="p">,</span> <span class="n">AsyncIterator</span> <span class="o">|</span> <span class="n">Any</span><span class="p">]</span> <span class="o">|</span> <span class="n">AsyncIterator</span><span class="p">,</span> <span class="n">aqueue</span><span class="p">:</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">Queue</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Processes the output of an async chat request by sending the output to an async queue.&quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">co</span><span class="p">,</span> <span class="n">Coroutine</span><span class="p">):</span>
+            <span class="n">aresponse</span> <span class="o">=</span> <span class="k">await</span> <span class="n">co</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># Some backends (hf) don&#39;t actually return their iterator from an</span>
+            <span class="c1"># async function. As a result, there&#39;s no coroutine to wait for here.</span>
+            <span class="n">aresponse</span> <span class="o">=</span> <span class="n">co</span>
+
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">aresponse</span><span class="p">,</span> <span class="n">AsyncIterator</span><span class="p">):</span>
+            <span class="k">async</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">aresponse</span><span class="p">:</span>
+                <span class="k">await</span> <span class="n">aqueue</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">await</span> <span class="n">aqueue</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="n">aresponse</span><span class="p">)</span>
+
+        <span class="c1"># Always add a sentinel value to indicate end of stream.</span>
+        <span class="k">await</span> <span class="n">aqueue</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+
+    <span class="c1"># Typically, nothing awaits this function directly (only through the queue).</span>
+    <span class="c1"># As a result, we have to be careful about catching all errors and propagating</span>
+    <span class="c1"># them to the queue.</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="k">await</span> <span class="n">aqueue</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="n">e</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="wait_for_all_mots">
+<a class="viewcode-back" href="../../../helpers.html#mellea.helpers.async_helpers.wait_for_all_mots">[docs]</a>
+<span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">wait_for_all_mots</span><span class="p">(</span><span class="n">mots</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">ModelOutputThunk</span><span class="p">]):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Helper function to make waiting for multiple ModelOutputThunks to be computed easier.</span>
+
+<span class="sd">    All ModelOutputThunks must be from the same event loop. This should always be the case in sampling</span>
+<span class="sd">    functions, session functions, and top-level mellea functions.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">coroutines</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">Coroutine</span><span class="p">[</span><span class="n">Any</span><span class="p">,</span> <span class="n">Any</span><span class="p">,</span> <span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">mot</span> <span class="ow">in</span> <span class="n">mots</span><span class="p">:</span>
+        <span class="n">coroutines</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">mot</span><span class="o">.</span><span class="n">avalue</span><span class="p">())</span>
+
+    <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">gather</span><span class="p">(</span><span class="o">*</span><span class="n">coroutines</span><span class="p">)</span></div>
+
+
+
+<div class="viewcode-block" id="get_current_event_loop">
+<a class="viewcode-back" href="../../../helpers.html#mellea.helpers.async_helpers.get_current_event_loop">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">get_current_event_loop</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="kc">None</span> <span class="o">|</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">AbstractEventLoop</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Get the current event loop without having to catch exceptions.&quot;&quot;&quot;</span>
+    <span class="n">loop</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">loop</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">get_running_loop</span><span class="p">()</span>
+    <span class="k">except</span> <span class="ne">RuntimeError</span><span class="p">:</span>
+        <span class="k">pass</span>
+    <span class="k">return</span> <span class="n">loop</span></div>
+
+
+
+<div class="viewcode-block" id="ClientCache">
+<a class="viewcode-back" href="../../../helpers.html#mellea.helpers.async_helpers.ClientCache">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">ClientCache</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;A simple [LRU](https://en.wikipedia.org/wiki/Cache_replacement_policies#Least_Recently_Used_(LRU)) cache.</span>
+
+<span class="sd">    Used to keep track of clients for backends where the client is tied to a specific event loop.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="ClientCache.__init__">
+<a class="viewcode-back" href="../../../helpers.html#mellea.helpers.async_helpers.ClientCache.__init__">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">capacity</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Initializes the LRU cache with a certain capacity.</span>
+
+<span class="sd">        The `ClientCache` either contains a value or it doesn&#39;t.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">capacity</span> <span class="o">=</span> <span class="n">capacity</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cache</span><span class="p">:</span> <span class="n">OrderedDict</span> <span class="o">=</span> <span class="n">OrderedDict</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="ClientCache.current_size">
+<a class="viewcode-back" href="../../../helpers.html#mellea.helpers.async_helpers.ClientCache.current_size">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">current_size</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Just return the size of the key set. This isn&#39;t necessarily safe.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cache</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span></div>
+
+
+<div class="viewcode-block" id="ClientCache.get">
+<a class="viewcode-back" href="../../../helpers.html#mellea.helpers.async_helpers.ClientCache.get">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Gets a value from the cache.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">key</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">cache</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">None</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># Move the accessed item to the end (most recent)</span>
+            <span class="n">value</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cache</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">cache</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
+            <span class="k">return</span> <span class="n">value</span></div>
+
+
+<div class="viewcode-block" id="ClientCache.put">
+<a class="viewcode-back" href="../../../helpers.html#mellea.helpers.async_helpers.ClientCache.put">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">put</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">key</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">value</span><span class="p">:</span> <span class="n">Any</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Put a value into the cache.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">key</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">cache</span><span class="p">:</span>
+            <span class="c1"># If the key exists, move it to the end (most recent)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">cache</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cache</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">capacity</span><span class="p">:</span>
+            <span class="c1"># If the cache is full, remove the least recently used item</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">cache</span><span class="o">.</span><span class="n">popitem</span><span class="p">(</span><span class="n">last</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="c1"># Add the new key-value pair to the end (most recent)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cache</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span></div>
+</div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Mellea Contributors.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

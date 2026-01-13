@@ -1,0 +1,524 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>mellea.stdlib.reqlib.python &mdash; Mellea unknown documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../../_static/documentation_options.js?v=3f1b9271"></script>
+      <script src="../../../../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../../index.html" class="icon icon-home">
+            Mellea
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../quickref.html">Quick Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../quickref.html#core-session-methods">Core Session Methods</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../quickref.html#creating-a-session">Creating a Session</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../quickref.html#key-methods">Key Methods</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../quickref.html#instruct">instruct</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../quickref.html#chat">chat</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../quickref.html#generate">generate</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../quickref.html#functional-api">Functional API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../quickref.html#instruct-functional">instruct (functional)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../quickref.html#sampling-strategies">Sampling Strategies</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../quickref.html#rejectionsamplingstrategy">RejectionSamplingStrategy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../quickref.html#bestofnsamplingstrategy">BestOfNSamplingStrategy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../quickref.html#majorityvotingsamplingstrategy">MajorityVotingSamplingStrategy</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../quickref.html#requirements">Requirements</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../quickref.html#creating-requirements">Creating Requirements</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../quickref.html#see-also">See Also</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../stdlib.html">Standard Library (stdlib)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../stdlib.html#core-modules">Core Modules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../stdlib.html#module-mellea.stdlib.chat">Chat</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../stdlib.html#mellea.stdlib.chat.Message"><code class="docutils literal notranslate"><span class="pre">Message</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../stdlib.html#mellea.stdlib.chat.ToolMessage"><code class="docutils literal notranslate"><span class="pre">ToolMessage</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../stdlib.html#mellea.stdlib.chat.as_chat_history"><code class="docutils literal notranslate"><span class="pre">as_chat_history()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../stdlib.html#module-mellea.stdlib.functional">Functional</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../stdlib.html#mellea.stdlib.functional.act"><code class="docutils literal notranslate"><span class="pre">act()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../stdlib.html#mellea.stdlib.functional.instruct"><code class="docutils literal notranslate"><span class="pre">instruct()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../stdlib.html#mellea.stdlib.functional.chat"><code class="docutils literal notranslate"><span class="pre">chat()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../stdlib.html#mellea.stdlib.functional.validate"><code class="docutils literal notranslate"><span class="pre">validate()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../stdlib.html#mellea.stdlib.functional.query"><code class="docutils literal notranslate"><span class="pre">query()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../stdlib.html#mellea.stdlib.functional.transform"><code class="docutils literal notranslate"><span class="pre">transform()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../stdlib.html#mellea.stdlib.functional.aact"><code class="docutils literal notranslate"><span class="pre">aact()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../stdlib.html#mellea.stdlib.functional.ainstruct"><code class="docutils literal notranslate"><span class="pre">ainstruct()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../stdlib.html#mellea.stdlib.functional.achat"><code class="docutils literal notranslate"><span class="pre">achat()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../stdlib.html#mellea.stdlib.functional.avalidate"><code class="docutils literal notranslate"><span class="pre">avalidate()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../stdlib.html#mellea.stdlib.functional.aquery"><code class="docutils literal notranslate"><span class="pre">aquery()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../stdlib.html#mellea.stdlib.functional.atransform"><code class="docutils literal notranslate"><span class="pre">atransform()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../stdlib.html#session">Session</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../stdlib.html#module-mellea.stdlib.test_based_eval">Test-Based Evaluation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../stdlib.html#mellea.stdlib.test_based_eval.Message"><code class="docutils literal notranslate"><span class="pre">Message</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../stdlib.html#mellea.stdlib.test_based_eval.Example"><code class="docutils literal notranslate"><span class="pre">Example</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../stdlib.html#mellea.stdlib.test_based_eval.TestData"><code class="docutils literal notranslate"><span class="pre">TestData</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../stdlib.html#mellea.stdlib.test_based_eval.TestBasedEval"><code class="docutils literal notranslate"><span class="pre">TestBasedEval</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../stdlib.html#sampling-strategies">Sampling Strategies</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../stdlib.html#module-mellea.stdlib.sampling.base">Base</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../stdlib.html#mellea.stdlib.sampling.base.BaseSamplingStrategy"><code class="docutils literal notranslate"><span class="pre">BaseSamplingStrategy</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../stdlib.html#mellea.stdlib.sampling.base.RejectionSamplingStrategy"><code class="docutils literal notranslate"><span class="pre">RejectionSamplingStrategy</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../stdlib.html#mellea.stdlib.sampling.base.RepairTemplateStrategy"><code class="docutils literal notranslate"><span class="pre">RepairTemplateStrategy</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../stdlib.html#mellea.stdlib.sampling.base.MultiTurnStrategy"><code class="docutils literal notranslate"><span class="pre">MultiTurnStrategy</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../stdlib.html#best-of-n">Best of N</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../stdlib.html#budget-forcing">Budget Forcing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../stdlib.html#majority-voting">Majority Voting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../stdlib.html#module-mellea.stdlib.sampling.types">Types</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../stdlib.html#mellea.stdlib.sampling.types.SamplingResult"><code class="docutils literal notranslate"><span class="pre">SamplingResult</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../stdlib.html#mellea.stdlib.sampling.types.SamplingStrategy"><code class="docutils literal notranslate"><span class="pre">SamplingStrategy</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../stdlib.html#rewards">Rewards</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../stdlib.html#prm-scorer">PRM Scorer</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../stdlib.html#document-processing">Document Processing</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../stdlib.html#rich-document">Rich Document</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../stdlib.html#requirement-libraries">Requirement Libraries</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../stdlib.html#markdown">Markdown</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../stdlib.html#module-mellea.stdlib.reqlib.python">Python</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../stdlib.html#mellea.stdlib.reqlib.python.PythonExecutionReq"><code class="docutils literal notranslate"><span class="pre">PythonExecutionReq</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../stdlib.html#module-mellea.stdlib.reqlib.tools">Tools</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../stdlib.html#mellea.stdlib.reqlib.tools.uses_tool"><code class="docutils literal notranslate"><span class="pre">uses_tool()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../stdlib.html#mellea.stdlib.reqlib.tools.tool_arg_validator"><code class="docutils literal notranslate"><span class="pre">tool_arg_validator()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../backends.html">Backends</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../backends.html#core-backend-modules">Core Backend Modules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../backends.html#module-mellea.backends.types">Types</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../backends.html#mellea.backends.types.ModelOption"><code class="docutils literal notranslate"><span class="pre">ModelOption</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../backends.html#module-mellea.backends.formatter">Formatter</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../backends.html#mellea.backends.formatter.Formatter"><code class="docutils literal notranslate"><span class="pre">Formatter</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../backends.html#mellea.backends.formatter.TemplateFormatter"><code class="docutils literal notranslate"><span class="pre">TemplateFormatter</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../backends.html#mellea.backends.formatter.FormatterBackend"><code class="docutils literal notranslate"><span class="pre">FormatterBackend</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../backends.html#module-mellea.backends.cache">Cache</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../backends.html#mellea.backends.cache.Cache"><code class="docutils literal notranslate"><span class="pre">Cache</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../backends.html#mellea.backends.cache.SimpleLRUCache"><code class="docutils literal notranslate"><span class="pre">SimpleLRUCache</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../backends.html#tools">Tools</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../backends.html#backend-implementations">Backend Implementations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../backends.html#huggingface">HuggingFace</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../backends.html#openai">OpenAI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../backends.html#litellm">LiteLLM</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../backends.html#vllm">vLLM</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../backends.html#ollama">Ollama</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../backends.html#watsonx">WatsonX</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../backends.html#module-mellea.backends.dummy">Dummy</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../backends.html#mellea.backends.dummy.DummyBackend"><code class="docutils literal notranslate"><span class="pre">DummyBackend</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../backends.html#adapters">Adapters</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../backends.html#module-mellea.backends.adapters.adapter">Adapter</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../backends.html#mellea.backends.adapters.adapter.Adapter"><code class="docutils literal notranslate"><span class="pre">Adapter</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../backends.html#mellea.backends.adapters.adapter.OpenAIAdapter"><code class="docutils literal notranslate"><span class="pre">OpenAIAdapter</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../backends.html#mellea.backends.adapters.adapter.LocalHFAdapter"><code class="docutils literal notranslate"><span class="pre">LocalHFAdapter</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../backends.html#mellea.backends.adapters.adapter.GraniteCommonAdapter"><code class="docutils literal notranslate"><span class="pre">GraniteCommonAdapter</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../backends.html#mellea.backends.adapters.adapter.get_adapter_for_intrinsic"><code class="docutils literal notranslate"><span class="pre">get_adapter_for_intrinsic()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../backends.html#mellea.backends.adapters.adapter.AdapterMixin"><code class="docutils literal notranslate"><span class="pre">AdapterMixin</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../backends.html#module-mellea.backends.adapters.catalog">Catalog</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../backends.html#mellea.backends.adapters.catalog.AdapterType"><code class="docutils literal notranslate"><span class="pre">AdapterType</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../backends.html#mellea.backends.adapters.catalog.IntriniscsCatalogEntry"><code class="docutils literal notranslate"><span class="pre">IntriniscsCatalogEntry</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../backends.html#mellea.backends.adapters.catalog.known_intrinsic_names"><code class="docutils literal notranslate"><span class="pre">known_intrinsic_names()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../backends.html#mellea.backends.adapters.catalog.fetch_intrinsic_metadata"><code class="docutils literal notranslate"><span class="pre">fetch_intrinsic_metadata()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../backends.html#process-reward-models">Process Reward Models</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../backends.html#huggingface-prms">HuggingFace PRMs</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../helpers.html">Helpers</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../helpers.html#module-mellea.helpers.async_helpers">Async Helpers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../helpers.html#mellea.helpers.async_helpers.send_to_queue"><code class="docutils literal notranslate"><span class="pre">send_to_queue()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../helpers.html#mellea.helpers.async_helpers.wait_for_all_mots"><code class="docutils literal notranslate"><span class="pre">wait_for_all_mots()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../helpers.html#mellea.helpers.async_helpers.get_current_event_loop"><code class="docutils literal notranslate"><span class="pre">get_current_event_loop()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../helpers.html#mellea.helpers.async_helpers.ClientCache"><code class="docutils literal notranslate"><span class="pre">ClientCache</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../helpers.html#mellea.helpers.async_helpers.ClientCache.__init__"><code class="docutils literal notranslate"><span class="pre">ClientCache.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../helpers.html#mellea.helpers.async_helpers.ClientCache.current_size"><code class="docutils literal notranslate"><span class="pre">ClientCache.current_size()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../helpers.html#mellea.helpers.async_helpers.ClientCache.get"><code class="docutils literal notranslate"><span class="pre">ClientCache.get()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../helpers.html#mellea.helpers.async_helpers.ClientCache.put"><code class="docutils literal notranslate"><span class="pre">ClientCache.put()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../helpers.html#module-mellea.helpers.event_loop_helper">Event Loop Helper</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../helpers.html#module-mellea.helpers.fancy_logger">Fancy Logger</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../helpers.html#mellea.helpers.fancy_logger.RESTHandler"><code class="docutils literal notranslate"><span class="pre">RESTHandler</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../helpers.html#mellea.helpers.fancy_logger.RESTHandler.__init__"><code class="docutils literal notranslate"><span class="pre">RESTHandler.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../helpers.html#mellea.helpers.fancy_logger.RESTHandler.emit"><code class="docutils literal notranslate"><span class="pre">RESTHandler.emit()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../helpers.html#mellea.helpers.fancy_logger.JsonFormatter"><code class="docutils literal notranslate"><span class="pre">JsonFormatter</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../helpers.html#mellea.helpers.fancy_logger.JsonFormatter.format"><code class="docutils literal notranslate"><span class="pre">JsonFormatter.format()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../helpers.html#mellea.helpers.fancy_logger.CustomFormatter"><code class="docutils literal notranslate"><span class="pre">CustomFormatter</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../helpers.html#mellea.helpers.fancy_logger.CustomFormatter.cyan"><code class="docutils literal notranslate"><span class="pre">CustomFormatter.cyan</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../helpers.html#mellea.helpers.fancy_logger.CustomFormatter.grey"><code class="docutils literal notranslate"><span class="pre">CustomFormatter.grey</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../helpers.html#mellea.helpers.fancy_logger.CustomFormatter.yellow"><code class="docutils literal notranslate"><span class="pre">CustomFormatter.yellow</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../helpers.html#mellea.helpers.fancy_logger.CustomFormatter.red"><code class="docutils literal notranslate"><span class="pre">CustomFormatter.red</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../helpers.html#mellea.helpers.fancy_logger.CustomFormatter.bold_red"><code class="docutils literal notranslate"><span class="pre">CustomFormatter.bold_red</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../helpers.html#mellea.helpers.fancy_logger.CustomFormatter.reset"><code class="docutils literal notranslate"><span class="pre">CustomFormatter.reset</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../helpers.html#mellea.helpers.fancy_logger.CustomFormatter.FORMATS"><code class="docutils literal notranslate"><span class="pre">CustomFormatter.FORMATS</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../helpers.html#mellea.helpers.fancy_logger.CustomFormatter.format"><code class="docutils literal notranslate"><span class="pre">CustomFormatter.format()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../helpers.html#mellea.helpers.fancy_logger.FancyLogger"><code class="docutils literal notranslate"><span class="pre">FancyLogger</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../helpers.html#mellea.helpers.fancy_logger.FancyLogger.logger"><code class="docutils literal notranslate"><span class="pre">FancyLogger.logger</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../helpers.html#mellea.helpers.fancy_logger.FancyLogger.CRITICAL"><code class="docutils literal notranslate"><span class="pre">FancyLogger.CRITICAL</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../helpers.html#mellea.helpers.fancy_logger.FancyLogger.FATAL"><code class="docutils literal notranslate"><span class="pre">FancyLogger.FATAL</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../helpers.html#mellea.helpers.fancy_logger.FancyLogger.ERROR"><code class="docutils literal notranslate"><span class="pre">FancyLogger.ERROR</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../helpers.html#mellea.helpers.fancy_logger.FancyLogger.WARNING"><code class="docutils literal notranslate"><span class="pre">FancyLogger.WARNING</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../helpers.html#mellea.helpers.fancy_logger.FancyLogger.WARN"><code class="docutils literal notranslate"><span class="pre">FancyLogger.WARN</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../helpers.html#mellea.helpers.fancy_logger.FancyLogger.INFO"><code class="docutils literal notranslate"><span class="pre">FancyLogger.INFO</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../helpers.html#mellea.helpers.fancy_logger.FancyLogger.DEBUG"><code class="docutils literal notranslate"><span class="pre">FancyLogger.DEBUG</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../helpers.html#mellea.helpers.fancy_logger.FancyLogger.NOTSET"><code class="docutils literal notranslate"><span class="pre">FancyLogger.NOTSET</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../helpers.html#mellea.helpers.fancy_logger.FancyLogger.get_logger"><code class="docutils literal notranslate"><span class="pre">FancyLogger.get_logger()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../helpers.html#module-mellea.helpers.openai_compatible_helpers">OpenAI Compatible Helpers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../helpers.html#mellea.helpers.openai_compatible_helpers.extract_model_tool_requests"><code class="docutils literal notranslate"><span class="pre">extract_model_tool_requests()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../helpers.html#mellea.helpers.openai_compatible_helpers.chat_completion_delta_merge"><code class="docutils literal notranslate"><span class="pre">chat_completion_delta_merge()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">Mellea</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">mellea.stdlib.reqlib.python</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for mellea.stdlib.reqlib.python</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;Requirements for Python code generation validation.&quot;&quot;&quot;</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">ast</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">subprocess</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">tempfile</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">abc</span><span class="w"> </span><span class="kn">import</span> <span class="n">ABC</span><span class="p">,</span> <span class="n">abstractmethod</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">dataclasses</span><span class="w"> </span><span class="kn">import</span> <span class="n">dataclass</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Any</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">mellea.helpers.fancy_logger</span><span class="w"> </span><span class="kn">import</span> <span class="n">FancyLogger</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">mellea.stdlib.base</span><span class="w"> </span><span class="kn">import</span> <span class="n">Context</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">mellea.stdlib.requirement</span><span class="w"> </span><span class="kn">import</span> <span class="n">Requirement</span><span class="p">,</span> <span class="n">ValidationResult</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">mellea.stdlib.tools.interpreter</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">ExecutionEnvironment</span><span class="p">,</span>
+    <span class="n">LLMSandboxEnvironment</span><span class="p">,</span>
+    <span class="n">StaticAnalysisEnvironment</span><span class="p">,</span>
+    <span class="n">UnsafeEnvironment</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">logger</span> <span class="o">=</span> <span class="n">FancyLogger</span><span class="o">.</span><span class="n">get_logger</span><span class="p">()</span>
+
+
+<span class="c1"># region code extraction</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_score_code_block</span><span class="p">(</span><span class="n">code</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Score a code block to determine if it&#39;s likely the main answer.</span>
+
+<span class="sd">    Scoring metrics:</span>
+<span class="sd">    - Length bonus: +1 per line (capped at 10) - longer blocks are generally more substantial</span>
+<span class="sd">    - Function/class bonus: +5 - indicates complete, structured code</span>
+<span class="sd">    - Control flow bonus: +3 - presence of if/for/while/try/with suggests meaningful logic</span>
+<span class="sd">    - Non-trivial content penalty: -5 if fewer than 2 executable lines (filters out import-only or comment-heavy blocks)</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        int: Score indicating likelihood this is the primary code block to execute.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">score</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">lines</span> <span class="o">=</span> <span class="n">code</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Longer blocks generally better</span>
+    <span class="n">score</span> <span class="o">+=</span> <span class="nb">min</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">lines</span><span class="p">),</span> <span class="mi">10</span><span class="p">)</span>
+
+    <span class="c1"># Prefer complete functions/classes</span>
+    <span class="k">if</span> <span class="s2">&quot;def &quot;</span> <span class="ow">in</span> <span class="n">code</span> <span class="ow">or</span> <span class="s2">&quot;class &quot;</span> <span class="ow">in</span> <span class="n">code</span><span class="p">:</span>
+        <span class="n">score</span> <span class="o">+=</span> <span class="mi">5</span>
+
+    <span class="c1"># Prefer blocks with actual logic</span>
+    <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="n">keyword</span> <span class="ow">in</span> <span class="n">code</span> <span class="k">for</span> <span class="n">keyword</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;if &quot;</span><span class="p">,</span> <span class="s2">&quot;for &quot;</span><span class="p">,</span> <span class="s2">&quot;while &quot;</span><span class="p">,</span> <span class="s2">&quot;try:&quot;</span><span class="p">,</span> <span class="s2">&quot;with &quot;</span><span class="p">]):</span>
+        <span class="n">score</span> <span class="o">+=</span> <span class="mi">3</span>
+
+    <span class="c1"># Penalize blocks that are mostly imports/comments without actual logic</span>
+    <span class="c1"># We want at least 2 lines of executable code to consider it a meaningful code block</span>
+    <span class="c1"># This helps filter out import-only blocks or heavily commented trivial snippets</span>
+    <span class="c1"># TODO: Consider using comment-to-code ratio in future iterations</span>
+    <span class="n">non_trivial_lines</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">lines</span>
+        <span class="k">if</span> <span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">line</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">startswith</span><span class="p">((</span><span class="s2">&quot;#&quot;</span><span class="p">,</span> <span class="s2">&quot;import &quot;</span><span class="p">,</span> <span class="s2">&quot;from &quot;</span><span class="p">))</span>
+    <span class="p">]</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">non_trivial_lines</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="n">score</span> <span class="o">-=</span> <span class="mi">5</span>
+
+    <span class="k">return</span> <span class="n">score</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_has_python_code_listing</span><span class="p">(</span><span class="n">ctx</span><span class="p">:</span> <span class="n">Context</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ValidationResult</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Extract Python code from context.&quot;&quot;&quot;</span>
+    <span class="n">last_output</span> <span class="o">=</span> <span class="n">ctx</span><span class="o">.</span><span class="n">last_output</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">last_output</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="n">last_output</span><span class="o">.</span><span class="n">value</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">ValidationResult</span><span class="p">(</span><span class="n">result</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">reason</span><span class="o">=</span><span class="s2">&quot;No output found in context&quot;</span><span class="p">)</span>
+
+    <span class="n">content</span> <span class="o">=</span> <span class="n">last_output</span><span class="o">.</span><span class="n">value</span>
+
+    <span class="c1"># Look for code blocks with python specifier</span>
+    <span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
+
+    <span class="c1"># Pattern for ```python ... ``` blocks</span>
+    <span class="n">python_blocks</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;```python\s*\n(.*?)\n```&quot;</span><span class="p">,</span> <span class="n">content</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">DOTALL</span><span class="p">)</span>
+
+    <span class="c1"># Pattern for generic ``` blocks</span>
+    <span class="n">generic_blocks</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;```\s*\n(.*?)\n```&quot;</span><span class="p">,</span> <span class="n">content</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">DOTALL</span><span class="p">)</span>
+
+    <span class="n">all_blocks</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="c1"># Add python blocks with high priority</span>
+    <span class="k">for</span> <span class="n">block</span> <span class="ow">in</span> <span class="n">python_blocks</span><span class="p">:</span>
+        <span class="n">all_blocks</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">block</span><span class="o">.</span><span class="n">strip</span><span class="p">(),</span> <span class="n">_score_code_block</span><span class="p">(</span><span class="n">block</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span> <span class="o">+</span> <span class="mi">10</span><span class="p">))</span>
+
+    <span class="c1"># Add generic blocks if they look like Python</span>
+    <span class="k">for</span> <span class="n">block</span> <span class="ow">in</span> <span class="n">generic_blocks</span><span class="p">:</span>
+        <span class="n">block</span> <span class="o">=</span> <span class="n">block</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">block</span> <span class="ow">and</span> <span class="nb">any</span><span class="p">(</span>
+            <span class="n">keyword</span> <span class="ow">in</span> <span class="n">block</span>
+            <span class="k">for</span> <span class="n">keyword</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;def &quot;</span><span class="p">,</span> <span class="s2">&quot;class &quot;</span><span class="p">,</span> <span class="s2">&quot;import &quot;</span><span class="p">,</span> <span class="s2">&quot;print(&quot;</span><span class="p">,</span> <span class="s2">&quot;if __name__&quot;</span><span class="p">]</span>
+        <span class="p">):</span>
+            <span class="n">all_blocks</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">block</span><span class="p">,</span> <span class="n">_score_code_block</span><span class="p">(</span><span class="n">block</span><span class="p">)))</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">all_blocks</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">ValidationResult</span><span class="p">(</span><span class="n">result</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">reason</span><span class="o">=</span><span class="s2">&quot;No Python code blocks found&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Return the highest scoring block</span>
+    <span class="n">best_block</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">all_blocks</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">ValidationResult</span><span class="p">(</span><span class="n">result</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">reason</span><span class="o">=</span><span class="n">best_block</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+
+<span class="c1"># endregion</span>
+
+<span class="c1"># region execution validation</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_python_executes_without_error</span><span class="p">(</span>
+    <span class="n">ctx</span><span class="p">:</span> <span class="n">Context</span><span class="p">,</span>
+    <span class="n">timeout</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span>
+    <span class="n">allow_unsafe</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="n">allowed_imports</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">use_sandbox</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ValidationResult</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Validate that Python code executes without raising exceptions.</span>
+
+<span class="sd">    First extracts the highest-scoring Python code block from the context,</span>
+<span class="sd">    then validates/executes it based on the specified execution mode.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">extraction_result</span> <span class="o">=</span> <span class="n">_has_python_code_listing</span><span class="p">(</span><span class="n">ctx</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">extraction_result</span><span class="o">.</span><span class="n">as_bool</span><span class="p">():</span>
+        <span class="k">return</span> <span class="n">ValidationResult</span><span class="p">(</span>
+            <span class="n">result</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+            <span class="n">reason</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Could not extract Python code for execution: </span><span class="si">{</span><span class="n">extraction_result</span><span class="o">.</span><span class="n">reason</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+        <span class="p">)</span>
+
+    <span class="n">code</span> <span class="o">=</span> <span class="n">extraction_result</span><span class="o">.</span><span class="n">reason</span>
+    <span class="k">assert</span> <span class="n">code</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+
+    <span class="n">environment</span><span class="p">:</span> <span class="n">ExecutionEnvironment</span>
+    <span class="k">if</span> <span class="n">use_sandbox</span><span class="p">:</span>
+        <span class="n">environment</span> <span class="o">=</span> <span class="n">LLMSandboxEnvironment</span><span class="p">(</span><span class="n">allowed_imports</span><span class="o">=</span><span class="n">allowed_imports</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">allow_unsafe</span><span class="p">:</span>
+        <span class="n">environment</span> <span class="o">=</span> <span class="n">UnsafeEnvironment</span><span class="p">(</span><span class="n">allowed_imports</span><span class="o">=</span><span class="n">allowed_imports</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">environment</span> <span class="o">=</span> <span class="n">StaticAnalysisEnvironment</span><span class="p">(</span><span class="n">allowed_imports</span><span class="o">=</span><span class="n">allowed_imports</span><span class="p">)</span>
+
+    <span class="n">result</span> <span class="o">=</span> <span class="n">environment</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">code</span><span class="p">,</span> <span class="n">timeout</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">ValidationResult</span><span class="p">(</span>
+        <span class="n">result</span><span class="o">=</span><span class="n">result</span><span class="o">.</span><span class="n">success</span><span class="p">,</span> <span class="n">reason</span><span class="o">=</span><span class="n">result</span><span class="o">.</span><span class="n">to_validationresult_reason</span><span class="p">()</span>
+    <span class="p">)</span>
+
+
+<div class="viewcode-block" id="PythonExecutionReq">
+<a class="viewcode-back" href="../../../../stdlib.html#mellea.stdlib.reqlib.python.PythonExecutionReq">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">PythonExecutionReq</span><span class="p">(</span><span class="n">Requirement</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Verifies that Python code runs without raising exceptions.&quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="PythonExecutionReq.__init__">
+<a class="viewcode-back" href="../../../../stdlib.html#mellea.stdlib.reqlib.python.PythonExecutionReq.__init__">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">timeout</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span>
+        <span class="n">allow_unsafe_execution</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="n">allowed_imports</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">use_sandbox</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Initialize execution validator.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            timeout: Maximum seconds to allow code to run before timing out.</span>
+<span class="sd">            allow_unsafe_execution: If True, execute code directly with subprocess (unsafe).</span>
+<span class="sd">            allowed_imports: List of allowed import modules when using execution. None means any import is allowed.</span>
+<span class="sd">            use_sandbox: If True, use llm-sandbox for secure Docker-based execution.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_timeout</span> <span class="o">=</span> <span class="n">timeout</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_allow_unsafe</span> <span class="o">=</span> <span class="n">allow_unsafe_execution</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_allowed_imports</span> <span class="o">=</span> <span class="n">allowed_imports</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_use_sandbox</span> <span class="o">=</span> <span class="n">use_sandbox</span>
+
+        <span class="k">if</span> <span class="n">allow_unsafe_execution</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">use_sandbox</span><span class="p">:</span>
+            <span class="n">logger</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
+                <span class="s2">&quot;⚠️ UNSAFE: Executing untrusted code directly. Only use with trusted sources!&quot;</span>
+            <span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">use_sandbox</span> <span class="ow">and</span> <span class="n">allow_unsafe_execution</span><span class="p">:</span>
+            <span class="n">execution_mode</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;sandbox execution (timeout: </span><span class="si">{</span><span class="n">timeout</span><span class="si">}</span><span class="s2">s)&quot;</span>
+        <span class="k">elif</span> <span class="n">allow_unsafe_execution</span><span class="p">:</span>
+            <span class="n">execution_mode</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;unsafe execution (timeout: </span><span class="si">{</span><span class="n">timeout</span><span class="si">}</span><span class="s2">s)&quot;</span>
+        <span class="k">elif</span> <span class="n">use_sandbox</span><span class="p">:</span>
+            <span class="n">execution_mode</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;sandbox execution (timeout: </span><span class="si">{</span><span class="n">timeout</span><span class="si">}</span><span class="s2">s)&quot;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">execution_mode</span> <span class="o">=</span> <span class="s2">&quot;validation only&quot;</span>
+
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+            <span class="n">description</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;The Python code should execute without errors (</span><span class="si">{</span><span class="n">execution_mode</span><span class="si">}</span><span class="s2">).&quot;</span><span class="p">,</span>
+            <span class="n">validation_fn</span><span class="o">=</span><span class="k">lambda</span> <span class="n">ctx</span><span class="p">:</span> <span class="n">_python_executes_without_error</span><span class="p">(</span>
+                <span class="n">ctx</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_timeout</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_allow_unsafe</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_allowed_imports</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">_use_sandbox</span><span class="p">,</span>
+            <span class="p">),</span>
+            <span class="n">check_only</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="p">)</span></div>
+</div>
+
+
+
+<span class="c1"># endregion</span>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Mellea Contributors.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

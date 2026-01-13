@@ -1,0 +1,1044 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>mellea.backends.ollama &mdash; Mellea unknown documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../_static/documentation_options.js?v=3f1b9271"></script>
+      <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            Mellea
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../quickref.html">Quick Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../quickref.html#core-session-methods">Core Session Methods</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../quickref.html#creating-a-session">Creating a Session</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../quickref.html#key-methods">Key Methods</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../quickref.html#instruct">instruct</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../quickref.html#chat">chat</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../quickref.html#generate">generate</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../quickref.html#functional-api">Functional API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../quickref.html#instruct-functional">instruct (functional)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../quickref.html#sampling-strategies">Sampling Strategies</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../quickref.html#rejectionsamplingstrategy">RejectionSamplingStrategy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../quickref.html#bestofnsamplingstrategy">BestOfNSamplingStrategy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../quickref.html#majorityvotingsamplingstrategy">MajorityVotingSamplingStrategy</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../quickref.html#requirements">Requirements</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../quickref.html#creating-requirements">Creating Requirements</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../quickref.html#see-also">See Also</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../session_api.html">Session API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../session_api.html#creating-a-session">Creating a Session</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../session_api.html#melleasession-class">MelleaSession Class</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../session_api.html#mellea.stdlib.session.MelleaSession"><code class="docutils literal notranslate"><span class="pre">mellea.stdlib.session.MelleaSession</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../session_api.html#mellea.stdlib.session.MelleaSession.instruct"><code class="docutils literal notranslate"><span class="pre">mellea.stdlib.session.MelleaSession.instruct()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../session_api.html#mellea.stdlib.session.MelleaSession.chat"><code class="docutils literal notranslate"><span class="pre">mellea.stdlib.session.MelleaSession.chat()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../session_api.html#mellea.stdlib.session.MelleaSession.generate"><code class="docutils literal notranslate"><span class="pre">mellea.stdlib.session.MelleaSession.generate()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../session_api.html#mellea.stdlib.session.MelleaSession.ctx"><code class="docutils literal notranslate"><span class="pre">mellea.stdlib.session.MelleaSession.ctx</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../session_api.html#mellea.stdlib.session.MelleaSession.backend"><code class="docutils literal notranslate"><span class="pre">mellea.stdlib.session.MelleaSession.backend</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../session_api.html#mellea.stdlib.session.MelleaSession.model_options"><code class="docutils literal notranslate"><span class="pre">mellea.stdlib.session.MelleaSession.model_options</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../session_api.html#functional-api">Functional API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../session_api.html#see-also">See Also</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../stdlib.html">Standard Library (stdlib)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../stdlib.html#core-modules">Core Modules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../stdlib.html#module-mellea.stdlib.chat">Chat</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../stdlib.html#mellea.stdlib.chat.Message"><code class="docutils literal notranslate"><span class="pre">Message</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../stdlib.html#mellea.stdlib.chat.ToolMessage"><code class="docutils literal notranslate"><span class="pre">ToolMessage</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../stdlib.html#mellea.stdlib.chat.as_chat_history"><code class="docutils literal notranslate"><span class="pre">as_chat_history()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../stdlib.html#module-mellea.stdlib.functional">Functional</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../stdlib.html#mellea.stdlib.functional.act"><code class="docutils literal notranslate"><span class="pre">act()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../stdlib.html#mellea.stdlib.functional.instruct"><code class="docutils literal notranslate"><span class="pre">instruct()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../stdlib.html#mellea.stdlib.functional.chat"><code class="docutils literal notranslate"><span class="pre">chat()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../stdlib.html#mellea.stdlib.functional.validate"><code class="docutils literal notranslate"><span class="pre">validate()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../stdlib.html#mellea.stdlib.functional.query"><code class="docutils literal notranslate"><span class="pre">query()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../stdlib.html#mellea.stdlib.functional.transform"><code class="docutils literal notranslate"><span class="pre">transform()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../stdlib.html#mellea.stdlib.functional.aact"><code class="docutils literal notranslate"><span class="pre">aact()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../stdlib.html#mellea.stdlib.functional.ainstruct"><code class="docutils literal notranslate"><span class="pre">ainstruct()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../stdlib.html#mellea.stdlib.functional.achat"><code class="docutils literal notranslate"><span class="pre">achat()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../stdlib.html#mellea.stdlib.functional.avalidate"><code class="docutils literal notranslate"><span class="pre">avalidate()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../stdlib.html#mellea.stdlib.functional.aquery"><code class="docutils literal notranslate"><span class="pre">aquery()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../stdlib.html#mellea.stdlib.functional.atransform"><code class="docutils literal notranslate"><span class="pre">atransform()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../stdlib.html#module-mellea.stdlib.session">Session</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../stdlib.html#mellea.stdlib.session.get_session"><code class="docutils literal notranslate"><span class="pre">get_session()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../stdlib.html#mellea.stdlib.session.backend_name_to_class"><code class="docutils literal notranslate"><span class="pre">backend_name_to_class()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../stdlib.html#mellea.stdlib.session.start_session"><code class="docutils literal notranslate"><span class="pre">start_session()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../stdlib.html#mellea.stdlib.session.MelleaSession"><code class="docutils literal notranslate"><span class="pre">MelleaSession</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../stdlib.html#module-mellea.stdlib.test_based_eval">Test-Based Evaluation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../stdlib.html#mellea.stdlib.test_based_eval.Message"><code class="docutils literal notranslate"><span class="pre">Message</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../stdlib.html#mellea.stdlib.test_based_eval.Example"><code class="docutils literal notranslate"><span class="pre">Example</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../stdlib.html#mellea.stdlib.test_based_eval.TestData"><code class="docutils literal notranslate"><span class="pre">TestData</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../stdlib.html#mellea.stdlib.test_based_eval.TestBasedEval"><code class="docutils literal notranslate"><span class="pre">TestBasedEval</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../stdlib.html#sampling-strategies">Sampling Strategies</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../stdlib.html#module-mellea.stdlib.sampling.base">Base</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../stdlib.html#mellea.stdlib.sampling.base.BaseSamplingStrategy"><code class="docutils literal notranslate"><span class="pre">BaseSamplingStrategy</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../stdlib.html#mellea.stdlib.sampling.base.RejectionSamplingStrategy"><code class="docutils literal notranslate"><span class="pre">RejectionSamplingStrategy</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../stdlib.html#mellea.stdlib.sampling.base.RepairTemplateStrategy"><code class="docutils literal notranslate"><span class="pre">RepairTemplateStrategy</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../stdlib.html#mellea.stdlib.sampling.base.MultiTurnStrategy"><code class="docutils literal notranslate"><span class="pre">MultiTurnStrategy</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../stdlib.html#module-mellea.stdlib.sampling.best_of_n">Best of N</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../stdlib.html#mellea.stdlib.sampling.best_of_n.BestofNSamplingStrategy"><code class="docutils literal notranslate"><span class="pre">BestofNSamplingStrategy</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../stdlib.html#module-mellea.stdlib.sampling.budget_forcing">Budget Forcing</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../stdlib.html#mellea.stdlib.sampling.budget_forcing.BudgetForcingSamplingStrategy"><code class="docutils literal notranslate"><span class="pre">BudgetForcingSamplingStrategy</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../stdlib.html#majority-voting">Majority Voting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../stdlib.html#module-mellea.stdlib.sampling.types">Types</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../stdlib.html#mellea.stdlib.sampling.types.SamplingResult"><code class="docutils literal notranslate"><span class="pre">SamplingResult</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../stdlib.html#mellea.stdlib.sampling.types.SamplingStrategy"><code class="docutils literal notranslate"><span class="pre">SamplingStrategy</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../stdlib.html#rewards">Rewards</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../stdlib.html#prm-scorer">PRM Scorer</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../stdlib.html#document-processing">Document Processing</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../stdlib.html#rich-document">Rich Document</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../stdlib.html#requirement-libraries">Requirement Libraries</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../stdlib.html#markdown">Markdown</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../stdlib.html#module-mellea.stdlib.reqlib.python">Python</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../stdlib.html#mellea.stdlib.reqlib.python.PythonExecutionReq"><code class="docutils literal notranslate"><span class="pre">PythonExecutionReq</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../stdlib.html#module-mellea.stdlib.reqlib.tools">Tools</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../stdlib.html#mellea.stdlib.reqlib.tools.uses_tool"><code class="docutils literal notranslate"><span class="pre">uses_tool()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../stdlib.html#mellea.stdlib.reqlib.tools.tool_arg_validator"><code class="docutils literal notranslate"><span class="pre">tool_arg_validator()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../backends.html">Backends</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../backends.html#core-backend-modules">Core Backend Modules</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../backends.html#module-mellea.backends.types">Types</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../backends.html#mellea.backends.types.ModelOption"><code class="docutils literal notranslate"><span class="pre">ModelOption</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../backends.html#module-mellea.backends.formatter">Formatter</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../backends.html#mellea.backends.formatter.Formatter"><code class="docutils literal notranslate"><span class="pre">Formatter</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../backends.html#mellea.backends.formatter.TemplateFormatter"><code class="docutils literal notranslate"><span class="pre">TemplateFormatter</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../backends.html#mellea.backends.formatter.FormatterBackend"><code class="docutils literal notranslate"><span class="pre">FormatterBackend</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../backends.html#module-mellea.backends.cache">Cache</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../backends.html#mellea.backends.cache.Cache"><code class="docutils literal notranslate"><span class="pre">Cache</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../backends.html#mellea.backends.cache.SimpleLRUCache"><code class="docutils literal notranslate"><span class="pre">SimpleLRUCache</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../backends.html#module-mellea.backends.tools">Tools</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../backends.html#mellea.backends.tools.add_tools_from_model_options"><code class="docutils literal notranslate"><span class="pre">add_tools_from_model_options()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../backends.html#mellea.backends.tools.add_tools_from_context_actions"><code class="docutils literal notranslate"><span class="pre">add_tools_from_context_actions()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../backends.html#mellea.backends.tools.convert_tools_to_json"><code class="docutils literal notranslate"><span class="pre">convert_tools_to_json()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../backends.html#mellea.backends.tools.json_extraction"><code class="docutils literal notranslate"><span class="pre">json_extraction()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../backends.html#mellea.backends.tools.find_func"><code class="docutils literal notranslate"><span class="pre">find_func()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../backends.html#mellea.backends.tools.parse_tools"><code class="docutils literal notranslate"><span class="pre">parse_tools()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../backends.html#backend-implementations">Backend Implementations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../backends.html#huggingface">HuggingFace</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../backends.html#module-mellea.backends.openai">OpenAI</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../backends.html#mellea.backends.openai.OpenAIBackend"><code class="docutils literal notranslate"><span class="pre">OpenAIBackend</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../backends.html#litellm">LiteLLM</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../backends.html#vllm">vLLM</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../backends.html#module-mellea.backends.ollama">Ollama</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../backends.html#mellea.backends.ollama.OllamaModelBackend"><code class="docutils literal notranslate"><span class="pre">OllamaModelBackend</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../backends.html#mellea.backends.ollama.chat_response_delta_merge"><code class="docutils literal notranslate"><span class="pre">chat_response_delta_merge()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../backends.html#module-mellea.backends.watsonx">WatsonX</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../backends.html#mellea.backends.watsonx.WatsonxAIBackend"><code class="docutils literal notranslate"><span class="pre">WatsonxAIBackend</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../backends.html#module-mellea.backends.dummy">Dummy</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../backends.html#mellea.backends.dummy.DummyBackend"><code class="docutils literal notranslate"><span class="pre">DummyBackend</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../backends.html#adapters">Adapters</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../backends.html#module-mellea.backends.adapters.adapter">Adapter</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../backends.html#mellea.backends.adapters.adapter.Adapter"><code class="docutils literal notranslate"><span class="pre">Adapter</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../backends.html#mellea.backends.adapters.adapter.OpenAIAdapter"><code class="docutils literal notranslate"><span class="pre">OpenAIAdapter</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../backends.html#mellea.backends.adapters.adapter.LocalHFAdapter"><code class="docutils literal notranslate"><span class="pre">LocalHFAdapter</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../backends.html#mellea.backends.adapters.adapter.GraniteCommonAdapter"><code class="docutils literal notranslate"><span class="pre">GraniteCommonAdapter</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../backends.html#mellea.backends.adapters.adapter.get_adapter_for_intrinsic"><code class="docutils literal notranslate"><span class="pre">get_adapter_for_intrinsic()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../backends.html#mellea.backends.adapters.adapter.AdapterMixin"><code class="docutils literal notranslate"><span class="pre">AdapterMixin</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../backends.html#module-mellea.backends.adapters.catalog">Catalog</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../backends.html#mellea.backends.adapters.catalog.AdapterType"><code class="docutils literal notranslate"><span class="pre">AdapterType</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../backends.html#mellea.backends.adapters.catalog.IntriniscsCatalogEntry"><code class="docutils literal notranslate"><span class="pre">IntriniscsCatalogEntry</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../backends.html#mellea.backends.adapters.catalog.known_intrinsic_names"><code class="docutils literal notranslate"><span class="pre">known_intrinsic_names()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../backends.html#mellea.backends.adapters.catalog.fetch_intrinsic_metadata"><code class="docutils literal notranslate"><span class="pre">fetch_intrinsic_metadata()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../backends.html#process-reward-models">Process Reward Models</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../backends.html#huggingface-prms">HuggingFace PRMs</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../helpers.html">Helpers</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../helpers.html#module-mellea.helpers.async_helpers">Async Helpers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../helpers.html#mellea.helpers.async_helpers.send_to_queue"><code class="docutils literal notranslate"><span class="pre">send_to_queue()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../helpers.html#mellea.helpers.async_helpers.wait_for_all_mots"><code class="docutils literal notranslate"><span class="pre">wait_for_all_mots()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../helpers.html#mellea.helpers.async_helpers.get_current_event_loop"><code class="docutils literal notranslate"><span class="pre">get_current_event_loop()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../helpers.html#mellea.helpers.async_helpers.ClientCache"><code class="docutils literal notranslate"><span class="pre">ClientCache</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../helpers.html#mellea.helpers.async_helpers.ClientCache.__init__"><code class="docutils literal notranslate"><span class="pre">ClientCache.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../helpers.html#mellea.helpers.async_helpers.ClientCache.current_size"><code class="docutils literal notranslate"><span class="pre">ClientCache.current_size()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../helpers.html#mellea.helpers.async_helpers.ClientCache.get"><code class="docutils literal notranslate"><span class="pre">ClientCache.get()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../helpers.html#mellea.helpers.async_helpers.ClientCache.put"><code class="docutils literal notranslate"><span class="pre">ClientCache.put()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../helpers.html#module-mellea.helpers.event_loop_helper">Event Loop Helper</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../helpers.html#module-mellea.helpers.fancy_logger">Fancy Logger</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../helpers.html#mellea.helpers.fancy_logger.RESTHandler"><code class="docutils literal notranslate"><span class="pre">RESTHandler</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../helpers.html#mellea.helpers.fancy_logger.RESTHandler.__init__"><code class="docutils literal notranslate"><span class="pre">RESTHandler.__init__()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../helpers.html#mellea.helpers.fancy_logger.RESTHandler.emit"><code class="docutils literal notranslate"><span class="pre">RESTHandler.emit()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../helpers.html#mellea.helpers.fancy_logger.JsonFormatter"><code class="docutils literal notranslate"><span class="pre">JsonFormatter</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../helpers.html#mellea.helpers.fancy_logger.JsonFormatter.format"><code class="docutils literal notranslate"><span class="pre">JsonFormatter.format()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../helpers.html#mellea.helpers.fancy_logger.CustomFormatter"><code class="docutils literal notranslate"><span class="pre">CustomFormatter</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../helpers.html#mellea.helpers.fancy_logger.CustomFormatter.cyan"><code class="docutils literal notranslate"><span class="pre">CustomFormatter.cyan</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../helpers.html#mellea.helpers.fancy_logger.CustomFormatter.grey"><code class="docutils literal notranslate"><span class="pre">CustomFormatter.grey</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../helpers.html#mellea.helpers.fancy_logger.CustomFormatter.yellow"><code class="docutils literal notranslate"><span class="pre">CustomFormatter.yellow</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../helpers.html#mellea.helpers.fancy_logger.CustomFormatter.red"><code class="docutils literal notranslate"><span class="pre">CustomFormatter.red</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../helpers.html#mellea.helpers.fancy_logger.CustomFormatter.bold_red"><code class="docutils literal notranslate"><span class="pre">CustomFormatter.bold_red</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../helpers.html#mellea.helpers.fancy_logger.CustomFormatter.reset"><code class="docutils literal notranslate"><span class="pre">CustomFormatter.reset</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../helpers.html#mellea.helpers.fancy_logger.CustomFormatter.FORMATS"><code class="docutils literal notranslate"><span class="pre">CustomFormatter.FORMATS</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../helpers.html#mellea.helpers.fancy_logger.CustomFormatter.format"><code class="docutils literal notranslate"><span class="pre">CustomFormatter.format()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../helpers.html#mellea.helpers.fancy_logger.FancyLogger"><code class="docutils literal notranslate"><span class="pre">FancyLogger</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../helpers.html#mellea.helpers.fancy_logger.FancyLogger.logger"><code class="docutils literal notranslate"><span class="pre">FancyLogger.logger</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../helpers.html#mellea.helpers.fancy_logger.FancyLogger.CRITICAL"><code class="docutils literal notranslate"><span class="pre">FancyLogger.CRITICAL</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../helpers.html#mellea.helpers.fancy_logger.FancyLogger.FATAL"><code class="docutils literal notranslate"><span class="pre">FancyLogger.FATAL</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../helpers.html#mellea.helpers.fancy_logger.FancyLogger.ERROR"><code class="docutils literal notranslate"><span class="pre">FancyLogger.ERROR</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../helpers.html#mellea.helpers.fancy_logger.FancyLogger.WARNING"><code class="docutils literal notranslate"><span class="pre">FancyLogger.WARNING</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../helpers.html#mellea.helpers.fancy_logger.FancyLogger.WARN"><code class="docutils literal notranslate"><span class="pre">FancyLogger.WARN</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../helpers.html#mellea.helpers.fancy_logger.FancyLogger.INFO"><code class="docutils literal notranslate"><span class="pre">FancyLogger.INFO</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../helpers.html#mellea.helpers.fancy_logger.FancyLogger.DEBUG"><code class="docutils literal notranslate"><span class="pre">FancyLogger.DEBUG</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../helpers.html#mellea.helpers.fancy_logger.FancyLogger.NOTSET"><code class="docutils literal notranslate"><span class="pre">FancyLogger.NOTSET</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../helpers.html#mellea.helpers.fancy_logger.FancyLogger.get_logger"><code class="docutils literal notranslate"><span class="pre">FancyLogger.get_logger()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../helpers.html#module-mellea.helpers.openai_compatible_helpers">OpenAI Compatible Helpers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../helpers.html#mellea.helpers.openai_compatible_helpers.extract_model_tool_requests"><code class="docutils literal notranslate"><span class="pre">extract_model_tool_requests()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../helpers.html#mellea.helpers.openai_compatible_helpers.chat_completion_delta_merge"><code class="docutils literal notranslate"><span class="pre">chat_completion_delta_merge()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Mellea</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">mellea.backends.ollama</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for mellea.backends.ollama</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;A model backend wrapping the Ollama Python SDK.&quot;&quot;&quot;</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">asyncio</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">datetime</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">functools</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">collections.abc</span><span class="w"> </span><span class="kn">import</span> <span class="n">AsyncIterator</span><span class="p">,</span> <span class="n">Callable</span><span class="p">,</span> <span class="n">Coroutine</span><span class="p">,</span> <span class="n">Sequence</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Any</span><span class="p">,</span> <span class="n">overload</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">ollama</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">tqdm</span><span class="w"> </span><span class="kn">import</span> <span class="n">tqdm</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">mellea.backends.model_ids</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">model_ids</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">mellea.backends</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseModelSubclass</span><span class="p">,</span> <span class="n">generate_walk</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">mellea.backends.formatter</span><span class="w"> </span><span class="kn">import</span> <span class="n">Formatter</span><span class="p">,</span> <span class="n">FormatterBackend</span><span class="p">,</span> <span class="n">TemplateFormatter</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">mellea.backends.model_ids</span><span class="w"> </span><span class="kn">import</span> <span class="n">ModelIdentifier</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">mellea.backends.tools</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">add_tools_from_context_actions</span><span class="p">,</span>
+    <span class="n">add_tools_from_model_options</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">mellea.backends.types</span><span class="w"> </span><span class="kn">import</span> <span class="n">ModelOption</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">mellea.helpers.async_helpers</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">ClientCache</span><span class="p">,</span>
+    <span class="n">get_current_event_loop</span><span class="p">,</span>
+    <span class="n">send_to_queue</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">mellea.helpers.event_loop_helper</span><span class="w"> </span><span class="kn">import</span> <span class="n">_run_async_in_thread</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">mellea.helpers.fancy_logger</span><span class="w"> </span><span class="kn">import</span> <span class="n">FancyLogger</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">mellea.stdlib.base</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">C</span><span class="p">,</span>
+    <span class="n">CBlock</span><span class="p">,</span>
+    <span class="n">Component</span><span class="p">,</span>
+    <span class="n">Context</span><span class="p">,</span>
+    <span class="n">GenerateLog</span><span class="p">,</span>
+    <span class="n">GenerateType</span><span class="p">,</span>
+    <span class="n">ModelOutputThunk</span><span class="p">,</span>
+    <span class="n">ModelToolCall</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">mellea.stdlib.chat</span><span class="w"> </span><span class="kn">import</span> <span class="n">Message</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">mellea.stdlib.requirement</span><span class="w"> </span><span class="kn">import</span> <span class="n">ALoraRequirement</span>
+
+<span class="nb">format</span><span class="p">:</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>  <span class="c1"># typing this variable in order to shadow the global format function and ensure mypy checks for errors</span>
+
+
+<div class="viewcode-block" id="OllamaModelBackend">
+<a class="viewcode-back" href="../../../backends.html#mellea.backends.ollama.OllamaModelBackend">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">OllamaModelBackend</span><span class="p">(</span><span class="n">FormatterBackend</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;A model that uses the Ollama Python SDK for local inference.&quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="OllamaModelBackend.__init__">
+<a class="viewcode-back" href="../../../backends.html#mellea.backends.ollama.OllamaModelBackend.__init__">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">model_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="n">ModelIdentifier</span> <span class="o">=</span> <span class="n">model_ids</span><span class="o">.</span><span class="n">IBM_GRANITE_4_MICRO_3B</span><span class="p">,</span>
+        <span class="n">formatter</span><span class="p">:</span> <span class="n">Formatter</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">base_url</span><span class="p">:</span> <span class="nb">str</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">model_options</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Initializes an ollama backend for local models.</span>
+
+<span class="sd">        WARNING: may use up a lot of your machine&#39;s memory.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            model_id (str | ModelIdentifier): Ollama model ID. If ModelIdentifier, then an `ollama_name` must be provided by that ModelIdentifier.</span>
+<span class="sd">            base_url (str): Endpoint that is serving the model API; defaults to env(OLLAMA_HOST) or `http://localhost:11434`</span>
+<span class="sd">            model_options (dict): Ollama model options</span>
+<span class="sd">            formatter (Formatter): formatter for creating input</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+            <span class="n">model_id</span><span class="o">=</span><span class="n">model_id</span><span class="p">,</span>
+            <span class="n">formatter</span><span class="o">=</span><span class="p">(</span>
+                <span class="n">formatter</span>
+                <span class="k">if</span> <span class="n">formatter</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+                <span class="k">else</span> <span class="n">TemplateFormatter</span><span class="p">(</span><span class="n">model_id</span><span class="o">=</span><span class="n">model_id</span><span class="p">)</span>
+            <span class="p">),</span>
+            <span class="n">model_options</span><span class="o">=</span><span class="n">model_options</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="c1"># Run the ollama model id accessor early, so that an Assertion fails immediately if we cannot find an ollama model id for the provided ModelIdentifier.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_get_ollama_model_id</span><span class="p">()</span>
+
+        <span class="c1"># Setup the client and ensure that we have the model available.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_base_url</span> <span class="o">=</span> <span class="n">base_url</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_client</span> <span class="o">=</span> <span class="n">ollama</span><span class="o">.</span><span class="n">Client</span><span class="p">(</span><span class="n">base_url</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">_client_cache</span> <span class="o">=</span> <span class="n">ClientCache</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+
+        <span class="c1"># Call once to set up an async client and prepopulate the cache.</span>
+        <span class="n">_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_async_client</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_check_ollama_server</span><span class="p">():</span>
+            <span class="n">err</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;could not create OllamaModelBackend: ollama server not running at </span><span class="si">{</span><span class="n">base_url</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="n">FancyLogger</span><span class="o">.</span><span class="n">get_logger</span><span class="p">()</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_pull_ollama_model</span><span class="p">():</span>
+            <span class="n">err</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;could not create OllamaModelBackend: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_get_ollama_model_id</span><span class="p">()</span><span class="si">}</span><span class="s2"> could not be pulled from ollama library&quot;</span>
+            <span class="n">FancyLogger</span><span class="o">.</span><span class="n">get_logger</span><span class="p">()</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
+            <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
+
+        <span class="c1"># A mapping of common options for this backend mapped to their Mellea ModelOptions equivalent.</span>
+        <span class="c1"># These are usually values that must be extracted before hand or that are common among backend providers.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">to_mellea_model_opts_map</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;system&quot;</span><span class="p">:</span> <span class="n">ModelOption</span><span class="o">.</span><span class="n">SYSTEM_PROMPT</span><span class="p">,</span>
+            <span class="s2">&quot;think&quot;</span><span class="p">:</span> <span class="n">ModelOption</span><span class="o">.</span><span class="n">THINKING</span><span class="p">,</span>
+            <span class="s2">&quot;num_ctx&quot;</span><span class="p">:</span> <span class="n">ModelOption</span><span class="o">.</span><span class="n">CONTEXT_WINDOW</span><span class="p">,</span>
+            <span class="s2">&quot;num_predict&quot;</span><span class="p">:</span> <span class="n">ModelOption</span><span class="o">.</span><span class="n">MAX_NEW_TOKENS</span><span class="p">,</span>
+            <span class="s2">&quot;seed&quot;</span><span class="p">:</span> <span class="n">ModelOption</span><span class="o">.</span><span class="n">SEED</span><span class="p">,</span>
+            <span class="s2">&quot;tools&quot;</span><span class="p">:</span> <span class="n">ModelOption</span><span class="o">.</span><span class="n">TOOLS</span><span class="p">,</span>
+            <span class="s2">&quot;stream&quot;</span><span class="p">:</span> <span class="n">ModelOption</span><span class="o">.</span><span class="n">STREAM</span><span class="p">,</span>
+        <span class="p">}</span>
+
+        <span class="c1"># A mapping of Mellea specific ModelOptions to the specific names for this backend.</span>
+        <span class="c1"># These options should almost always be a subset of those specified in the `to_mellea_model_opts_map`.</span>
+        <span class="c1"># Usually, values that are intentionally extracted while prepping for the backend generate call</span>
+        <span class="c1"># will be omitted here so that they will be removed when model_options are processed</span>
+        <span class="c1"># for the call to the model.</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">from_mellea_model_opts_map</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="n">ModelOption</span><span class="o">.</span><span class="n">CONTEXT_WINDOW</span><span class="p">:</span> <span class="s2">&quot;num_ctx&quot;</span><span class="p">,</span>
+            <span class="n">ModelOption</span><span class="o">.</span><span class="n">MAX_NEW_TOKENS</span><span class="p">:</span> <span class="s2">&quot;num_predict&quot;</span><span class="p">,</span>
+            <span class="n">ModelOption</span><span class="o">.</span><span class="n">SEED</span><span class="p">:</span> <span class="s2">&quot;seed&quot;</span><span class="p">,</span>
+        <span class="p">}</span></div>
+
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_get_ollama_model_id</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Gets the ollama model id from the model_id that was provided in the constructor. Raises AssertionError is the ModelIdentifier does not provide an ollama_name.&quot;&quot;&quot;</span>
+        <span class="n">ollama_model_id</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">model_id</span><span class="o">.</span><span class="n">ollama_name</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">model_id</span><span class="p">,</span> <span class="n">ModelIdentifier</span><span class="p">)</span>
+            <span class="k">else</span> <span class="bp">self</span><span class="o">.</span><span class="n">model_id</span>
+        <span class="p">)</span>
+        <span class="k">assert</span> <span class="n">ollama_model_id</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">,</span> <span class="p">(</span>
+            <span class="s2">&quot;model_id is None. This can also happen if the ModelIdentifier has no ollama name set or this model is not available in ollama.&quot;</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="n">ollama_model_id</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_check_ollama_server</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Requests generic info about the Ollama server to ensure it&#39;s running.&quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="o">.</span><span class="n">ps</span><span class="p">()</span>
+        <span class="k">except</span> <span class="ne">ConnectionError</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span>
+        <span class="k">return</span> <span class="kc">True</span>
+
+<div class="viewcode-block" id="OllamaModelBackend.is_model_available">
+<a class="viewcode-back" href="../../../backends.html#mellea.backends.ollama.OllamaModelBackend.is_model_available">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">is_model_available</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model_name</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Checks if a specific Ollama model is available locally.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">          model_name: The name of the model to check for (e.g., &quot;llama2&quot;).</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">          True if the model is available, False otherwise.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">models</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="o">.</span><span class="n">list</span><span class="p">()</span>
+            <span class="k">for</span> <span class="n">model</span> <span class="ow">in</span> <span class="n">models</span><span class="p">[</span><span class="s2">&quot;models&quot;</span><span class="p">]:</span>
+                <span class="k">if</span> <span class="n">model</span><span class="o">.</span><span class="n">model</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="n">model_name</span><span class="p">):</span>
+                    <span class="k">return</span> <span class="kc">True</span>
+            <span class="k">return</span> <span class="kc">False</span>
+        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;An error occurred: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="k">return</span> <span class="kc">False</span></div>
+
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_pull_ollama_model</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Either gets the cached ollama model or else attempts to pull the provided model from Ollama. Raises an exception of the model cannot be pulled.</span>
+
+<span class="sd">        This code was generated by ChatGPT.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># shortcut --  if model is in list-- don&#39;t try to pull</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_model_available</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_get_ollama_model_id</span><span class="p">()):</span>
+            <span class="k">return</span> <span class="kc">True</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">FancyLogger</span><span class="o">.</span><span class="n">get_logger</span><span class="p">()</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;Loading/Pulling model from Ollama: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_get_ollama_model_id</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="p">)</span>
+            <span class="n">stream</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_client</span><span class="o">.</span><span class="n">pull</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_get_ollama_model_id</span><span class="p">(),</span> <span class="n">stream</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+            <span class="n">progress_bars</span> <span class="o">=</span> <span class="p">{}</span>
+            <span class="k">for</span> <span class="n">update</span> <span class="ow">in</span> <span class="n">stream</span><span class="p">:</span>
+                <span class="n">status</span> <span class="o">=</span> <span class="n">update</span><span class="o">.</span><span class="n">status</span>
+                <span class="n">digest</span> <span class="o">=</span> <span class="n">update</span><span class="o">.</span><span class="n">digest</span>
+                <span class="n">completed</span> <span class="o">=</span> <span class="n">update</span><span class="o">.</span><span class="n">completed</span> <span class="ow">or</span> <span class="mi">0</span>
+                <span class="n">total</span> <span class="o">=</span> <span class="n">update</span><span class="o">.</span><span class="n">total</span> <span class="ow">or</span> <span class="mi">0</span>
+                <span class="c1"># Only track digests with a known total</span>
+                <span class="k">if</span> <span class="n">digest</span> <span class="ow">and</span> <span class="n">total</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="n">digest</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">progress_bars</span><span class="p">:</span>
+                        <span class="n">progress_bars</span><span class="p">[</span><span class="n">digest</span><span class="p">]</span> <span class="o">=</span> <span class="n">tqdm</span><span class="p">(</span>
+                            <span class="n">total</span><span class="o">=</span><span class="n">total</span><span class="p">,</span>
+                            <span class="n">desc</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">status</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">digest</span><span class="p">[:</span><span class="mi">12</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+                            <span class="n">unit</span><span class="o">=</span><span class="s2">&quot;B&quot;</span><span class="p">,</span>
+                            <span class="n">unit_scale</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                            <span class="n">leave</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                        <span class="p">)</span>
+                    <span class="n">pbar</span> <span class="o">=</span> <span class="n">progress_bars</span><span class="p">[</span><span class="n">digest</span><span class="p">]</span>
+                    <span class="n">delta</span> <span class="o">=</span> <span class="n">completed</span> <span class="o">-</span> <span class="n">pbar</span><span class="o">.</span><span class="n">n</span>
+                    <span class="k">if</span> <span class="n">delta</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                        <span class="n">pbar</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">delta</span><span class="p">)</span>
+            <span class="c1"># Close all progress bars</span>
+            <span class="k">for</span> <span class="n">pbar</span> <span class="ow">in</span> <span class="n">progress_bars</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+                <span class="n">pbar</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+            <span class="k">return</span> <span class="kc">True</span>
+        <span class="k">except</span> <span class="n">ollama</span><span class="o">.</span><span class="n">ResponseError</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">_async_client</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ollama</span><span class="o">.</span><span class="n">AsyncClient</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Ollama&#39;s client gets tied to a specific event loop. Reset it if needed here.&quot;&quot;&quot;</span>
+        <span class="n">key</span> <span class="o">=</span> <span class="nb">id</span><span class="p">(</span><span class="n">get_current_event_loop</span><span class="p">())</span>
+
+        <span class="n">_async_client</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_client_cache</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">_async_client</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">_async_client</span> <span class="o">=</span> <span class="n">ollama</span><span class="o">.</span><span class="n">AsyncClient</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_base_url</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_client_cache</span><span class="o">.</span><span class="n">put</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">_async_client</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">_async_client</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_simplify_and_merge</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">model_options</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Simplifies model_options to use the Mellea specific ModelOption.Option and merges the backend&#39;s model_options with those passed into this call.</span>
+
+<span class="sd">        Rules:</span>
+<span class="sd">        - Within a model_options dict, existing keys take precedence. This means remapping to mellea specific keys will maintain the value of the mellea specific key if one already exists.</span>
+<span class="sd">        - When merging, the keys/values from the dictionary passed into this function take precedence.</span>
+
+<span class="sd">        Because this function simplifies and then merges, non-Mellea keys from the passed in model_options will replace</span>
+<span class="sd">        Mellea specific keys from the backend&#39;s model_options.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            model_options: the model_options for this call</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            a new dict</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">backend_model_opts</span> <span class="o">=</span> <span class="n">ModelOption</span><span class="o">.</span><span class="n">replace_keys</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">model_options</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">to_mellea_model_opts_map</span>
+        <span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">model_options</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">backend_model_opts</span>
+
+        <span class="n">generate_call_model_opts</span> <span class="o">=</span> <span class="n">ModelOption</span><span class="o">.</span><span class="n">replace_keys</span><span class="p">(</span>
+            <span class="n">model_options</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">to_mellea_model_opts_map</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="n">ModelOption</span><span class="o">.</span><span class="n">merge_model_options</span><span class="p">(</span>
+            <span class="n">backend_model_opts</span><span class="p">,</span> <span class="n">generate_call_model_opts</span>
+        <span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_make_backend_specific_and_remove</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">model_options</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Maps specified Mellea specific keys to their backend specific version and removes any remaining Mellea keys.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            model_options: the model_options for this call</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            a new dict</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">backend_specific</span> <span class="o">=</span> <span class="n">ModelOption</span><span class="o">.</span><span class="n">replace_keys</span><span class="p">(</span>
+            <span class="n">model_options</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">from_mellea_model_opts_map</span>
+        <span class="p">)</span>
+        <span class="k">return</span> <span class="n">ModelOption</span><span class="o">.</span><span class="n">remove_special_keys</span><span class="p">(</span><span class="n">backend_specific</span><span class="p">)</span>
+
+<div class="viewcode-block" id="OllamaModelBackend.generate_from_context">
+<a class="viewcode-back" href="../../../backends.html#mellea.backends.ollama.OllamaModelBackend.generate_from_context">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">generate_from_context</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">action</span><span class="p">:</span> <span class="n">Component</span><span class="p">[</span><span class="n">C</span><span class="p">]</span> <span class="o">|</span> <span class="n">CBlock</span><span class="p">,</span>
+        <span class="n">ctx</span><span class="p">:</span> <span class="n">Context</span><span class="p">,</span>
+        <span class="o">*</span><span class="p">,</span>
+        <span class="nb">format</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="n">BaseModelSubclass</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">model_options</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">tool_calls</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="n">ModelOutputThunk</span><span class="p">[</span><span class="n">C</span><span class="p">],</span> <span class="n">Context</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;See `generate_from_chat_context`.&quot;&quot;&quot;</span>
+        <span class="k">assert</span> <span class="n">ctx</span><span class="o">.</span><span class="n">is_chat_context</span><span class="p">,</span> <span class="p">(</span>
+            <span class="s2">&quot;The ollama backend only supports chat-like contexts.&quot;</span>
+        <span class="p">)</span>
+        <span class="n">mot</span> <span class="o">=</span> <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">generate_from_chat_context</span><span class="p">(</span>
+            <span class="n">action</span><span class="p">,</span>
+            <span class="n">ctx</span><span class="p">,</span>
+            <span class="n">_format</span><span class="o">=</span><span class="nb">format</span><span class="p">,</span>
+            <span class="n">model_options</span><span class="o">=</span><span class="n">model_options</span><span class="p">,</span>
+            <span class="n">tool_calls</span><span class="o">=</span><span class="n">tool_calls</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">mot</span><span class="p">,</span> <span class="n">ctx</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">action</span><span class="p">)</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">mot</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="OllamaModelBackend.generate_from_chat_context">
+<a class="viewcode-back" href="../../../backends.html#mellea.backends.ollama.OllamaModelBackend.generate_from_chat_context">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">generate_from_chat_context</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">action</span><span class="p">:</span> <span class="n">Component</span><span class="p">[</span><span class="n">C</span><span class="p">]</span> <span class="o">|</span> <span class="n">CBlock</span><span class="p">,</span>
+        <span class="n">ctx</span><span class="p">:</span> <span class="n">Context</span><span class="p">,</span>
+        <span class="o">*</span><span class="p">,</span>
+        <span class="n">_format</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="n">BaseModelSubclass</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">model_options</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">tool_calls</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">ModelOutputThunk</span><span class="p">[</span><span class="n">C</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Generates a ModelOutputThunk. The final value for this object can be awaited.</span>
+
+<span class="sd">        The new completion is generated from the provided Context using this backend&#39;s `Formatter`.</span>
+
+<span class="sd">        This implementation treats the `Context` as a chat history, and uses the  `ollama.Client.chat()` interface to generate a completion.</span>
+<span class="sd">        This will not always work, because sometimes we want to use non-chat models.</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            RuntimeError: If not called from a thread with a running event loop.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="c1"># Start by awaiting any necessary computation.</span>
+        <span class="k">await</span> <span class="bp">self</span><span class="o">.</span><span class="n">do_generate_walk</span><span class="p">(</span><span class="n">action</span><span class="p">)</span>
+
+        <span class="n">model_opts</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_simplify_and_merge</span><span class="p">(</span><span class="n">model_options</span><span class="p">)</span>
+
+        <span class="n">linearized_context</span> <span class="o">=</span> <span class="n">ctx</span><span class="o">.</span><span class="n">view_for_generation</span><span class="p">()</span>
+        <span class="k">assert</span> <span class="n">linearized_context</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">,</span> <span class="p">(</span>
+            <span class="s2">&quot;Cannot generate from a non-linear context in a FormatterBackend.&quot;</span>
+        <span class="p">)</span>
+        <span class="c1"># Convert our linearized context into a sequence of chat messages. Template formatters have a standard way of doing this.</span>
+        <span class="n">messages</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">Message</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">formatter</span><span class="o">.</span><span class="n">to_chat_messages</span><span class="p">(</span><span class="n">linearized_context</span><span class="p">)</span>
+        <span class="c1"># Add the final message.</span>
+        <span class="k">match</span> <span class="n">action</span><span class="p">:</span>
+            <span class="k">case</span> <span class="n">ALoraRequirement</span><span class="p">():</span>
+                <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span>
+                    <span class="s2">&quot;The ollama backend does not support currently support activated LoRAs.&quot;</span>
+                <span class="p">)</span>
+            <span class="k">case</span><span class="w"> </span><span class="k">_</span><span class="p">:</span>
+                <span class="n">messages</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">formatter</span><span class="o">.</span><span class="n">to_chat_messages</span><span class="p">([</span><span class="n">action</span><span class="p">]))</span>
+        <span class="c1"># construct the conversation from our messages, adding a system prompt at the first message if one was provided.</span>
+        <span class="n">conversation</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">dict</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="c1"># We use system prompt None/empty-string semantics in a way that is consistent with huggingface and other libraries.</span>
+        <span class="c1"># If the system prompt is None, the the default system prompt gets used.</span>
+        <span class="n">system_prompt</span> <span class="o">=</span> <span class="n">model_opts</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">ModelOption</span><span class="o">.</span><span class="n">SYSTEM_PROMPT</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">system_prompt</span> <span class="o">!=</span> <span class="s2">&quot;&quot;</span><span class="p">:</span>
+            <span class="n">conversation</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;system&quot;</span><span class="p">,</span> <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="n">system_prompt</span><span class="p">})</span>
+
+        <span class="n">conversation</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span>
+            <span class="p">[</span>
+                <span class="p">{</span><span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="n">m</span><span class="o">.</span><span class="n">role</span><span class="p">,</span> <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="n">m</span><span class="o">.</span><span class="n">content</span><span class="p">,</span> <span class="s2">&quot;images&quot;</span><span class="p">:</span> <span class="n">m</span><span class="o">.</span><span class="n">images</span><span class="p">}</span>
+                <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">messages</span>
+            <span class="p">]</span>
+        <span class="p">)</span>
+
+        <span class="c1"># Append tool call information if applicable.</span>
+        <span class="n">tools</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Callable</span><span class="p">]</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">tool_calls</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">_format</span><span class="p">:</span>
+                <span class="n">FancyLogger</span><span class="o">.</span><span class="n">get_logger</span><span class="p">()</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
+                    <span class="sa">f</span><span class="s2">&quot;Tool calling typically uses constrained generation, but you have specified a `format` in your generate call. NB: tool calling is superseded by format; we will NOT call tools for your request: </span><span class="si">{</span><span class="n">action</span><span class="si">}</span><span class="s2">&quot;</span>
+                <span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">add_tools_from_model_options</span><span class="p">(</span><span class="n">tools</span><span class="p">,</span> <span class="n">model_opts</span><span class="p">)</span>
+                <span class="n">add_tools_from_context_actions</span><span class="p">(</span><span class="n">tools</span><span class="p">,</span> <span class="n">ctx</span><span class="o">.</span><span class="n">actions_for_available_tools</span><span class="p">())</span>
+
+                <span class="c1"># Add the tools from the action for this generation last so that</span>
+                <span class="c1"># they overwrite conflicting names.</span>
+                <span class="n">add_tools_from_context_actions</span><span class="p">(</span><span class="n">tools</span><span class="p">,</span> <span class="p">[</span><span class="n">action</span><span class="p">])</span>
+            <span class="n">FancyLogger</span><span class="o">.</span><span class="n">get_logger</span><span class="p">()</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Tools for call: </span><span class="si">{</span><span class="n">tools</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+        <span class="c1"># Generate a chat response from ollama, using the chat messages. Can be either type since stream is passed as a model option.</span>
+        <span class="n">chat_response</span><span class="p">:</span> <span class="n">Coroutine</span><span class="p">[</span>
+            <span class="n">Any</span><span class="p">,</span> <span class="n">Any</span><span class="p">,</span> <span class="n">AsyncIterator</span><span class="p">[</span><span class="n">ollama</span><span class="o">.</span><span class="n">ChatResponse</span><span class="p">]</span> <span class="o">|</span> <span class="n">ollama</span><span class="o">.</span><span class="n">ChatResponse</span>
+        <span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_async_client</span><span class="o">.</span><span class="n">chat</span><span class="p">(</span>
+            <span class="n">model</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_get_ollama_model_id</span><span class="p">(),</span>
+            <span class="n">messages</span><span class="o">=</span><span class="n">conversation</span><span class="p">,</span>
+            <span class="n">tools</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="n">tools</span><span class="o">.</span><span class="n">values</span><span class="p">()),</span>
+            <span class="n">think</span><span class="o">=</span><span class="n">model_opts</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">ModelOption</span><span class="o">.</span><span class="n">THINKING</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+            <span class="n">stream</span><span class="o">=</span><span class="n">model_opts</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">ModelOption</span><span class="o">.</span><span class="n">STREAM</span><span class="p">,</span> <span class="kc">False</span><span class="p">),</span>
+            <span class="n">options</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_make_backend_specific_and_remove</span><span class="p">(</span><span class="n">model_opts</span><span class="p">),</span>
+            <span class="nb">format</span><span class="o">=</span><span class="n">_format</span><span class="o">.</span><span class="n">model_json_schema</span><span class="p">()</span> <span class="k">if</span> <span class="n">_format</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>  <span class="c1"># type: ignore</span>
+        <span class="p">)</span>  <span class="c1"># type: ignore</span>
+
+        <span class="n">output</span> <span class="o">=</span> <span class="n">ModelOutputThunk</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
+        <span class="n">output</span><span class="o">.</span><span class="n">_context</span> <span class="o">=</span> <span class="n">linearized_context</span>
+        <span class="n">output</span><span class="o">.</span><span class="n">_action</span> <span class="o">=</span> <span class="n">action</span>
+        <span class="n">output</span><span class="o">.</span><span class="n">_model_options</span> <span class="o">=</span> <span class="n">model_opts</span>
+
+        <span class="c1"># Processing functions only pass the ModelOutputThunk (and current chunk of response). Bind the other vars necessary for</span>
+        <span class="c1"># each processing step.</span>
+        <span class="n">output</span><span class="o">.</span><span class="n">_process</span> <span class="o">=</span> <span class="n">functools</span><span class="o">.</span><span class="n">partial</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">processing</span><span class="p">,</span> <span class="n">tools</span><span class="o">=</span><span class="n">tools</span><span class="p">)</span>
+        <span class="n">output</span><span class="o">.</span><span class="n">_post_process</span> <span class="o">=</span> <span class="n">functools</span><span class="o">.</span><span class="n">partial</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">post_processing</span><span class="p">,</span>
+            <span class="n">conversation</span><span class="o">=</span><span class="n">conversation</span><span class="p">,</span>
+            <span class="n">tools</span><span class="o">=</span><span class="n">tools</span><span class="p">,</span>
+            <span class="n">_format</span><span class="o">=</span><span class="n">_format</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="k">try</span><span class="p">:</span>
+            <span class="c1"># To support lazy computation, will need to remove this create_task and store just the unexecuted coroutine.</span>
+            <span class="c1"># We can also support synchronous calls by adding a flag and changing this ._generate function.</span>
+
+            <span class="c1"># This function should always be called from a running event loop so we don&#39;t have to worry about</span>
+            <span class="c1"># scheduling the task to a specific event loop here.</span>
+
+            <span class="c1"># Use `create_task` so that we don&#39;t have to specifically await this task before it starts executing.</span>
+            <span class="n">output</span><span class="o">.</span><span class="n">_generate</span> <span class="o">=</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">create_task</span><span class="p">(</span>
+                <span class="n">send_to_queue</span><span class="p">(</span><span class="n">chat_response</span><span class="p">,</span> <span class="n">output</span><span class="o">.</span><span class="n">_async_queue</span><span class="p">)</span>
+            <span class="p">)</span>
+            <span class="n">output</span><span class="o">.</span><span class="n">_generate_type</span> <span class="o">=</span> <span class="n">GenerateType</span><span class="o">.</span><span class="n">ASYNC</span>
+        <span class="k">except</span> <span class="ne">RuntimeError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="c1"># Most likely cause is running this function without an event loop present</span>
+            <span class="k">raise</span> <span class="n">e</span>
+
+        <span class="k">return</span> <span class="n">output</span></div>
+
+
+    <span class="nd">@overload</span>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">generate_from_raw</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">actions</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">Component</span><span class="p">[</span><span class="n">C</span><span class="p">]],</span>
+        <span class="n">ctx</span><span class="p">:</span> <span class="n">Context</span><span class="p">,</span>
+        <span class="o">*</span><span class="p">,</span>
+        <span class="nb">format</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="n">BaseModelSubclass</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">model_options</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">tool_calls</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">ModelOutputThunk</span><span class="p">[</span><span class="n">C</span><span class="p">]]:</span> <span class="o">...</span>
+
+    <span class="nd">@overload</span>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">generate_from_raw</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">actions</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">Component</span><span class="p">[</span><span class="n">C</span><span class="p">]</span> <span class="o">|</span> <span class="n">CBlock</span><span class="p">],</span>
+        <span class="n">ctx</span><span class="p">:</span> <span class="n">Context</span><span class="p">,</span>
+        <span class="o">*</span><span class="p">,</span>
+        <span class="nb">format</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="n">BaseModelSubclass</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">model_options</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">tool_calls</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">ModelOutputThunk</span><span class="p">[</span><span class="n">C</span> <span class="o">|</span> <span class="nb">str</span><span class="p">]]:</span> <span class="o">...</span>
+
+<div class="viewcode-block" id="OllamaModelBackend.generate_from_raw">
+<a class="viewcode-back" href="../../../backends.html#mellea.backends.ollama.OllamaModelBackend.generate_from_raw">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">generate_from_raw</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">actions</span><span class="p">:</span> <span class="n">Sequence</span><span class="p">[</span><span class="n">Component</span><span class="p">[</span><span class="n">C</span><span class="p">]</span> <span class="o">|</span> <span class="n">CBlock</span><span class="p">],</span>
+        <span class="n">ctx</span><span class="p">:</span> <span class="n">Context</span><span class="p">,</span>
+        <span class="o">*</span><span class="p">,</span>
+        <span class="nb">format</span><span class="p">:</span> <span class="nb">type</span><span class="p">[</span><span class="n">BaseModelSubclass</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">model_options</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">tool_calls</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">[</span><span class="n">ModelOutputThunk</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Generate using the generate api. Gives the input provided to the model without templating.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">actions</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">FancyLogger</span><span class="o">.</span><span class="n">get_logger</span><span class="p">()</span><span class="o">.</span><span class="n">info</span><span class="p">(</span>
+                <span class="s2">&quot;Ollama doesn&#39;t support batching; will attempt to process concurrently.&quot;</span>
+            <span class="p">)</span>
+        <span class="k">if</span> <span class="n">tool_calls</span><span class="p">:</span>
+            <span class="n">FancyLogger</span><span class="o">.</span><span class="n">get_logger</span><span class="p">()</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
+                <span class="s2">&quot;The completion endpoint does not support tool calling at the moment.&quot;</span>
+            <span class="p">)</span>
+
+        <span class="n">model_opts</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_simplify_and_merge</span><span class="p">(</span><span class="n">model_options</span><span class="p">)</span>
+
+        <span class="n">_to_compute</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">act</span> <span class="ow">in</span> <span class="n">actions</span><span class="p">:</span>
+            <span class="n">_to_compute</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">generate_walk</span><span class="p">(</span><span class="n">act</span><span class="p">))</span>
+        <span class="n">parts_coroutines</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span><span class="o">.</span><span class="n">avalue</span><span class="p">()</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">_to_compute</span><span class="p">]</span>
+        <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">gather</span><span class="p">(</span><span class="o">*</span><span class="n">parts_coroutines</span><span class="p">)</span>
+
+        <span class="n">prompts</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">formatter</span><span class="o">.</span><span class="n">print</span><span class="p">(</span><span class="n">action</span><span class="p">)</span> <span class="k">for</span> <span class="n">action</span> <span class="ow">in</span> <span class="n">actions</span><span class="p">]</span>
+
+        <span class="c1"># Ollama doesn&#39;t support &quot;batching&quot;. There&#39;s some ability for concurrency. Use that here.</span>
+        <span class="c1"># See https://github.com/ollama/ollama/blob/main/docs/faq.md#how-does-ollama-handle-concurrent-requests.</span>
+
+        <span class="c1"># Run async so that we can make use of Ollama&#39;s concurrency.</span>
+        <span class="n">coroutines</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">Coroutine</span><span class="p">[</span><span class="n">Any</span><span class="p">,</span> <span class="n">Any</span><span class="p">,</span> <span class="n">ollama</span><span class="o">.</span><span class="n">GenerateResponse</span><span class="p">]]</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">prompt</span> <span class="ow">in</span> <span class="n">prompts</span><span class="p">:</span>
+            <span class="n">co</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_async_client</span><span class="o">.</span><span class="n">generate</span><span class="p">(</span>
+                <span class="n">model</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_get_ollama_model_id</span><span class="p">(),</span>
+                <span class="n">prompt</span><span class="o">=</span><span class="n">prompt</span><span class="p">,</span>
+                <span class="n">raw</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                <span class="n">think</span><span class="o">=</span><span class="n">model_opts</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">ModelOption</span><span class="o">.</span><span class="n">THINKING</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+                <span class="nb">format</span><span class="o">=</span><span class="nb">format</span><span class="o">.</span><span class="n">model_json_schema</span><span class="p">()</span> <span class="k">if</span> <span class="nb">format</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="kc">None</span><span class="p">,</span>  <span class="c1"># type: ignore</span>
+                <span class="n">options</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">_make_backend_specific_and_remove</span><span class="p">(</span><span class="n">model_opts</span><span class="p">),</span>
+            <span class="p">)</span>
+            <span class="n">coroutines</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">co</span><span class="p">)</span>
+
+        <span class="n">responses</span> <span class="o">=</span> <span class="k">await</span> <span class="n">asyncio</span><span class="o">.</span><span class="n">gather</span><span class="p">(</span><span class="o">*</span><span class="n">coroutines</span><span class="p">,</span> <span class="n">return_exceptions</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+        <span class="n">results</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">date</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">response</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">responses</span><span class="p">):</span>
+            <span class="n">result</span> <span class="o">=</span> <span class="kc">None</span>
+            <span class="n">error</span> <span class="o">=</span> <span class="kc">None</span>
+            <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="ne">BaseException</span><span class="p">):</span>
+                <span class="n">result</span> <span class="o">=</span> <span class="n">ModelOutputThunk</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+                <span class="n">error</span> <span class="o">=</span> <span class="n">response</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">result</span> <span class="o">=</span> <span class="n">ModelOutputThunk</span><span class="p">(</span>
+                    <span class="n">value</span><span class="o">=</span><span class="n">response</span><span class="o">.</span><span class="n">response</span><span class="p">,</span>
+                    <span class="n">meta</span><span class="o">=</span><span class="p">{</span>
+                        <span class="s2">&quot;generate_response&quot;</span><span class="p">:</span> <span class="n">response</span><span class="o">.</span><span class="n">model_dump</span><span class="p">(),</span>
+                        <span class="s2">&quot;usage&quot;</span><span class="p">:</span> <span class="p">{</span>
+                            <span class="s2">&quot;completion_tokens&quot;</span><span class="p">:</span> <span class="n">response</span><span class="o">.</span><span class="n">eval_count</span><span class="p">,</span>
+                            <span class="s2">&quot;prompt_tokens&quot;</span><span class="p">:</span> <span class="n">response</span><span class="o">.</span><span class="n">prompt_eval_count</span><span class="p">,</span>
+                            <span class="s2">&quot;total_tokens&quot;</span><span class="p">:</span> <span class="p">(</span>
+                                <span class="n">response</span><span class="o">.</span><span class="n">prompt_eval_count</span> <span class="o">+</span> <span class="n">response</span><span class="o">.</span><span class="n">eval_count</span>
+                                <span class="k">if</span> <span class="n">response</span><span class="o">.</span><span class="n">prompt_eval_count</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+                                <span class="ow">and</span> <span class="n">response</span><span class="o">.</span><span class="n">eval_count</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+                                <span class="k">else</span> <span class="kc">None</span>
+                            <span class="p">),</span>
+                        <span class="p">},</span>
+                    <span class="p">},</span>
+                <span class="p">)</span>
+            <span class="n">action</span> <span class="o">=</span> <span class="n">actions</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+            <span class="n">result</span><span class="o">.</span><span class="n">parsed_repr</span> <span class="o">=</span> <span class="p">(</span>
+                <span class="n">action</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">result</span><span class="p">)</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">action</span><span class="p">,</span> <span class="n">Component</span><span class="p">)</span> <span class="k">else</span> <span class="n">result</span><span class="o">.</span><span class="n">value</span>
+            <span class="p">)</span>
+
+            <span class="n">generate_log</span> <span class="o">=</span> <span class="n">GenerateLog</span><span class="p">()</span>
+            <span class="n">generate_log</span><span class="o">.</span><span class="n">prompt</span> <span class="o">=</span> <span class="n">prompts</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+            <span class="n">generate_log</span><span class="o">.</span><span class="n">backend</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;ollama::</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">model_id</span><span class="si">!s}</span><span class="s2">&quot;</span>
+            <span class="n">generate_log</span><span class="o">.</span><span class="n">date</span> <span class="o">=</span> <span class="n">date</span>
+            <span class="n">generate_log</span><span class="o">.</span><span class="n">model_options</span> <span class="o">=</span> <span class="n">model_opts</span>
+            <span class="n">generate_log</span><span class="o">.</span><span class="n">model_output</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">value</span>
+            <span class="n">generate_log</span><span class="o">.</span><span class="n">extra</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="s2">&quot;format&quot;</span><span class="p">:</span> <span class="nb">format</span><span class="p">,</span>
+                <span class="s2">&quot;thinking&quot;</span><span class="p">:</span> <span class="n">model_opts</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">ModelOption</span><span class="o">.</span><span class="n">THINKING</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+                <span class="s2">&quot;seed&quot;</span><span class="p">:</span> <span class="n">model_opts</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">ModelOption</span><span class="o">.</span><span class="n">SEED</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+            <span class="p">}</span>
+            <span class="n">generate_log</span><span class="o">.</span><span class="n">action</span> <span class="o">=</span> <span class="n">action</span>
+
+            <span class="k">if</span> <span class="n">error</span><span class="p">:</span>
+                <span class="n">generate_log</span><span class="o">.</span><span class="n">extra</span><span class="p">[</span><span class="s2">&quot;error&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">error</span>
+            <span class="n">result</span><span class="o">.</span><span class="n">_generate_log</span> <span class="o">=</span> <span class="n">generate_log</span>
+
+            <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">results</span></div>
+
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">_extract_model_tool_requests</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">tools</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Callable</span><span class="p">],</span> <span class="n">chat_response</span><span class="p">:</span> <span class="n">ollama</span><span class="o">.</span><span class="n">ChatResponse</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">ModelToolCall</span><span class="p">]</span> <span class="o">|</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">model_tool_calls</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">ModelToolCall</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+
+        <span class="k">if</span> <span class="n">chat_response</span><span class="o">.</span><span class="n">message</span><span class="o">.</span><span class="n">tool_calls</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">tool</span> <span class="ow">in</span> <span class="n">chat_response</span><span class="o">.</span><span class="n">message</span><span class="o">.</span><span class="n">tool_calls</span><span class="p">:</span>
+                <span class="n">func</span> <span class="o">=</span> <span class="n">tools</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">tool</span><span class="o">.</span><span class="n">function</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+                <span class="k">if</span> <span class="n">func</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                    <span class="n">FancyLogger</span><span class="o">.</span><span class="n">get_logger</span><span class="p">()</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span>
+                        <span class="sa">f</span><span class="s2">&quot;model attempted to call a non-existing function: </span><span class="si">{</span><span class="n">tool</span><span class="o">.</span><span class="n">function</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span>
+                    <span class="p">)</span>
+                    <span class="k">continue</span>  <span class="c1"># skip this function if we can&#39;t find it.</span>
+
+                <span class="n">args</span> <span class="o">=</span> <span class="n">tool</span><span class="o">.</span><span class="n">function</span><span class="o">.</span><span class="n">arguments</span>
+                <span class="n">model_tool_calls</span><span class="p">[</span><span class="n">tool</span><span class="o">.</span><span class="n">function</span><span class="o">.</span><span class="n">name</span><span class="p">]</span> <span class="o">=</span> <span class="n">ModelToolCall</span><span class="p">(</span>
+                    <span class="n">tool</span><span class="o">.</span><span class="n">function</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="n">func</span><span class="p">,</span> <span class="n">args</span>
+                <span class="p">)</span>
+
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">model_tool_calls</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">model_tool_calls</span>
+        <span class="k">return</span> <span class="kc">None</span>
+
+<div class="viewcode-block" id="OllamaModelBackend.processing">
+<a class="viewcode-back" href="../../../backends.html#mellea.backends.ollama.OllamaModelBackend.processing">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">processing</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">mot</span><span class="p">:</span> <span class="n">ModelOutputThunk</span><span class="p">,</span>
+        <span class="n">chunk</span><span class="p">:</span> <span class="n">ollama</span><span class="o">.</span><span class="n">ChatResponse</span><span class="p">,</span>
+        <span class="n">tools</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Callable</span><span class="p">],</span>
+    <span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Called during generation to add information from a single ChatResponse to the ModelOutputThunk.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="n">mot</span><span class="o">.</span><span class="n">_thinking</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">mot</span><span class="o">.</span><span class="n">_thinking</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+        <span class="n">thinking_chunk</span> <span class="o">=</span> <span class="n">chunk</span><span class="o">.</span><span class="n">message</span><span class="o">.</span><span class="n">thinking</span>
+        <span class="k">if</span> <span class="n">thinking_chunk</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">mot</span><span class="o">.</span><span class="n">_thinking</span> <span class="o">+=</span> <span class="n">thinking_chunk</span>
+
+        <span class="k">if</span> <span class="n">mot</span><span class="o">.</span><span class="n">_underlying_value</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">mot</span><span class="o">.</span><span class="n">_underlying_value</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+        <span class="n">content_chunk</span> <span class="o">=</span> <span class="n">chunk</span><span class="o">.</span><span class="n">message</span><span class="o">.</span><span class="n">content</span>
+        <span class="k">if</span> <span class="n">content_chunk</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">mot</span><span class="o">.</span><span class="n">_underlying_value</span> <span class="o">+=</span> <span class="n">content_chunk</span>
+
+        <span class="n">tool_chunk</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_extract_model_tool_requests</span><span class="p">(</span><span class="n">tools</span><span class="p">,</span> <span class="n">chunk</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">tool_chunk</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="c1"># Only set tool_calls if there is one.</span>
+            <span class="k">if</span> <span class="n">mot</span><span class="o">.</span><span class="n">tool_calls</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">mot</span><span class="o">.</span><span class="n">tool_calls</span> <span class="o">=</span> <span class="p">{}</span>
+
+            <span class="c1"># Merge the tool_chunk dict.</span>
+            <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">tool_chunk</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                <span class="n">mot</span><span class="o">.</span><span class="n">tool_calls</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">val</span>
+
+        <span class="c1"># Ollama responses are mostly self-contained. Merge chunks immediately.</span>
+        <span class="n">chat_response_delta_merge</span><span class="p">(</span><span class="n">mot</span><span class="p">,</span> <span class="n">chunk</span><span class="p">)</span></div>
+
+
+<div class="viewcode-block" id="OllamaModelBackend.post_processing">
+<a class="viewcode-back" href="../../../backends.html#mellea.backends.ollama.OllamaModelBackend.post_processing">[docs]</a>
+    <span class="k">async</span> <span class="k">def</span><span class="w"> </span><span class="nf">post_processing</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">mot</span><span class="p">:</span> <span class="n">ModelOutputThunk</span><span class="p">,</span>
+        <span class="n">conversation</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">dict</span><span class="p">],</span>
+        <span class="n">tools</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Callable</span><span class="p">],</span>
+        <span class="n">_format</span><span class="p">,</span>
+    <span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Called when generation is done.&quot;&quot;&quot;</span>
+        <span class="k">assert</span> <span class="n">mot</span><span class="o">.</span><span class="n">_action</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">,</span> <span class="p">(</span>
+            <span class="s2">&quot;ModelOutputThunks should have their action assigned during generation&quot;</span>
+        <span class="p">)</span>
+        <span class="k">assert</span> <span class="n">mot</span><span class="o">.</span><span class="n">_model_options</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">,</span> <span class="p">(</span>
+            <span class="s2">&quot;ModelOutputThunks should have their model_opts assigned during generation&quot;</span>
+        <span class="p">)</span>
+
+        <span class="c1"># Generate the log for this ModelOutputThunk.</span>
+        <span class="n">generate_log</span> <span class="o">=</span> <span class="n">GenerateLog</span><span class="p">()</span>
+        <span class="n">generate_log</span><span class="o">.</span><span class="n">prompt</span> <span class="o">=</span> <span class="n">conversation</span>
+        <span class="n">generate_log</span><span class="o">.</span><span class="n">backend</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;ollama::</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">_get_ollama_model_id</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="n">generate_log</span><span class="o">.</span><span class="n">model_options</span> <span class="o">=</span> <span class="n">mot</span><span class="o">.</span><span class="n">_model_options</span>
+        <span class="n">generate_log</span><span class="o">.</span><span class="n">date</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
+        <span class="n">generate_log</span><span class="o">.</span><span class="n">model_output</span> <span class="o">=</span> <span class="n">mot</span><span class="o">.</span><span class="n">_meta</span><span class="p">[</span><span class="s2">&quot;chat_response&quot;</span><span class="p">]</span>
+        <span class="n">generate_log</span><span class="o">.</span><span class="n">extra</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;format&quot;</span><span class="p">:</span> <span class="n">_format</span><span class="p">,</span>
+            <span class="s2">&quot;thinking&quot;</span><span class="p">:</span> <span class="n">mot</span><span class="o">.</span><span class="n">_model_options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">ModelOption</span><span class="o">.</span><span class="n">THINKING</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+            <span class="s2">&quot;tools_available&quot;</span><span class="p">:</span> <span class="n">tools</span><span class="p">,</span>
+            <span class="s2">&quot;tools_called&quot;</span><span class="p">:</span> <span class="n">mot</span><span class="o">.</span><span class="n">tool_calls</span><span class="p">,</span>
+            <span class="s2">&quot;seed&quot;</span><span class="p">:</span> <span class="n">mot</span><span class="o">.</span><span class="n">_model_options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">ModelOption</span><span class="o">.</span><span class="n">SEED</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+        <span class="p">}</span>
+        <span class="n">generate_log</span><span class="o">.</span><span class="n">action</span> <span class="o">=</span> <span class="n">mot</span><span class="o">.</span><span class="n">_action</span>
+        <span class="n">generate_log</span><span class="o">.</span><span class="n">result</span> <span class="o">=</span> <span class="n">mot</span>
+
+        <span class="n">mot</span><span class="o">.</span><span class="n">_generate_log</span> <span class="o">=</span> <span class="n">generate_log</span>
+        <span class="n">mot</span><span class="o">.</span><span class="n">_generate</span> <span class="o">=</span> <span class="kc">None</span></div>
+</div>
+
+
+
+<div class="viewcode-block" id="chat_response_delta_merge">
+<a class="viewcode-back" href="../../../backends.html#mellea.backends.ollama.chat_response_delta_merge">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">chat_response_delta_merge</span><span class="p">(</span><span class="n">mot</span><span class="p">:</span> <span class="n">ModelOutputThunk</span><span class="p">,</span> <span class="n">delta</span><span class="p">:</span> <span class="n">ollama</span><span class="o">.</span><span class="n">ChatResponse</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Merges the individual ChatResponse chunks from a streaming response into a single ChatResponse.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        mot: the ModelOutputThunk that the deltas are being used to populated.</span>
+<span class="sd">        delta: the most recent ollama ChatResponse.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">mot</span><span class="o">.</span><span class="n">_meta</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;chat_response&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">mot</span><span class="o">.</span><span class="n">_meta</span><span class="p">[</span><span class="s2">&quot;chat_response&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">delta</span>
+        <span class="k">return</span>  <span class="c1"># Return early, no need to merge.</span>
+
+    <span class="n">merged</span><span class="p">:</span> <span class="n">ollama</span><span class="o">.</span><span class="n">ChatResponse</span> <span class="o">=</span> <span class="n">mot</span><span class="o">.</span><span class="n">_meta</span><span class="p">[</span><span class="s2">&quot;chat_response&quot;</span><span class="p">]</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">merged</span><span class="o">.</span><span class="n">done</span><span class="p">:</span>
+        <span class="n">merged</span><span class="o">.</span><span class="n">done</span> <span class="o">=</span> <span class="n">delta</span><span class="o">.</span><span class="n">done</span>
+    <span class="k">if</span> <span class="n">merged</span><span class="o">.</span><span class="n">done_reason</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">merged</span><span class="o">.</span><span class="n">done_reason</span> <span class="o">=</span> <span class="n">delta</span><span class="o">.</span><span class="n">done_reason</span>
+    <span class="k">if</span> <span class="n">merged</span><span class="o">.</span><span class="n">total_duration</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">merged</span><span class="o">.</span><span class="n">total_duration</span> <span class="o">=</span> <span class="n">delta</span><span class="o">.</span><span class="n">total_duration</span>
+    <span class="k">if</span> <span class="n">merged</span><span class="o">.</span><span class="n">load_duration</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">merged</span><span class="o">.</span><span class="n">load_duration</span> <span class="o">=</span> <span class="n">delta</span><span class="o">.</span><span class="n">load_duration</span>
+    <span class="k">if</span> <span class="n">merged</span><span class="o">.</span><span class="n">prompt_eval_count</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">merged</span><span class="o">.</span><span class="n">prompt_eval_count</span> <span class="o">=</span> <span class="n">delta</span><span class="o">.</span><span class="n">prompt_eval_count</span>
+    <span class="k">if</span> <span class="n">merged</span><span class="o">.</span><span class="n">prompt_eval_duration</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">merged</span><span class="o">.</span><span class="n">prompt_eval_duration</span> <span class="o">=</span> <span class="n">delta</span><span class="o">.</span><span class="n">prompt_eval_duration</span>
+    <span class="k">if</span> <span class="n">merged</span><span class="o">.</span><span class="n">eval_count</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">merged</span><span class="o">.</span><span class="n">eval_count</span> <span class="o">=</span> <span class="n">delta</span><span class="o">.</span><span class="n">eval_count</span>
+
+    <span class="k">if</span> <span class="n">merged</span><span class="o">.</span><span class="n">message</span><span class="o">.</span><span class="n">role</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span><span class="p">:</span>
+        <span class="n">merged</span><span class="o">.</span><span class="n">message</span><span class="o">.</span><span class="n">role</span> <span class="o">=</span> <span class="n">delta</span><span class="o">.</span><span class="n">message</span><span class="o">.</span><span class="n">role</span>
+
+    <span class="k">if</span> <span class="n">merged</span><span class="o">.</span><span class="n">message</span><span class="o">.</span><span class="n">content</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">merged</span><span class="o">.</span><span class="n">message</span><span class="o">.</span><span class="n">content</span> <span class="o">=</span> <span class="n">delta</span><span class="o">.</span><span class="n">message</span><span class="o">.</span><span class="n">content</span>
+    <span class="k">elif</span> <span class="n">delta</span><span class="o">.</span><span class="n">message</span><span class="o">.</span><span class="n">content</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">merged</span><span class="o">.</span><span class="n">message</span><span class="o">.</span><span class="n">content</span> <span class="o">+=</span> <span class="n">delta</span><span class="o">.</span><span class="n">message</span><span class="o">.</span><span class="n">content</span>
+
+    <span class="k">if</span> <span class="n">merged</span><span class="o">.</span><span class="n">message</span><span class="o">.</span><span class="n">thinking</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">merged</span><span class="o">.</span><span class="n">message</span><span class="o">.</span><span class="n">thinking</span> <span class="o">=</span> <span class="n">delta</span><span class="o">.</span><span class="n">message</span><span class="o">.</span><span class="n">thinking</span>
+    <span class="k">elif</span> <span class="n">delta</span><span class="o">.</span><span class="n">message</span><span class="o">.</span><span class="n">thinking</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">merged</span><span class="o">.</span><span class="n">message</span><span class="o">.</span><span class="n">thinking</span> <span class="o">+=</span> <span class="n">delta</span><span class="o">.</span><span class="n">message</span><span class="o">.</span><span class="n">thinking</span>
+
+    <span class="k">if</span> <span class="n">merged</span><span class="o">.</span><span class="n">message</span><span class="o">.</span><span class="n">tool_calls</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">merged</span><span class="o">.</span><span class="n">message</span><span class="o">.</span><span class="n">tool_calls</span> <span class="o">=</span> <span class="n">delta</span><span class="o">.</span><span class="n">message</span><span class="o">.</span><span class="n">tool_calls</span>
+    <span class="k">elif</span> <span class="n">delta</span><span class="o">.</span><span class="n">message</span><span class="o">.</span><span class="n">tool_calls</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">merged</span><span class="o">.</span><span class="n">message</span><span class="o">.</span><span class="n">tool_calls</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="o">*</span><span class="n">merged</span><span class="o">.</span><span class="n">message</span><span class="o">.</span><span class="n">tool_calls</span><span class="p">,</span>
+            <span class="o">*</span><span class="n">delta</span><span class="o">.</span><span class="n">message</span><span class="o">.</span><span class="n">tool_calls</span><span class="p">,</span>
+        <span class="p">]</span></div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Mellea Contributors.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
