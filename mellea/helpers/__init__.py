@@ -7,11 +7,7 @@ from .async_helpers import (
     wait_for_all_mots,
 )
 from .event_loop_helper import _run_async_in_thread
-from .mcp_helpers import (
-    MCPSessionManager,
-    get_current_mcp_session,
-    mcp_session_manager,
-)
+from .mcp_helpers import MCPSessionManager, get_current_mcp_session, mcp_session_manager
 from .openai_compatible_helpers import (
     chat_completion_delta_merge,
     extract_model_tool_requests,
