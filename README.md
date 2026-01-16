@@ -29,7 +29,7 @@ with structured, maintainable, robust, and efficient AI workflows.
     - Train your own verifiers on proprietary classifier data.
  * Compatible with many inference services and model families. Control cost
    and quality by easily lifting and shifting workloads between:
-        - inference providers
+        - inference providers (OpenAI, Ollama, LiteLLM, WatsonX, A2A agents, etc.)
         - model families
         - model sizes
  * Easily integrate the power of LLMs into legacy code-bases (mify).
