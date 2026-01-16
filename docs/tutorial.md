@@ -1366,6 +1366,110 @@ assert "web_search" in output.tool_calls
 result = output.tool_calls["web_search"].call_func()
 ```
 
+### MCP Tool Calling
+
+Mellea supports the Model Context Protocol (MCP), allowing you to connect to MCP servers and use their tools seamlessly within your generative programs. MCP enables standardized communication between AI applications and external tools/data sources.
+
+#### Installation
+
+To use MCP with Mellea, install the MCP package:
+
+```bash
+uv pip install "mcp[cli]"
+```
+
+#### Basic Usage
+
+Mellea's MCP integration supports both **streamable-http** (for services like GitHub Copilot) and **SSE** (Server-Sent Events) transports. Here's a complete example:
+
+```python
+import asyncio
+import json
+from mellea.helpers import mcp_session_manager
+from mellea.backends import ModelOption
+import mellea
+
+async def main_async():
+    """Main async entry point for MCP tool calling."""
+    # Configure MCP server connection
+    server_url = "https://api.githubcopilot.com/mcp/"
+    api_key = "your_api_key_here"  # Replace with your actual API key
+    
+    # Connect to MCP server using async context manager
+    async with mcp_session_manager(
+        server_url=server_url,
+        api_key=api_key,
+        transport="streamable-http"  # or "sse" for other servers
+    ) as mcp_manager:
+        
+        # Create Mellea session
+        m = mellea.start_session()
+        
+        # Add MCP session info to Mellea context
+        m.ctx = m.ctx.add(mcp_manager.to_cblock())
+        
+        # Use Mellea with MCP tools
+        output = m.instruct(
+            "Get information about the GitHub user 'octocat'",
+            model_options={
+                ModelOption.TOOLS: mcp_manager.get_tools_for_mellea(),
+                ModelOption.MAX_NEW_TOKENS: 500,
+            },
+            tool_calls=True,
+        )
+        
+        print("Response:", output.value)
+        
+        # Execute tool calls made by the model
+        if output.tool_calls:
+            for tool_name, tool_call in output.tool_calls.items():
+                print(f"\nExecuting tool: {tool_name}")
+                print(f"Arguments: {json.dumps(tool_call.args, indent=2)}")
+                
+                # Call the MCP tool directly
+                result = await mcp_manager.call_tool_directly(
+                    tool_name, dict(tool_call.args)
+                )
+                
+                # Extract and display result
+                if hasattr(result, 'content') and result.content:
+                    if isinstance(result.content, list):
+                        for item in result.content:
+                            if hasattr(item, 'text'):
+                                print(f"Result: {item.text}")
+
+def main():
+    """Synchronous entry point."""
+    asyncio.run(main_async())
+
+if __name__ == "__main__":
+    main()
+```
+
+#### Key Features
+
+- **Multiple Transport Support**: Works with both streamable-http and SSE transports
+- **Automatic Tool Discovery**: Automatically discovers and wraps all tools from the MCP server
+- **Seamless Integration**: Tools are passed directly to Mellea's `ModelOption.TOOLS`
+- **Global Session Access**: Access the MCP session from anywhere using `get_current_mcp_session()`
+- **Context Integration**: MCP session info can be added to Mellea's context system
+
+#### Using Different Transports
+
+For SSE-based MCP servers:
+
+```python
+async with mcp_session_manager(
+    server_url="http://localhost:3000/sse",
+    transport="sse",
+    headers={"Custom-Header": "value"}
+) as mcp_manager:
+    # Use mcp_manager as shown above
+    pass
+```
+
+For more examples, see the [MCP examples directory](../examples/mcp/).
+
 ## Chapter 12: Asynchronicity
 Mellea supports asynchronous behavior in several ways: asynchronous functions and asynchronous event loops in synchronous functions.
 
