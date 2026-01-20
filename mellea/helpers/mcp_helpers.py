@@ -307,13 +307,18 @@ async def _initialize_session(
             
             # Build comprehensive docstring with parameter information
             doc_parts = [td]
-            if tool_schema and hasattr(tool_schema, 'properties'):
-                doc_parts.append("\n\nParameters:")
-                for param_name, param_info in tool_schema.properties.items():
-                    param_desc = param_info.get('description', 'No description')
-                    param_type = param_info.get('type', 'any')
-                    required_marker = " (required)" if param_name in getattr(tool_schema, 'required', []) else " (optional)"
-                    doc_parts.append(f"  {param_name} ({param_type}){required_marker}: {param_desc}")
+            if tool_schema:
+                # tool_schema is a dictionary, not an object
+                properties = tool_schema.get('properties', {})
+                required = tool_schema.get('required', [])
+                
+                if properties:
+                    doc_parts.append("\n\nParameters:")
+                    for param_name, param_info in properties.items():
+                        param_desc = param_info.get('description', 'No description')
+                        param_type = param_info.get('type', 'any')
+                        required_marker = " (required)" if param_name in required else " (optional)"
+                        doc_parts.append(f"  {param_name} ({param_type}){required_marker}: {param_desc}")
             
             sync_wrapper.__doc__ = "\n".join(doc_parts)
             
