@@ -297,17 +297,33 @@ async def _initialize_session(
         manager.async_tools[tool_name] = async_wrapper
 
         # Create sync wrapper for Mellea (returns placeholder, actual execution happens later)
-        def create_sync_wrapper(tn, td):
+        def create_sync_wrapper(tn, td, tool_schema):
             def sync_wrapper(**kwargs) -> str:
                 """Sync wrapper - actual execution happens via async context."""
                 # Return a marker that indicates this tool was called
                 return f"[MCP Tool {tn} called with {kwargs}]"
 
             sync_wrapper.__name__ = tn
-            sync_wrapper.__doc__ = td
+            
+            # Build comprehensive docstring with parameter information
+            doc_parts = [td]
+            if tool_schema and hasattr(tool_schema, 'properties'):
+                doc_parts.append("\n\nParameters:")
+                for param_name, param_info in tool_schema.properties.items():
+                    param_desc = param_info.get('description', 'No description')
+                    param_type = param_info.get('type', 'any')
+                    required_marker = " (required)" if param_name in getattr(tool_schema, 'required', []) else " (optional)"
+                    doc_parts.append(f"  {param_name} ({param_type}){required_marker}: {param_desc}")
+            
+            sync_wrapper.__doc__ = "\n".join(doc_parts)
+            
+            # Add schema as attribute for Mellea to inspect
+            if tool_schema:
+                sync_wrapper.__mcp_schema__ = tool_schema
+            
             return sync_wrapper
 
-        manager.tools[tool_name] = create_sync_wrapper(tool_name, tool_description)
+        manager.tools[tool_name] = create_sync_wrapper(tool_name, tool_description, tool.inputSchema if hasattr(tool, 'inputSchema') else None)
 
     print(f"\n✓ Created {len(manager.tools)} tool wrappers for Mellea")
 

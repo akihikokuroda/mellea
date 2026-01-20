@@ -1424,11 +1424,34 @@ async def main_async():
         if output.tool_calls:
             for tool_name, tool_call in output.tool_calls.items():
                 print(f"\nExecuting tool: {tool_name}")
-                print(f"Arguments: {json.dumps(tool_call.args, indent=2)}")
                 
-                # Call the MCP tool directly
+                # Extract arguments from tool_call
+                # Handle cases where arguments may be wrapped in 'kwargs' JSON string
+                args = {}
+                if hasattr(tool_call, 'args'):
+                    raw_args = dict(tool_call.args)
+                    print(f"Raw arguments: {json.dumps(raw_args, indent=2)}")
+                    
+                    # Check if args are wrapped in 'kwargs' with JSON string
+                    if 'kwargs' in raw_args and isinstance(raw_args['kwargs'], str):
+                        try:
+                            args = json.loads(raw_args['kwargs'])
+                            print(f"Parsed arguments from kwargs: {json.dumps(args, indent=2)}")
+                        except json.JSONDecodeError as e:
+                            print(f"Failed to parse kwargs JSON: {e}")
+                            args = raw_args
+                    else:
+                        args = raw_args
+                elif hasattr(tool_call, 'arguments'):
+                    args = dict(tool_call.arguments)
+                elif isinstance(tool_call, dict):
+                    args = tool_call
+                
+                print(f"Final arguments: {json.dumps(args, indent=2)}")
+                
+                # Call the MCP tool directly with unwrapped arguments
                 result = await mcp_manager.call_tool_directly(
-                    tool_name, dict(tool_call.args)
+                    tool_name, args
                 )
                 
                 # Extract and display result
@@ -1449,10 +1472,18 @@ if __name__ == "__main__":
 #### Key Features
 
 - **Multiple Transport Support**: Works with both streamable-http and SSE transports
-- **Automatic Tool Discovery**: Automatically discovers and wraps all tools from the MCP server
+- **Automatic Tool Discovery**: Automatically discovers and wraps all tools from the MCP server with full schema information
+- **Enhanced Tool Schemas**: Tool wrappers include comprehensive parameter documentation and schema attributes for better LLM understanding
 - **Seamless Integration**: Tools are passed directly to Mellea's `ModelOption.TOOLS`
+- **Robust Argument Handling**: Automatically unwraps arguments from JSON-encoded `kwargs` strings when needed
 - **Global Session Access**: Access the MCP session from anywhere using `get_current_mcp_session()`
 - **Context Integration**: MCP session info can be added to Mellea's context system
+
+#### Important Notes
+
+When executing tool calls, be aware that some LLMs may wrap tool arguments in a `kwargs` JSON string. The example above shows how to properly extract and unwrap these arguments before calling the MCP tool. This ensures that tools receive parameters in the expected format (e.g., `{"q": "search_term"}` instead of `{"kwargs": "{\"q\": \"search_term\"}"}`).
+
+The MCP helper functions in Mellea now automatically include parameter schemas in tool docstrings, which helps LLMs generate correct tool calls with properly formatted arguments.
 
 #### Using Different Transports
 
