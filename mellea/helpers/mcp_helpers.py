@@ -46,6 +46,7 @@ from mcp import ClientSession
 from mcp.client.sse import sse_client
 from mcp.client.streamable_http import streamablehttp_client
 
+from ..backends.tools import MelleaTool
 from ..core import CBlock
 
 # Global variable to store the current MCP session manager
@@ -214,7 +215,7 @@ async def mcp_session_manager(
             async with streamablehttp_client(url=server_url, headers=headers) as (
                 read,
                 write,
-                get_session_id,
+                _get_session_id,
             ):
                 async with ClientSession(read, write) as session:
                     await _initialize_session(manager, session, transport)
@@ -232,7 +233,7 @@ async def mcp_session_manager(
             )
 
     except Exception as e:
-        print(f"\n✗ Failed to connect to MCP server: {str(e)}")
+        print(f"\n✗ Failed to connect to MCP server: {e!s}")
         raise
     finally:
         _current_mcp_manager = None
@@ -291,44 +292,61 @@ async def _initialize_session(
                     return str(result.content)
                 return str(result)
             except Exception as e:
-                return f"Error calling {_tool_name}: {str(e)}"
+                return f"Error calling {_tool_name}: {e!s}"
 
         # Store async version
         manager.async_tools[tool_name] = async_wrapper
 
         # Create sync wrapper for Mellea (returns placeholder, actual execution happens later)
-        def create_sync_wrapper(tn, td, tool_schema):
+        def create_mellea_tool(tn, td, tool_schema):
             def sync_wrapper(**kwargs) -> str:
                 """Sync wrapper - actual execution happens via async context."""
                 # Return a marker that indicates this tool was called
                 return f"[MCP Tool {tn} called with {kwargs}]"
 
             sync_wrapper.__name__ = tn
-            
+
             # Build comprehensive docstring with parameter information
             doc_parts = [td]
             if tool_schema:
                 # tool_schema is a dictionary, not an object
-                properties = tool_schema.get('properties', {})
-                required = tool_schema.get('required', [])
-                
+                properties = tool_schema.get("properties", {})
+                required = tool_schema.get("required", [])
+
                 if properties:
                     doc_parts.append("\n\nParameters:")
                     for param_name, param_info in properties.items():
-                        param_desc = param_info.get('description', 'No description')
-                        param_type = param_info.get('type', 'any')
-                        required_marker = " (required)" if param_name in required else " (optional)"
-                        doc_parts.append(f"  {param_name} ({param_type}){required_marker}: {param_desc}")
-            
-            sync_wrapper.__doc__ = "\n".join(doc_parts)
-            
-            # Add schema as attribute for Mellea to inspect
-            if tool_schema:
-                sync_wrapper.__mcp_schema__ = tool_schema
-            
-            return sync_wrapper
+                        param_desc = param_info.get("description", "No description")
+                        param_type = param_info.get("type", "any")
+                        required_marker = (
+                            " (required)" if param_name in required else " (optional)"
+                        )
+                        doc_parts.append(
+                            f"  {param_name} ({param_type}){required_marker}: {param_desc}"
+                        )
 
-        manager.tools[tool_name] = create_sync_wrapper(tool_name, tool_description, tool.inputSchema if hasattr(tool, 'inputSchema') else None)
+            sync_wrapper.__doc__ = "\n".join(doc_parts)
+
+            # Convert MCP schema to OpenAI-compatible tool format
+            as_json_tool = {
+                "type": "function",
+                "function": {"name": tn, "description": td},
+            }
+
+            # Add parameters if schema exists
+            if tool_schema:
+                as_json_tool["function"]["parameters"] = tool_schema
+
+            # Create and return MelleaTool instance
+            return MelleaTool(
+                name=tn, tool_call=sync_wrapper, as_json_tool=as_json_tool
+            )
+
+        manager.tools[tool_name] = create_mellea_tool(
+            tool_name,
+            tool_description,
+            tool.inputSchema if hasattr(tool, "inputSchema") else None,
+        )
 
     print(f"\n✓ Created {len(manager.tools)} tool wrappers for Mellea")
 
@@ -356,6 +374,6 @@ def get_current_mcp_session():
     return _current_mcp_manager
 
 
-__all__ = ["MCPSessionManager", "mcp_session_manager", "get_current_mcp_session"]
+__all__ = ["MCPSessionManager", "get_current_mcp_session", "mcp_session_manager"]
 
 # Made with Bob
