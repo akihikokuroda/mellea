@@ -194,7 +194,7 @@ class TestMatplotlibDetection:
 
     def test_uses_pyplot_plot(self):
         """Plotting functions should be detected."""
-        for func in ["plt.plot", "plt.bar", "plt.scatter", ".plot("]:
+        for func in ["plt.plot", "plt.bar", "plt.scatter", "plt.imshow"]:
             code = f"import matplotlib.pyplot as plt\n{func}([1, 2, 3])"
             assert _uses_pyplot_plot(code) is True
 
@@ -246,6 +246,68 @@ class TestMatplotlibDetection:
         result = _strip_comments(code)
         assert "http://example.com/#section" in result
         assert "# website" not in result
+
+    def test_plt_show_false_positive_on_non_matplotlib_object(self):
+        """Non-matplotlib .show() calls should not be detected."""
+        code = """
+class MyClass:
+    def show(self):
+        print('showing')
+
+obj = MyClass()
+obj.show()
+"""
+        assert _uses_pyplot_show(code) is False
+
+    def test_plt_plot_false_positive_on_non_matplotlib_object(self):
+        """Non-matplotlib .plot() calls should not be detected."""
+        code = """
+class Plotter:
+    def plot(self, data):
+        return data
+
+plotter = Plotter()
+plotter.plot([1, 2, 3])
+"""
+        assert _uses_pyplot_plot(code) is False
+
+    def test_savefig_false_positive_on_non_matplotlib_object(self):
+        """Non-matplotlib .savefig() calls should not be detected."""
+        code = """
+class CustomFigure:
+    def savefig(self, path):
+        pass
+
+fig = CustomFigure()
+fig.savefig('output.png')
+"""
+        assert _calls_savefig(code) is False
+
+    def test_plt_show_with_different_pyplot_alias(self):
+        """plt.show() should be detected with non-standard alias."""
+        code = """
+import matplotlib.pyplot as mpl
+mpl.plot([1, 2, 3])
+mpl.show()
+"""
+        assert _uses_pyplot_show(code) is True
+
+    def test_plt_plot_with_different_pyplot_alias(self):
+        """Plotting functions should be detected with non-standard alias."""
+        code = """
+import matplotlib.pyplot as mpl
+mpl.plot([1, 2, 3])
+"""
+        assert _uses_pyplot_plot(code) is True
+
+    def test_savefig_with_different_pyplot_alias(self):
+        """savefig should be detected with non-standard alias."""
+        code = """
+import matplotlib.pyplot as mpl
+mpl.plot([1, 2, 3])
+mpl.savefig('output.png')
+"""
+        assert _calls_savefig(code) is True
 
 
 # endregion

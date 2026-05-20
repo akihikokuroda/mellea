@@ -96,7 +96,9 @@ def _strip_comments(code: str) -> str:
     return tokenize.untokenize(kept)
 
 
-def _find_attribute_calls(code: str, method_names: list[str]) -> bool:
+def _find_attribute_calls(
+    code: str, method_names: list[str], require_pyplot_alias: bool = False
+) -> bool:
     """Check if code calls any of the specified methods using AST.
 
     Handles import aliases (e.g., `import matplotlib.pyplot as plt`) and
@@ -105,6 +107,7 @@ def _find_attribute_calls(code: str, method_names: list[str]) -> bool:
     Args:
         code: Python source code to analyze
         method_names: Method names to look for (e.g., ["show", "savefig"])
+        require_pyplot_alias: If True, only match calls on pyplot aliases (plt, pyplot, etc.)
 
     Returns:
         True if any of the methods are called, False otherwise
@@ -114,18 +117,27 @@ def _find_attribute_calls(code: str, method_names: list[str]) -> bool:
     except (SyntaxError, ValueError):
         return False
 
+    pyplot_aliases = _get_pyplot_aliases(code) if require_pyplot_alias else []
+
     class CallFinder(ast.NodeVisitor):
-        def __init__(self, method_names: list[str]):
+        def __init__(self, method_names: list[str], pyplot_aliases: list[str]):
             self.method_names = set(method_names)
+            self.pyplot_aliases = set(pyplot_aliases)
+            self.require_pyplot_alias = require_pyplot_alias
             self.found = False
 
         def visit_Call(self, node: ast.Call) -> None:
             if isinstance(node.func, ast.Attribute):
                 if node.func.attr in self.method_names:
-                    self.found = True
+                    if self.require_pyplot_alias:
+                        if isinstance(node.func.value, ast.Name):
+                            if node.func.value.id in self.pyplot_aliases:
+                                self.found = True
+                    else:
+                        self.found = True
             self.generic_visit(node)
 
-    finder = CallFinder(method_names)
+    finder = CallFinder(method_names, pyplot_aliases)
     finder.visit(tree)
     return finder.found
 
@@ -192,9 +204,9 @@ def _code_contains_strings(code: str, patterns: list[str]) -> bool:
 def _uses_pyplot_show(code: str) -> bool:
     """Check if code calls plt.show() or similar show() methods.
 
-    Uses AST analysis to robustly detect show() calls regardless of import
-    aliases (e.g., `import matplotlib.pyplot as mpl`). Checks for qualified
-    names like plt.show() first, then falls back to string matching if parsing fails.
+    Uses AST analysis to robustly detect show() calls on pyplot objects.
+    Only flags calls on known pyplot aliases (plt, pyplot, etc.) to avoid
+    false positives from calls to unrelated .show() methods.
 
     Args:
         code: Python source code to analyze
@@ -211,7 +223,7 @@ def _uses_pyplot_show(code: str) -> bool:
     try:
         ast.parse(code)
     except (SyntaxError, ValueError):
-        return _code_contains_strings(code, ["plt.show", ".show()"])
+        return _code_contains_strings(code, ["plt.show"])
     return False
 
 
@@ -254,10 +266,10 @@ def _sets_headless_backend(code: str) -> bool:
 def _uses_pyplot_plot(code: str) -> bool:
     """Check if code calls pyplot plotting functions.
 
-    Uses AST analysis to detect plot-related method calls. Handles import
-    aliases and detects actual method calls, avoiding false positives from
-    string literals or method references. Falls back to string matching
-    only if code doesn't parse.
+    Uses AST analysis to detect plot-related method calls on known pyplot
+    aliases. Only flags calls on pyplot objects to avoid false positives
+    from unrelated methods with the same names (e.g., obj.plot() where obj
+    is not a pyplot reference).
 
     Args:
         code: Python source code to analyze
@@ -278,17 +290,20 @@ def _uses_pyplot_plot(code: str) -> bool:
     try:
         ast.parse(code)
     except (SyntaxError, ValueError):
-        return _code_contains_strings(code, [f".{m}(" for m in PYPLOT_PLOT_METHODS])
+        return any(
+            _code_contains_strings(code, [f"plt.{m}(", f"pyplot.{m}("])
+            for m in PYPLOT_PLOT_METHODS
+        )
     return False
 
 
 def _calls_savefig(code: str) -> bool:
     """Check if code calls plt.savefig() or fig.savefig().
 
-    Uses AST analysis to robustly detect savefig() calls regardless of
-    how matplotlib was imported. Detects actual method calls, avoiding
-    false positives from string literals. Falls back to string matching
-    only if code doesn't parse.
+    Uses AST analysis to robustly detect savefig() calls on pyplot objects.
+    Only flags calls on known pyplot aliases to avoid false positives from
+    unrelated savefig() methods. Falls back to string matching only if code
+    doesn't parse.
 
     Args:
         code: Python source code to analyze
@@ -305,7 +320,7 @@ def _calls_savefig(code: str) -> bool:
     try:
         ast.parse(code)
     except (SyntaxError, ValueError):
-        return _code_contains_strings(code, ["savefig"])
+        return _code_contains_strings(code, ["plt.savefig", "pyplot.savefig"])
     return False
 
 
