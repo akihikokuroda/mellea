@@ -32,8 +32,7 @@ pytestmark = [
 def m_session():
     """Start a Mellea session with mistral:latest model."""
     session = start_session(
-        model_id="mistral:latest",
-        model_options={ModelOption.MAX_NEW_TOKENS: 100}
+        model_id="mistral:latest", model_options={ModelOption.MAX_NEW_TOKENS: 100}
     )
     yield session
     del session
@@ -63,8 +62,7 @@ class SearchComponent(Component[str]):
 
         # Create a MelleaTool with the prefixed name
         tool = MelleaTool.from_callable(
-            search_func,
-            name=f"component_{component_name}.search",
+            search_func, name=f"component_{component_name}.search"
         )
 
         # Return the tool in the template representation
@@ -95,8 +93,10 @@ def test_prefix_single_turn_easy(
 
     # Build a prompt that includes all components and their tools (extracted from descriptions)
     tool_list = "\n".join(
-        [f"- component_{c.component_name}.search: Search the {c.component_name} database"
-         for c in components]
+        [
+            f"- component_{c.component_name}.search: Search the {c.component_name} database"
+            for c in components
+        ]
     )
 
     full_prompt = f"""{descriptive_system_prompt}
@@ -145,8 +145,7 @@ Which tool would you use to answer this query? Call the appropriate tool."""
 
     # Both should pick a valid component
     assert all(r in components for r in responses), (
-        f"LLM chose invalid component. "
-        f"Expected one of {components}, got {responses}"
+        f"LLM chose invalid component. Expected one of {components}, got {responses}"
     )
 
     # For ambiguous queries, consistency is nice but not required
@@ -183,7 +182,7 @@ def test_prefix_single_turn_accuracy_batch(
 
 Query: {query}
 
-Available components: {', '.join([f'component_{c}' for c in components])}
+Available components: {", ".join([f"component_{c}" for c in components])}
 
 Which tool would you use? Call the appropriate tool."""
 
@@ -217,9 +216,6 @@ Which tool would you use? Call the appropriate tool."""
     print(f"\nAccuracy: {correct}/{total} = {accuracy:.1f}%")
     print(f"Target: ≥95%")
 
-    # For now, log the accuracy but don't fail on threshold
-    # (This helps establish baseline before optimizing)
-    assert accuracy >= 50, (
-        f"Accuracy {accuracy:.1f}% is too low (expected ≥50% for initial benchmark). "
-        f"Results: {results}"
+    assert accuracy >= 95, (
+        f"Accuracy {accuracy:.1f}% is below target (expected ≥95%). Results: {results}"
     )

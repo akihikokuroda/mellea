@@ -39,8 +39,7 @@ pytestmark = [
 def m_session():
     """Start a Mellea session with mistral:latest model."""
     session = start_session(
-        model_id="mistral:latest",
-        model_options={ModelOption.MAX_NEW_TOKENS: 100}
+        model_id="mistral:latest", model_options={ModelOption.MAX_NEW_TOKENS: 100}
     )
     yield session
     del session
@@ -60,8 +59,7 @@ class SearchComponent(Component[str]):
             return f"[SEARCH: {component_name} found results]"
 
         tool = MelleaTool.from_callable(
-            search_func,
-            name=f"component_{component_name}.search",
+            search_func, name=f"component_{component_name}.search"
         )
         return tool
 
@@ -71,13 +69,19 @@ class SearchComponent(Component[str]):
     [
         (1, 2, ["email", "web"]),
         (2, 3, ["email", "web", "files"]),
-        (3, 5, ["email", "web", "files", "slack", "drive"]),
+        (3, 5, ["email", "web", "files", "slack", "calendar"]),
+        (4, 8, ["email", "web", "files", "slack", "calendar", "docs", "contacts", "notes"]),
     ],
-    ids=["level1_2comp", "level2_3comp", "level3_5comp"],
+    ids=["level1_2comp", "level2_3comp", "level3_5comp", "level4_8comp"],
 )
 def test_scaling_accuracy(
-    m_session, descriptive_system_prompt, tool_call_extractor, scenarios_data,
-    level, num_components, components
+    m_session,
+    descriptive_system_prompt,
+    tool_call_extractor,
+    scenarios_data,
+    level,
+    num_components,
+    components,
 ):
     """Test accuracy at different scaling levels.
 
@@ -138,7 +142,7 @@ Which component should I use?"""
 
     for result in results:
         status = "✓" if result["correct"] else "✗"
-        chosen = result['chosen'] or "None"
+        chosen = result["chosen"] or "None"
         print(
             f"{status} {result['query']:40s} "
             f"expected={result['expected']:10s} "
@@ -147,9 +151,9 @@ Which component should I use?"""
 
     print(f"\nAccuracy: {correct}/{total} = {accuracy:.1f}%")
 
-    # Assert minimum accuracy (lower threshold for scaling tests)
-    assert accuracy >= 40, (
-        f"Level {level}: Accuracy {accuracy:.1f}% is too low. Results: {results}"
+    # Assert minimum accuracy (allow some degradation with scale; target ≥85%)
+    assert accuracy >= 85, (
+        f"Level {level}: Accuracy {accuracy:.1f}% is below target (expected ≥85%). Results: {results}"
     )
 
 
@@ -183,7 +187,7 @@ def test_scaling_penalty(
 
 Query: {query}
 
-Available: {', '.join([f'component_{c}' for c in components])}
+Available: {", ".join([f"component_{c}" for c in components])}
 
 Which component?"""
 
@@ -205,8 +209,11 @@ Which component?"""
         print(f"Penalty:                 {penalty:.1f} percentage points")
         print(f"Target:                  ≤10 percentage points")
 
-        # For initial benchmark, just log the penalty
-        # (Allows baseline establishment before requiring threshold)
-        pytest.skip(
-            f"Scaling penalty: {penalty:.1f}% (baseline measurement, not enforced)"
+        assert penalty <= 15, (
+            f"Scaling penalty {penalty:.1f} percentage points exceeds target (≤15). "
+            f"Accuracy degraded too much as components increased. "
+            f"Note: Small query count (2-5 per level) may overstate penalty; "
+            f"see SCALING_PENALTY_INVESTIGATION.md for analysis."
         )
+    else:
+        pytest.skip("Insufficient scaling levels to compute penalty")

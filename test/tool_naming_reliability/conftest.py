@@ -18,6 +18,10 @@ def pytest_configure(config):
         "markers",
         "tool_naming_reliability: mark test as part of tool naming reliability benchmark",
     )
+    config.addinivalue_line(
+        "markers",
+        "tool_naming_reliability_p3: mark test as part of P3 phase (multi-run, confidence intervals)",
+    )
 
 
 # Test data path
@@ -36,28 +40,41 @@ def scenarios_data():
 
 @pytest.fixture
 def minimal_system_prompt():
-    """Minimal system prompt for tool selection."""
-    return """You have access to search tools from multiple sources:
-- component_email.search: Search the corporate email database
-- component_web.search: Search the web
-- component_files.search: Search internal file storage
+    """Minimal system prompt: tool list only, no routing guidance."""
+    return """You have access to the following search tools:
 
-Use them to answer questions."""
+1. component_email.search: Search the corporate email database
+2. component_web.search: Search the web
+3. component_files.search: Search internal file storage
+4. component_slack.search: Search Slack messages
+5. component_calendar.search: Search calendar
+
+Use the appropriate tool to answer questions."""
 
 
 @pytest.fixture
 def descriptive_system_prompt():
-    """Detailed system prompt with routing guidance."""
+    """Detailed system prompt: tool list + explicit routing guidance."""
     return """You have access to the following search tools to find information:
 
 1. component_email.search: Search the corporate email database for internal communications, memos, and discussions
 2. component_web.search: Search the public web for external information, articles, and resources
 3. component_files.search: Search internal file storage for documents, reports, and archives
+4. component_slack.search: Search Slack messages for team conversations and discussions
+5. component_calendar.search: Search calendar for meetings, events, and schedules
+6. component_docs.search: Search shared documents and collaborative files
+7. component_contacts.search: Search contact directory and team member information
+8. component_notes.search: Search meeting notes and action items
 
 Routing guide:
-- When a query mentions email, internal communications, or asks about company messages → use component_email.search
+- When a query mentions email, messages, memos, or communications → use component_email.search
 - When a query asks about web topics, external information, or public knowledge → use component_web.search
-- When a query mentions files, documents, archives, or internal storage → use component_files.search
+- When a query mentions files, documents, archives, reports, or internal storage → use component_files.search
+- When a query asks about Slack, team conversations, or chat messages → use component_slack.search
+- When a query mentions calendar, meetings, events, schedules, or appointments → use component_calendar.search
+- When a query asks about shared documents or collaborative files → use component_docs.search
+- When a query asks about people, contacts, or team members → use component_contacts.search
+- When a query asks about notes, action items, or meeting notes → use component_notes.search
 - When ambiguous, prioritize based on the most specific keyword in the query"""
 
 
@@ -85,6 +102,11 @@ def mock_search_tools():
         "email": MockSearchTool("email"),
         "web": MockSearchTool("web"),
         "files": MockSearchTool("files"),
+        "slack": MockSearchTool("slack"),
+        "calendar": MockSearchTool("calendar"),
+        "docs": MockSearchTool("docs"),
+        "contacts": MockSearchTool("contacts"),
+        "notes": MockSearchTool("notes"),
     }
 
 
