@@ -1,0 +1,156 @@
+{
+  "single_turn": [
+    {
+      "components": ["email", "web", "files"],
+      "query": "Find Q1 budget information in our corporate email",
+      "expected_component": "email",
+      "difficulty": "easy",
+      "description": "Explicit mention of email should route to email component"
+    },
+    {
+      "components": ["email", "web", "files"],
+      "query": "Search the web for Python documentation",
+      "expected_component": "web",
+      "difficulty": "easy",
+      "description": "Explicit mention of web should route to web component"
+    },
+    {
+      "components": ["email", "web", "files"],
+      "query": "Look for files modified last week",
+      "expected_component": "files",
+      "difficulty": "easy",
+      "description": "Explicit mention of files should route to files component"
+    },
+    {
+      "components": ["email", "web", "files"],
+      "query": "Find budget-related documents",
+      "expected_component": "any",
+      "difficulty": "ambiguous",
+      "description": "Ambiguous query - any component acceptable if consistent"
+    },
+    {
+      "components": ["email", "web", "files"],
+      "query": "Where can I find the Q1 financial report in internal systems?",
+      "expected_component": "files",
+      "difficulty": "medium",
+      "description": "Internal systems hint suggests files component"
+    },
+    {
+      "components": ["email", "web", "files"],
+      "query": "I need recent news about tech trends",
+      "expected_component": "web",
+      "difficulty": "medium",
+      "description": "Recent news suggests web search"
+    }
+  ],
+  "multi_turn": [
+    {
+      "description": "Affinity test: model should stay with email component",
+      "turns": [
+        {
+          "query": "Find emails about Q1 budget",
+          "expected_component": "email",
+          "mode": "init"
+        },
+        {
+          "query": "Who sent the most recent one?",
+          "expected_component": "email",
+          "mode": "affinity"
+        }
+      ]
+    },
+    {
+      "description": "Context switching: model should follow explicit instruction",
+      "turns": [
+        {
+          "query": "Search for Q1 budget info in email",
+          "expected_component": "email",
+          "mode": "init"
+        },
+        {
+          "query": "Now also check the web for Q1 budget coverage",
+          "expected_component": "web",
+          "mode": "switch"
+        }
+      ]
+    },
+    {
+      "description": "Multi-turn with files context",
+      "turns": [
+        {
+          "query": "Look up the Q1 financial report in files",
+          "expected_component": "files",
+          "mode": "init"
+        },
+        {
+          "query": "Can you tell me the date of that report?",
+          "expected_component": "files",
+          "mode": "affinity"
+        }
+      ]
+    }
+  ],
+  "scaling": [
+    {
+      "level": 1,
+      "num_components": 2,
+      "components": ["email", "web"],
+      "test_queries": [
+        {
+          "query": "Find emails about meetings",
+          "expected_component": "email"
+        },
+        {
+          "query": "Search the web for documentation",
+          "expected_component": "web"
+        }
+      ]
+    },
+    {
+      "level": 2,
+      "num_components": 3,
+      "components": ["email", "web", "files"],
+      "test_queries": [
+        {
+          "query": "Find emails about budget",
+          "expected_component": "email"
+        },
+        {
+          "query": "Search the web for trends",
+          "expected_component": "web"
+        },
+        {
+          "query": "Find files about Q1",
+          "expected_component": "files"
+        }
+      ]
+    },
+    {
+      "level": 3,
+      "num_components": 5,
+      "components": ["email", "web", "files", "slack", "drive"],
+      "test_queries": [
+        {
+          "query": "Find emails about budget",
+          "expected_component": "email"
+        },
+        {
+          "query": "Search the web for information",
+          "expected_component": "web"
+        },
+        {
+          "query": "Look in files for reports",
+          "expected_component": "files"
+        },
+        {
+          "query": "Check slack conversations",
+          "expected_component": "slack"
+        },
+        {
+          "query": "Find documents in drive",
+          "expected_component": "drive"
+        }
+      ]
+    }
+  ]
+}
